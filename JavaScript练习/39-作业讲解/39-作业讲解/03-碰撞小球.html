@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="keywords" content="关键词">
+  <meta name="description" content="描述">
+  <meta name="author" content="">
+  <style>
+    body {
+      font-family: "Microsoft YaHei", serif;
+    }
+
+    body,
+    dl,
+    dd,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+
+    ol,
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    img {
+      border: none;
+    }
+
+    #wrap {
+      position: absolute;
+      z-index: 1;
+      left: 200px;
+      top: 200px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: radial-gradient(#fff 0%, #f00 100%);
+    }
+
+    #shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #shadow p {
+      position: absolute;
+      width: 35px;
+      height: 35px;
+      background-color: pink;
+      transform-origin: center center;
+      transform: scale(1);
+      border-radius: 50%;
+      transition: transform 0.8s, opacity 0.8s;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap"></div>
+  <div id="shadow">
+  </div>
+
+  <script>
+    (function () {
+      // 获取元素
+      var oWrap = document.getElementById("wrap");
+      var oShadow = document.getElementById("shadow");
+
+      // 获取小球初始的定位值
+      var sL = oWrap.offsetLeft;
+      var sT = oWrap.offsetTop;
+      // console.log(sL, sT)
+
+      // 定义小球的运动速度
+      var stepX = 7;
+      var stepY = 10;
+
+      // 计算小球的运行范围
+      let maxLeft, maxTop;
+      // 当浏览器可视区域发生改变是,更新事件
+      window.onresize = (function s() {
+        maxLeft = window.innerWidth - oWrap.offsetWidth;
+        maxTop = window.innerHeight - oWrap.offsetHeight;
+        return s;
+      })();
+
+
+      function run() {
+        // 按照速度改变小球的定位位置
+        sL += stepX;
+        sT += stepY;
+
+        // 判断最大值最小值,然后撞墙返回;
+        (sL <= 0 || sL >= maxLeft) && (stepX = -stepX);
+        (sT <= 0 || sT >= maxTop) && (stepY = -stepY);
+
+        // 更新定位位置
+        oWrap.style.left = sL + 'px';
+        oWrap.style.top = sT + 'px';
+
+        createShow(sL, sT);
+
+        requestAnimationFrame(run)
+
+      };
+
+      requestAnimationFrame(run)
+
+
+      // 生成拖尾
+      function createShow(left, top) {
+        var oP = document.createElement('p');
+        oP.style.left = left + 7 + 'px';
+        oP.style.top = top + 7 + 'px';
+        setTimeout(function () {
+          oP.style.transform = 'scale(0.2)';
+          oP.style.opacity = "0";
+        })
+
+        setTimeout(function () {
+          oShadow.removeChild(oP)
+        }, 800)
+
+        oShadow.appendChild(oP)
+      }
+
+
+    })()
+
+
+
+  </script>
+</body>
+
+</html>

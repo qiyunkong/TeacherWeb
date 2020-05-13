@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // let arr = ['a','b','c'];
+    // for(let i = 0; i< arr.length;i++){
+    //   console.log(arr[i])
+    // }
+    //  let i = 0;
+    //     while(arr[i]){
+    //       console.log(arr[i])
+    //       i++;
+    //     }
+    // let arr2 = arr.forEach((item,index,arr)=>{
+    //   // console.log(item,index,arr)
+    //   // console.log(this)
+    //   return item
+    // },{})
+    // console.log(arr2)
+
+    // let obj = {
+    //   run: function(){
+    //     let arr = ['a','b','c'];
+    //     arr.forEach((item,index,arr)=>{
+    //       console.log(item,index,arr)
+    //       console.log(this)
+    //     })
+    //   }
+    // }
+    // obj.run();
+
+
+    // let arr = [
+    //   {title:"aa",price:100},
+    //   {title:"bb",price:50},
+    //   {title:"cc",price:200},
+    // ]
+
+    // arr.forEach((item)=>{
+    //   item.name = "wuwei"
+    // })
+    // let arr2 = arr.map((item,index,arr)=>{
+    //   console.log(item,index,arr)
+    //   // let json = {}
+    //   // json.title = item.title
+    //   // json.price = item.price*2
+    //   return item.price
+    // })
+
+    // console.log(arr2)
+
+    // let arr2 = arr.filter((item,index,arr)=>{
+    //   console.log(item,index,arr)
+    //   return item.price >= 100;
+    // })
+
+    // console.log(arr2)
+
+    // let numArr = [2,5,1,5,1,6,3,8] 
+    // let arr2 = numArr.filter((item,index,arr)=>{
+    //   // return item.price >= 100;
+    //   // console.log(item,index)
+    //   console.log(arr.indexOf(item) == index)
+    //   // return arr.indexOf(item) == index
+    // })
+
+    // console.log(arr2)
+    
+
+    // let strArr = ['a','b','c','d','e','f']
+    // let arr2 = strArr.some((item,index,arr) => {
+    //   return item == "w"
+    // })
+    // console.log(arr2)
+
+    // let numArr = [5,3,7,9,5,1]
+    // let arr2 = numArr.every((item,index,arr) => {
+    //   return item%2==1
+    // })
+    // console.log(arr2)
+
+    // if(arr2){
+    //   console.log('numArr的每一项都是奇数')
+    // }else{
+    //   console.log('numArr的里面包含偶数')
+    // }
+    // 50 10
+
+    // let arr = ["apple","banana","orange","grape","mangguo"]
+
+    // // console.log(arr.includes("banan"))
+    // function findInArray(arr,item){
+    //   return arr.some((val,index,arr) => {
+    //     return val == item;
+    //   })
+    // }
+
+    // console.log(findInArray(arr,"apple"))
+
+  //  let arr = [1,2,3,4,5,6,7,8,9,10]
+  //  let sum = 0;
+  //  arr.forEach((item) => {
+  //    sum += item
+  //  })
+  // console.log(sum)
+
+  // let res = arr.reduce( (prev,cur,index,arr) => {
+  //   console.log(prev,cur,index,arr)
+  //   return prev * cur;
+  //   // return cur
+  // },1)
+
+  // console.log(res)
+
+  // let res = arr.reduceRight( (prev,cur,index,arr) => {
+  //   console.log(prev,cur,index,arr)
+  //   return prev * cur;
+  //   // return cur
+  // })
+
+  // console.log(res)
+  // prev 是上一次迭代(循环)的return的值
+
+  // reduce方法实现数组去重
+  let arr = [1,2,2,5,6,8,6,2,1]
+  let res = arr.reduce((prev,cur,index,arr) => {
+    console.log(prev,cur,index,arr)
+    if(!prev.includes(cur)){
+      prev.push(cur)
+    }
+    return prev
+  },[]) 
+
+  console.log(res)
+ 
+  /*
+    ES5 的循环方法
+      1. forEach(callback)
+        参数是一个回调函数
+        callback: 回调函数有三个参数:第一个参数是数组的每一项,第二个参数是每一项的下标,第三个参数是循环遍历的原数组
+
+        第二参数是函数内部的this指向,但是一旦使用了箭头函数,第二个参数将失去意义
+
+        就是for循环的替代,也就是对for循环的封装
+        返回值就是undefined
+
+      2.map(callback)
+        地图,映射关系
+        需要配合return 去使用,返回一个新数组,就相当于forEach()
+
+        map()返回值是一个新数组,如果map的回调函数没有return语句,数组将undefined
+
+        更改的使用场景,是原来数组中的值和我要样的不一样,我需要生成一个新数组,这个数组必须和原数组保持一致,并且是修改原数组后的新数组
+
+        平时我们在使用map的时候,一定要配合return使用,一定要使用返回值
+        否则将毫无意义,因为我们可以使用forEach()方法
+
+      3.filter()  过滤方法
+        也是要配合return使用  如果filter方法的回调函数里面没有return 将返回空数组
+        return 的是一个布尔值,如果为true,表示这一项是要保留的,如果为false,表示此项是需要过滤的
+
+      4.some()  一些  ,every()每一个 
+        返回值布尔值:  配合return使用  没有return 返回 false
+
+        some表示一些的意思, 在循环中只要有一个return的结果为true,那么整体返回true,如果所有的return都返回false,整体的结果才是false
+
+        every表示是每一个,也就是在循环中 必须所有的return都是true,整体才返回true,只要有一个返回false,整体返回false
+
+      5. reduce(),reduceRight()
+        这两个方法和上面5个方法的参数就不一样了
+        第一个参数是回调函数,回调函数的参数有prev,cur,index,arr,
+        第二个参数表示初始值
+
+  */
+  
+  </script>
+</body>
+</html>

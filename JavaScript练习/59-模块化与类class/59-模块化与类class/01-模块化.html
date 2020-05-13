@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type='module' src="./01.js"></script>
+
+  <script>
+  
+    /*
+      export  导出
+        1. 导出单个的值
+          export let num = 10
+
+        2. 导出多个值
+          export {
+            num,
+            bb,
+            add
+          }
+
+        3.导出的值是动态的引用
+          如果导出的值发生变化,引入的模块里面的值也会发生变化
+
+        4. 导出的export 关键字必须是在模块的顶层才可以,不能处于函数和块级作用域中
+
+
+      import  导入
+        1. import './02.js'
+           这种写法只是相当于引用一个文件,并执行引入文件
+
+        2. import {num} from './02.js'
+          不单单会执行02.就是  还会导入02.js导出的数据
+
+        3. 导入的数据可以自定义名称
+            import { a as aa, b as bb, c as fn } from './02.js'
+
+        4. import 提升
+          会将所有import 导入的语句提升到模块最开头执行
+
+        5  导入不能使用表达时 和变量的方式
+
+
+        6. import {} from ''
+          这种语法的导入都是静态导入,所以不能使用if来处理成动态导入
+
+        7. 动态导入 import()
+          但是要注意的是 这种导入方式返回的是promise对象
+          好处: 按需加载  可以写在if 判断里面判断加载   路径也可以是动态的变量
+
+        8. 整体导入一个模块
+
+
+      特殊的导入导入
+        1. 导出 export default  这个是默认导出,导出什么就是什么,
+          一个模块只能有一个export default
+
+        2. import obj from './02.js'
+          如果采用export default 导出数据,导入是不需要大括号
+
+
+          严格模式
+    */
+  </script>
+</body>
+</html>

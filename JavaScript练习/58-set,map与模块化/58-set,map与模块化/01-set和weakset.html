@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+  // let arr = ['a','b','c','d','a','c','b','5',5]
+  // console.log(arr)
+
+  // let arr2 = [...new Set(arr)]
+
+  // let set = new Set(['a','b','c','d','a'])
+
+  // console.log(set.add('wuwei'));
+  // set.add('latiao');
+
+  // let aa = set.delete('e')
+  // console.log(aa)
+
+  // let bol = set.has('e')
+
+
+  // let set = new Set([1,2,3])
+
+  // let newSet = new Set()
+  // for(let val of set){
+  //   newSet.add(val*2)
+  // }
+
+  // let newSet = new Set([...set].map(val => val*2))
+
+
+  // let set = new Set([1,2,3,4,5,6,7,8])
+
+  // let newSet = new Set([...set].filter(val => val%2==0))
+
+
+  let obj = {
+    a: 1,
+    b: 2
+  }
+
+  // let set = new Set()
+  // set.add(obj)
+
+  let weakSet = new WeakSet()
+  weakSet.add(obj)
+   /*
+    Set
+      创建方式只有一种就是构造函数,
+      语法;
+      let set = new Set([])
+
+
+    set数据的方法
+      1. 新增数据(添加内容)
+          set.add('wuwei');
+          返回是添加数据以后的自身
+
+      2. 删除数据
+        delete
+        set.delete('e')
+        整体返回布尔值, 删除成功就是true 否则就是false
+
+      3. 判断set数据结构里有没有某个值
+        has
+        set.has('e')
+
+      4. set数据到底有多少个(属性不需要加括号)
+        set.size
+
+      5. 清空数据
+        clear()  不需要传递任何参数
+        set.clear()
+
+
+      6. 遍历
+        for(let val of set){
+          console.log(val)
+        }
+
+
+      注意: set 数据类型 我们控制台打印数据,看到的好像下标是数字
+      但是我们通过循环出来的下确实和值一样
+
+   */
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+
+    }
+
+    body {
+      height: 3000px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <h1 id="h1"></h1>
+  <script>
+    box.onclick = function (event) {
+      event = event || window.event;
+      console.log(event);
+      // ev.preventDefault();
+      // console.log(ev.clientY);
+      // console.log(ev.pageY);
+      // console.log(ev.offsetY);
+      // if (ev.button == 0) {
+      //   h1.innerHTML = "当前鼠标的位置是" + ev.clientX + "," + ev.clientY
+    }
+
+    // }
+    // box.onclick = function () {
+    //   console.log(window.event);
+    // }
+    /*
+      一.事件对象 event
+        事件函数的第一个参数
+        常用的属性和方法
+          1.event.type   返回事件的类型
+          2.event.target  返回事件源
+          3.event.currentTarget  返回自己,
+          4.event.button  区分左键(0)中间(1)右键(2)
+          5.event.stopPropagation()  停止事件流的传播(阻止事件冒泡)
+          6.event.preventDefault()  阻止默认事件
+
+        事件对象上存储的一些值
+          1.clientX/clientY   鼠标触发事件时距离浏览器左上角水平/垂直距离
+          2.pageX/pageY  距离页面左上角的水平/垂直的距离
+          3.offsetX/offsetY  距离元素左上角水平/垂直的距离
+          4.layerX/layerY  距离定位元素左上角水平/垂直的距离
+          5.screenX/screenY   距离你计算机屏幕左上角水平/垂直的距离
+
+      二.IE6,7,8 兼容问题
+        IE低版本的事件对象是在window下的一个属性event
+          box.onclick = function () {
+            console.log(window.event);
+          }
+
+      三.事件对象兼容
+          event = event || window.event;
+
+      四.阻止事件冒泡
+          DOM 0
+            event.stopPropagation() IE 9及以上
+            event.cancelBubble = true;   所有都可以
+
+          addEventListener()
+            event.stopPropagation()
+
+          attachEvent()
+            event.cancelBubble = true;
+
+         兼容
+          if(event.stopPropagation){
+            event.stopPropagation()
+          }else{
+            event.cancelBubble = true;
+          }
+    */
+
+  </script>
+</body>
+
+</html>

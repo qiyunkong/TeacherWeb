@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // console.log(1,...[2,3,4],5)
+
+
+    // let x = 1;
+    // let arr = [ ...(x>2?["a"]:[]),"b"]
+    // console.log(arr)
+
+
+    // function fn(x,y,z){
+    //   console.log(x,y,z)
+    // }
+    // // fn.apply(null,[10,20,30])
+    // fn(...[10,20,30])
+
+    // let arr = [10,30,50,80,40,10]
+    // Math.max.apply(null,arr)
+    // Math.max(...arr)
+    // // 等价于
+    // Math.max(10, 30, 50, 80, 40, 10)
+
+    // let arr = [1,2,3]
+    // let arr1 = [4,5,6]
+    // // let arr2 = arr.concat(arr1)
+    // let arr2 = [...arr,...arr]
+    // let [...arr2] = arr;
+
+    let [a,...b] = [1,2,3,4]
+    console.log(a,b)
+
+
+    /*
+      一.扩展运算符
+          console.log(1,...[2,3,4],5)
+
+          1.可以扩展表达式
+            let x = 1;
+            let arr = [ ...(x>2?["a"]:[]),"b"]
+            console.log(arr)
+
+          2. 可以替代apply使用
+               function fn(x,y,z){
+                console.log(x,y,z)
+              }
+              // fn.apply(null,[10,20,30])
+              fn(...[10,20,30])
+
+          3. 取出数组中的最大值
+            let arr = [10,30,50,80,40,10]
+            Math.max.apply(null,arr)
+            Math.max(...arr)
+            // 等价于
+            Math.max(10, 30, 50, 80, 40, 10)
+
+          4. 复制函数
+            let arr = [1,2,3]
+            // let arr2 = arr.concat()
+            // let arr2 = Array.from(arr)
+            // let arr2 = [...arr]
+            let [...arr2] = arr;
+
+          5.合并数组
+            let arr = [1,2,3]
+            let arr1 = [4,5,6]
+            // let arr2 = arr.concat(arr1)
+            let arr2 = [...arr,...arr]
+
+          6.剩余运算(和解构结合使用)
+            let [a,...b] = [1,2,3,4]
+             console.log(a,b)
+
+
+
+    */
+  
+  </script>
+</body>
+</html>

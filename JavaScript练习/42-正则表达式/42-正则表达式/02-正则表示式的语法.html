@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var reg = /[c|a]d/g
+    var str = 'adbcd1d1233e|df'
+    console.log(str.match(reg))
+
+    /*
+    正则里面特殊语法
+      1. 特殊的字符
+        正则表达式是由普通字符和特殊的字符(元字符)组成
+        普通字符: 字母a-zA-z ,数字 0-9 _ 等等
+        特殊字符: () [] {} ^ $ * ? \ | +
+        普通的字符咱们拿过来就可以直接用,但是特殊的字符,在正则里有特殊的意义,如果你想吧特殊字符当做普通字符来用,记住一定要先转义
+
+      2.预定义的特殊字符
+        \t  制表符  /\t/
+        \n  回车符
+        \f  换页符
+        \b  回退符
+
+    字符集
+      JS正则里面有四类字符集
+
+      1. 简单类
+        通过[]包裹要组合的字符,
+        例如:var reg = /[abcdeg]/
+
+      2. 范围类
+        通过[] 和 - 组成一个范围集合
+        [a-z]表示小写的字面集合, [A-Z]表示大写字面集合,[0-9]表示数字集合
+        var reg = /[a-z]/
+
+      3. 负向类
+        简短理解,就是取反的意思
+        通过[] 并且在[]里最前面添加^ 表示不包含某个集合
+        如果^ 不是放在[]里面最前面 将没有特殊意义,只是一个普通的字符
+        var reg = /[^a-z]/
+
+      4.组合类
+        通过[] 将几个集合拼接在一起的组合
+        var reg = /[0-9a-zA-Z]/
+
+      5. 注意
+        中括号里的字符集无论你写多少个字符,也只会匹配其中的一个
+        特殊的中文集合
+        [\u4e00-\u9fa5]
+
+    界定符
+      字符串是有边界的,这里的边界指的是字符串的首尾
+
+      1. 界定字符串的首尾
+        ^ 表示字符串的开始位置
+        $ 表示字符串的结尾
+        var teg = /^text$/
+
+      2. 匹配后面所跟的字符
+        (?=) 匹配字符后面紧跟的字符n的字符
+        (?!n) 匹配后面跟的字符不是n的字符
+        var reg = /c(?=b)/g
+        var reg = /c(?!b)/g
+
+
+    预定义的类(元字符)
+      就是转义符加上特点定的字母表示具有特殊意义的字符
+      \d  表示数字字符 [0-9]
+      \D  表示非数字字符  [^0-9]
+      \s  表示空白符     [\t\n\f\r]
+      \S  表示非空白符    [^\t\n\f\r]
+      \w  表示字符       [a-zA-Z_0-9]
+      \W  表示非字符    [^a-zA-Z_0-9]
+
+    量词
+      {}
+
+      1. 量词的普通写法
+        {n}  匹配几个{2}
+        {n-m} 匹配n-m个  包含n 也包含m
+        {n,}  匹配n-无穷个  包含n
+
+      2.特殊的写法
+        {1,} 可以有+ 来代替   贪婪匹配
+        {0,} 可以用*  来代替
+        {0,1} 可以用?  来代替
+
+    子项
+      通过()将部分规则包裹起来,使用match来匹配的时候,我们就可以拿到子项
+      注意不能使用全局g
+      var reg = /d(\d+)/
+      var str = 'abcd1233ef'
+      console.log(str.match(reg))
+
+      1.子项的反向引用
+        var reg = /(\w)(\d)\1\2/
+        var str = 'abbcd1d1233ef'
+        console.log(str.match(reg))
+
+    或者
+      通过| 表示或者
+
+        var reg = /cd|ad/g
+        var str = 'adbcd1d1233ef'
+        console.log(str.match(reg))
+
+      可以和子项结合使用
+          var reg = /(c|a)d/g
+          var str = 'adbcd1d1233ef'
+          console.log(str.match(reg))
+
+      如果放在字符集里面就表示普通是|
+
+        var reg = /[c|a]d/g
+        var str = 'adbcd1d1233e|df'
+        console.log(str.match(reg))
+
+    */
+  </script>
+</body>
+
+</html>

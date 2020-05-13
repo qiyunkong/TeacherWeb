@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box">
+    <p> wuwei</p>
+    xiaoming
+  </div>
+  <script>
+    // innerHTML
+    // innerText
+
+    // innerText赋值的时候一定要注意,会把标签覆盖掉
+    // 不会解析标签
+    // box.innerText =  box.innerText  + "is not default"
+
+    // innerHTML 
+    // 可以把字符串标签解析成为html标签,
+    // 可以解析标签
+    // box.innerText = "<h2>wuwei</h2>"
+    // box.innerHTML = "<h2>wuwei</h2>"
+
+    // var box2 = document.createElement("h1");
+    // var text = document.createTextNode("this is h1")
+    // box2.appendChild(text)
+    // box.appendChild(box2)
+
+    // box.innerHTML += "<h1>this is h1</h1>"
+
+
+    // 老版本浏览器 火狐 不兼容innerText(新的火狐浏览器是兼容)
+    // 火狐老版本的浏览器是用textContent;
+    // textContent 老版本的IE不支持 IE8及一下不支持
+
+  </script>
+</body>
+
+</html>

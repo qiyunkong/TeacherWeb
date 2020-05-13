@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 字符串的界定符就是单引号或者双引号
+    // var str = "undefined"
+
+    // 字符串的属性和方法都是自带的
+    // 在没有学原型之前我们是不能给字符串添加自定义的属性和方法的,
+    // 因为给字符串添加属性和方法是调用了包装类
+
+    // 1. 字符串的属性 length
+    // length属性是获取字符串的字符长度
+    // 无论中文,数字,英文字母,空格都是一个字符长度
+    // var str = '365天说爱你们';
+    // console.log(str.length);
+    // console.log(str[0]);
+
+
+    // 字符串方法
+    // 1. 查询字符,字符编码转换的方法
+    // 1.1charAt()
+    // (1).使用方式
+    // str.charAt(index)
+    // str是我们要操作的字符串
+    // charAr() 是一个方法
+    // index 字符的索引
+    // (2) 返回值
+    // 查询的字符
+    // var str = '365天说爱你们';
+    // var newStr = str.charAt(4)
+    // console.log(newStr)
+
+    // for (var i = 0; i < str.length; i++) {
+    //   // console.log(str.charAt(i))
+    //   console.log(str[i])
+    // }
+
+    // 如果使用正确的索引,这个两个方法返回的结果一样
+    // 如果传入的索引不正确,charAt()方法返回''
+    // []的方法返回 undefined
+    // console.log(str.charAt(10))  // ''
+    // console.log(str[10])       // undefined
+
+
+    // 1.2charCodeAt()  
+    // 获取字符串对应的索引的编码
+    // 参数索引,用法与charAt()
+    // 返回值: 返回查询字符对应的编码(数字类型)
+
+    // var str = 'wuWei';
+    // var num = str.charCodeAt(2);
+    // console.log(num)
+
+    // 常见的编码
+    // 0-9 : 48-57
+    // A-Z : 65-90
+    // a-z : 97-122
+
+
+    // 1.3formCharCode() 跟charCodeAt()是相反
+    //  使用方式
+    // String.fromCharCode(字符编码值)
+    // 返回值:编码值对应字符
+    // var str = String.fromCharCode(35);
+    // console.log(str)
+
+    // 
+    // var str = '我喜欢你';
+    // var newStr = '';
+    // for (var i = 0; i < str.length; i++) {
+    //   newStr += String.fromCharCode(str.charCodeAt(i) + 10);
+    // }
+    // console.log(newStr)
+
+
+    // 1.4 通过字符查询索引
+    // indexOf() 和lastIndexOf()
+    //  str.indexOf()
+    // 参数是一个字符
+    // 返回值是一个索引
+    // 上面两个方式的区别
+    // 第一个是从前往后(从左到右)查询
+    // 第二个方法是从后先前查询
+
+
+    // indexOf() 
+    // 如果能查询到返回第一对应的索引
+    // 如果查询不到或者没有参数都返回-1
+    // 如果没有第二参数表示从头开始查询,如果有表示从第二个参数开始向右查询
+    // var str = 'wuweiiewuw'
+    // var num = str.indexOf('e');
+    // var num = str.indexOf('e', 0);
+    // console.log(num)
+
+    // lastIndexOf()
+    // 逆向查询索引,从右向左查询
+    // 第一参数是需要查询的字符
+    // 如果没有查询到或者没有参数返回-1
+    // 如果没有第二参数表示从字符串最后向前查询
+    // 如果有第二参数表示从第二个参数表示的所有开始向前查询
+    // var str = 'wuweiiewuw'
+    // var num = str.lastIndexOf('e');
+    // var num = str.lastIndexOf('e', 4);
+    // console.log(num)
+
+    // search() 获取字符串的位置(索引)
+    // 结果和indexOf() 结果是一样的
+    // var str = 'wuweiiewuw';
+    // var num = str.search('e');
+    // console.log(num)
+    // 没有第二个参数
+
+    // 1. [],charAt()是通过索引查询字符
+    // 2. indexOf ,lastIndexOf ,search() 通过字符查询索引
+
+
+
+    // 2.字符串截取方法
+    // 2.1 substr()
+    // str.substr(start[,num])
+    // start从第几个字符串开始截取,字符串的索引,(负数)
+    // num: 表示截取接个字符,可以省略,如果省略,
+    // 表示start开始截取到最后一个字符
+    // 返回值是截取的字符串
+    // var str = 'wuwei';
+    // var newStr = str.substr(2)
+    // console.log(newStr)
+    // var newStr = str.substr(-2)
+    // console.log(newStr)
+    // var newStr = str.substr(2, 2)
+    // console.log(newStr)
+
+    // 2.2 substring()
+    // str.substr(start[, end])
+    // start 开始截取的索引(不能为负数,如果是负数截取全部)
+    // end 结束的索引(不包括end所在字符)(可以为负数,lengt+end)
+    // 截取(end-start)个字符
+    // [start,end)
+    // var str = 'abcdefghi';
+    // console.log(str.substring(2, 8))
+    // console.log(str.substring(5, -3))
+
+    // 2.3 slice()
+    // str.slice(start[, end])
+    // start: 开始截取的索引(可以为负数) 
+    // end: 结束的索引(不包含)(可以为负数)
+    // 如果end比start大,不会调换位置
+    // var str = 'abcdefghi';
+    // console.log(str.slice(2, -2))
+
+    // 3. 字符串的拼接,替换,切割方法
+
+    // 3.1 concat()字符串拼接
+    // str1.concat(str2)
+    // 返回的是新的字符串
+
+    // var str1 = 'wuwei';
+    // var str2 = 'sha';
+    // // var newStr = str1.concat(str2, 'zhensha');
+    // var newStr = str1 + str2 + 'zhensha';
+    // console.log(newStr)
+
+    // 这个方法基本上不用,为什么因为咱有+ 
+
+    // 3.2 replace() 替换字符串
+    // str.replace(str1, str2)
+    //  首先在str中查询str1,然后用str2替换str1;
+    // 从左往右查询
+    // 如果没有查询到将返回原字符串
+
+    // 返回值:新的字符串
+
+    // var str = 'wuwei'
+    // var newStr = str.replace('uw', '无为');
+
+    // var newStr = str.replace('aa', '无为');
+    // console.log(newStr)
+
+    // 3.3 split(); 切割 
+    // str.split(str1)
+    // 按照str1讲字符串str切割成数组
+    // 返回值是一个数组
+
+    // var str = '我爱你们,我也爱祖国,但更爱祖国的人民币';
+    // var arr = str.split('爱')
+    // console.log(arr)
+
+
+    // 4. 改变英文大小写的方法
+    // str.toLowerCase() 转小写
+    // str.toUpperCase() 转大写
+
+    // 没有参数
+    // 返回新字符串
+    // var str = 'wuwei';
+    // var newStr = str.toUpperCase()
+    // console.log(newStr)
+
+    // var str = 'WUWEI';
+    // var newStr = str.toLowerCase()
+    // console.log(newStr)
+
+    // function myUpper(str) {
+
+    // }
+
+    // 5.其他方法
+    // str.trimLeft() 去除字符串开始(左侧)空格
+    // str.trimRight()去除字符串结束(右侧)空格
+    // str.trim()去除字符串开始和结束空格
+    // var str = "  wuwei    wuwei   ";
+    // console.log(str.trim())
+
+    // for (var i = str.length - 1; i >= 0; i--) {
+    //   if (str[i] === " ") {
+    //     str = str.replace(str[i], '');
+    //   }
+    // }
+    // console.log(str)
+
+  </script>
+</body>
+
+</html>

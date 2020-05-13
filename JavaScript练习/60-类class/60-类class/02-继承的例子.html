@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box,.left,.right{
+     position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color:red;
+    }
+  </style>
+</head>
+<body>
+  <!-- <div id="box">111</div> -->
+  <!-- <div id="box2">222</div> -->
+
+  <script>
+
+    // 普通的拖拽
+    // var oBox = document.getElementById("box");
+    // oBox.onmousedown = function (e) {
+    //   let disX =  e.clientX - oBox.offsetLeft;
+    //   let disY = e.clientY - oBox.offsetTop;
+
+    //   document.onmousemove = function (e){
+    //       oBox.style.left = e.clientX - disX + "px";
+    //       oBox.style.top = e.clientY - disY + "px";
+    //   }
+    //   document.onmouseup = function(){
+    //     this.onmousemove = null
+    //     this.onmouseup = null;
+    //   }
+    // }
+
+    // ES 5 构造函数
+  //   function Drag(className){
+  //     this.dom = document.createElement("div");
+  //     this.dom.className = className;
+  //     document.body.appendChild(this.dom)
+
+  //     // 初始值
+  //     this.disX = 0;
+  //     this.disY = 0;
+
+  //     // 执行初始化函数
+  //     this.init()
+  //   }
+
+  // // 原型上的方法
+  //   Object.assign(Drag.prototype,{
+  //     // 初始化函数
+  //     init (){
+
+  //         this.dom.onmousedown = function (e) {
+  
+  //           this.down(e)  
+
+  //           document.onmousemove = this.move.bind(this)
+  //           document.onmouseup = this.up     
+  //         }.bind(this)
+  //     },
+
+  //     down(e){
+  //       this.disX =  e.clientX - this.dom.offsetLeft;
+  //       this.disY = e.clientY - this.dom.offsetTop;
+  //     },
+
+  //     move(e){
+  //       this.dom.style.left = e.clientX - this.disX + "px";
+  //       this.dom.style.top = e.clientY - this.disY + "px";
+  //     },
+
+  //     up () {
+  //       document.onmousemove = null
+  //       document.onmouseup = null;
+  //     }
+    
+  //   })
+
+
+
+  // 重构ES6的方法
+
+    class Drag{
+      constructor (className) {
+        this.dom = document.createElement("div");
+        this.dom.className = className;
+        this.dom.innerHTML = className;
+        document.body.appendChild(this.dom)
+
+        // 初始值
+        this.disX = 0;
+        this.disY = 0;
+
+        // 执行初始化函数
+        this.init()
+      }
+
+
+      // 原型的方法
+      init (){
+
+          this.dom.onmousedown = function (e) {
+  
+            this.down(e)  
+
+            document.onmousemove = this.move.bind(this)
+            document.onmouseup = this.up     
+          }.bind(this)
+      }
+
+      down(e){
+        this.disX =  e.clientX - this.dom.offsetLeft;
+        this.disY = e.clientY - this.dom.offsetTop;
+      }
+
+      move(e){
+        this.dom.style.left = e.clientX - this.disX + "px";
+        this.dom.style.top = e.clientY - this.disY + "px";
+      }
+
+      up () {
+        document.onmousemove = null
+        document.onmouseup = null;
+      }
+    
+    }
+
+
+    
+    new Drag("left")
+    new Drag("right")
+
+  // ES 6 继承
+  class LimitDrag extends Drag{
+    constructor (className) {
+      super(className)
+      this.dom.style.background = "blue"
+      this.dom.style.color = "#fff"
+    }
+    move(e){
+      super.move(e);
+
+      // 扩展子类的功能
+      this.dom.style.left = Math.max(0,this.dom.offsetLeft) + 'px'
+      this.dom.style.left = Math.min(window.innerWidth-this.dom.offsetWidth,this.dom.offsetLeft) + 'px'
+
+      this.dom.style.top = Math.max(0, this.dom.offsetTop) + 'px'
+      this.dom.style.top = Math.min(window.innerHeight-this.dom.offsetHeight, this.dom.offsetTop) + 'px'
+    }
+  }
+  new LimitDrag("box")
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //  只有函数能够封闭一个作用域
+    // 定义函数里面的变量,我们成为局部变量,
+    // 定义在全局范围内的,我们成为全局变量
+    // var b = 2;
+    // function a() {
+    //   // var b = 2;
+    //   console.log(b);
+    // }
+    // a()
+    // console.log(b)
+
+    // var a = 10;
+    // 全局作用域GO(window对象); Global object
+    // 全局环境下的所有变量都是GO对象的属性值
+
+    // 函数作用域
+    // 函数作用域AO  Activation object(活动对象)
+    // 函数内部的变量都是存放在在这个活动对象里面的 
+
+
+    // js引擎执行sj代码的步骤
+    // 语法分析;
+    // var a = 33;
+    // function fn() {
+
+    // }
+
+    // 预解析四步曲(函数)
+    // 1.创建一个AO对象,(活动对象,函数作用域,执行期上下文)
+    // 2.找到所有的形参,和变量,并且把所有形参和变量作为AO对象的属性,值为undefined
+    // 3. 就是把我们实参赋值为我们形参
+    // 4. 在函数内部找到所有的函数声明,并把函数名作为AO对象,值就是函数体
+
+
+
+    // 解释一行执行一行
+    // GO{
+    //   a: 33;
+    //   fn: function() { }
+
+    // }
+
+    // var a = 33;
+
+    // function fn(a) {
+    //   // AO{
+    //   //   a: 123
+    //   //   b: function () { console.log(22) }
+    //   // }
+
+    //   console.log(a); // 函数体
+    //   var a = 123;
+    //   console.log(a);  // 123
+
+    //   function a() {
+    //     console.log(a)
+    //   }
+
+
+    //   console.log(b);    //  函数体
+    //   var b = function () { console.log(22) }
+    //   console.log(b);   // 函数体
+    //   function b() {
+    //     console.log(33)
+    //   }
+    // }
+
+    // console.log(a);   // 33
+    // fn(1)
+    // console.log(3)
+
+    // 例子:
+    // GO{
+    //   test: function test(a, b) {
+    //     console.log(a);
+    //     c = 0;
+    //     var c;
+    //     a = 3;
+    //     b = 2;
+    //     console.log(b);
+    //     function b() { }
+    //     function d() { }
+    //     console.log(b)
+    //   }
+    // }
+
+    // function test(a, b) {
+    // 预解析(四步)
+    // AO{
+    //   a: 3,
+    //     b: 2,
+    //       c: 0,
+    //         d: function d() { }
+    // }
+
+    // 函数执行(解释一行执行一行)
+    //   console.log(a);  // 2
+    //   c = 0;   // 赋值
+    //   var c;
+    //   a = 3;
+    //   b = 2;
+    //   console.log(b);  // 2
+    //   function b() { }
+    //   function d() { }
+    //   console.log(d)   // 函数体
+    // }
+    // test(2)
+
+    // 如果一个变量没有var就直接赋值,
+    // 那么js会默认的帮你var 一下.然后这个变量是全局变量
+    // function aa() {
+    //   a = 3;
+    // }
+    // aa()
+    // console.log(a);
+
+    // 关于为什么一个变量没有var直接赋值会是全局变量
+    //我们将作用域的时候就明白,暂时你只要知道就行
+
+    // 一切声明的全局变量都归window所有
+    // var b = 55;
+    // console.log(b);
+    // console.log(window.b)
+    // window就是我们全局的GO,也是我们最大的一个仓库
+
+
+    // function text() {
+    //   var a = b = 33;
+    // }
+    // text()
+    // console.log(b);
+
+
+    // 函数的所有参数就是函数内部的局部变量
+    // function fn(a, b) {
+    // }
+    // a b是函数fn的局部变量,出了fn就没有定义了
+
+
+    // 全局变量的作用
+    // 可以作为通信的手段
+    // var num = 0;
+    // function add() {
+    //   return ++num;
+    // }
+    // function remove() {
+    //   return --num
+    // }
+
+    // add()
+    // remove()
+
+
+    // 全局变量还可以累加,不会重复
+    // var num = 0;
+    // function add() {
+    //   return ++num;
+    // }
+  </script>
+
+</body>
+
+</html>

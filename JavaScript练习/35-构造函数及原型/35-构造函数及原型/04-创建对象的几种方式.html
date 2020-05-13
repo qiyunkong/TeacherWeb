@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Createobj() {
+
+    }
+    Createobj.prototype.init = function (name, age) {
+      console.log("吃饭了")
+      this.name = name;
+      this.age = age
+    }
+    var wuwei = new Createobj()
+    wuwei.init("xiaoming", 10)
+    var xiaoming = new Createobj("xiaoming", 10)
+    /*
+      1. 单例模式
+        var obj = new Object() // 内置构造函数创建对象
+        var obj = {}           // 字面量方式
+
+      2. 工厂模式
+         function createobj(name, age) {
+          var obj = {};
+          obj.name = name;
+          obj.age = age;
+          return obj
+        }
+        var wuwei = createobj("wuwei", 18)
+        var xiaoming = createobj("xiaoming", 18)
+
+      3.构造函数模式
+        function Createobj(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        var wuwei = new Createobj("wuwei", 18)
+        var xiaoming = new Createobj("xiaoming", 18)
+
+      4.原型模式
+         function Createobj() {
+        }
+        Createobj.prototype.name= "xiaoming";
+        Createobj.prototype.age= 21;
+        var wuwei = new Createobj()
+        var xiaoming = new Createobj()
+
+      5.混合模式
+        function Createobj(name, age) {
+          this.name = name;
+          this.age = age
+        }
+        Createobj.prototype.eat = function () {
+          console.log("吃饭了")
+        }
+        var wuwei = new Createobj("wuwei", 12)
+        var xiaoming = new Createobj("xiaoming", 10)
+
+      动态原型模式   寄生模式   稳妥构造函数模式
+    */
+
+  </script>
+
+</body>
+
+</html>

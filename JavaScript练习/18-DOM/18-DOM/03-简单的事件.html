@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <script>
+    var box = document.querySelector(".box");
+    // 点击事件
+    // box.onclick = function () {
+    //   // 当点击box元素的时候发生的事情
+    //   alert(1)
+    // }
+
+    // 移入事件
+    box.onmouseenter = function () {
+      // 当点击box元素在鼠标进入的时候发生的事情
+      // alert(2)
+      this.innerHTML = "我被移入了"
+      this.style.backgroundColor = 'skyblue'
+    }
+
+    // 移出事件
+    box.onmouseleave = function () {
+      // 当点击box元素在鼠标进入的时候发生的事情
+      // alert(3)
+      this.innerHTML = "我被移出了"
+      this.style.backgroundColor = 'pink'
+
+    }
+
+
+  </script>
+</body>
+
+</html>

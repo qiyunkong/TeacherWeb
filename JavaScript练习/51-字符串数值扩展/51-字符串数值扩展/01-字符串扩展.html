@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <div id="box"></div> -->
+  <script>
+  // function fn(){
+  //   return 23
+  // }
+  // let  name="wuwei";
+  // let age = 18;
+  // let str = `这个人叫${name},年龄${age*2}`
+  // console.log(str)
+
+  // var ul = `
+  //   <li>
+  //     <p>${name}</p>
+  //   </li>
+  // `
+  // box.innerHTML = ul
+  // console.log(ul)
+
+  // let  str = "apple banana orange";
+  // console.log(str.includes("apple",3))
+  // console.log(str.startsWith("banana",6))
+  // console.log(str.endsWith("banana",12))
+
+  // let str = "http://www.baidu.com"
+  // console.log(str.startsWith("https"))
+
+  // let str = "aa.png"
+  // console.log(str.endsWith(".png"))
+
+  // console.log(navigator.userAgent.includes("Chrome"))
+
+  // let str = "wuwei"
+  // console.log(str.repeat(undefined) )
+
+  // let str = 'wu'
+  // console.log(str.padStart(5,"abcdef"))
+  // console.log(str.padEnd(5,"ab"))
+  // console.log(str.padStart(10))
+
+
+  // let str = "wu"
+  // let str2 = "666"
+  // console.log(str.padEnd(str.length+str2.length,str2))
+
+  // let str = "wuwei"
+  // console.log(str.padStart(3,"a"))
+
+  /*
+    1. ES 6 的字符串模板
+      `` 反引号   可以随意换行
+      如果要在字符串模板中添加变量使用${}
+
+      1.1 字符串模板注意
+        1. 如果在模板字符串这种需要使用反引号,则前面需要加反斜杠转义
+        2. 如果字符串模板中需要表示多行,所有空格换行缩进都会被保留
+        3. 字符串模板中通过${}来嵌入变量
+        4. 在${}内部不单单都可以放变量,也可以放任意的JS表达式,可以进行运算
+        5. 在${}里面还可以放函数的调用
+
+    2. 字符串新增API 方法
+      2.1 includes()  startsWith()  endsWith()
+        用来判断一个字符串中有没有某个子字符串,在ES5中我们采用的是indexOf()方法
+
+        includes ()  返回布尔值,表示是否找到参数字符串
+        startsWith()  返回布尔值,表示参数字符串是不是在原字符串中开始位置
+        endsWith()  返回布尔值,表示参数字符串是不是在原字符串中结束位置
+
+        includes(cstr[,num])
+        cstr 要查询的子字符串
+        num  开始查询的位置,可以省略
+
+        startsWith(cstr[,num])
+        cstr 要查询的子字符串
+        num  开始查询的位置,可以省略
+
+        endsWith(cstr[,num])
+        cstr 要查询的子字符串
+        num  开始查询的位置,可以省略
+
+      2.2 重复字符串 repeat(n)
+        返回一个新的字符串,表示原字符串重复n次
+
+        参数需要注意的地方
+        1. 如果参数是小数会向下取整
+        2. 如果参数是负数或者Infinity 会报错
+        3. 如果是0--1之间的小数,会取整为-0 ,等价于0,
+        4. 如果是数字0或者NaN,返回空字符串
+        5. 如果参数不是数字类型,会先转为数字类型,在按照上述规则返回
+      
+      2.3 填充字符串 padStart  padEnd
+        ES2017 引入的字符串补全功能,如果某个字符串不够制定的长度,会在头部或者尾部补全,
+
+        语法: str.padStart(num,pstr)
+        num 是最终你希望的字符串的长度
+        pstr  使用来补全的字符串(填充物)
+
+        padStart,padEnd注意事项
+
+          1. 如果原字符串的长度,等于或者大于制定的字符串最小长度,则返回原字符串
+          2. 如果用来补全的字符串与原字符串,两者长度之和超过了制定的长度,会截取超出位数的补全字符串
+          3. 如果省略第二个参数,默认使用空格来补全长度
+
+  */
+  
+  </script>
+</body>
+</html>

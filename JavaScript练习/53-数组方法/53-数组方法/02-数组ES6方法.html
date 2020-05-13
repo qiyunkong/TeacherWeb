@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+  <script>
+
+    // let arr = ["apple","banana","orange"];
+    // arr.name ="wuwei"
+    // for(let key in arr){
+    //   console.log(arr[key])
+    // }
+
+    // for(let val of arr ){
+    //   console.log(val)
+    // }
+    // // console.log(arr.keys())
+
+    // // [0,1,2]
+    // for(let val of arr.keys() ){
+    //   console.log(val)
+    // }
+    // // console.log(arr.values())
+    // for(let val of arr.values() ){
+    //   console.log(val)
+    // }
+    // for(let val of arr.entries() ){
+    //   console.log(val)
+    // }
+    //  for(let [index,val] of arr.entries() ){
+    //   console.log(index,val)
+    // }
+    
+  // let aBox = document.getElementsByClassName("box")
+  // console.log(aBox)
+  // let arr = Array.from(aBox)
+  // console.log(aBox)
+  // console.log(arr)
+
+  // let arr = [1,2,3]
+  // // ES5
+  // let arr2 = [].slice.call(arr)
+  // let arr3 = Array.prototype.slice.call(arr)  // 这两个是等价的
+  
+  // // ＥＳ６方法
+  // let arr4 = [...arr];
+  // let arr5 = Array.from(arr);
+
+    let arr = [1,2,3]
+    let arr2 = Array.from(arr,(item,index) => {
+      // console.log(item,index,arr)
+      console.log(this
+      )
+      return item*2
+    })
+  console.log(arr2)
+    /*
+      数组ES6 新增的方法
+          ES6 新增的for ...of 循环, ES6新增的变量所有数据结构的统一方法
+          能使用for..of.. 遍历数据结构必须是部署了Symbol.iterator属性, 被我们是为iterator 接口
+
+        1. for...of.. 
+          for(let val of 数组){}
+
+          ES6提供了几个方法,entries()  keys()  values();
+          keys() 方法会数组中所有的下标取出来生成一个新数组
+          values()  方法是将数组中的每一项取出生成一个新数组
+          entries()  会将索引和数组的内容取出组成一个二维数组
+
+        2. Array.from() 把类数组(对象)转为普通数组,同时还有拷贝数组的功能
+          第一个参数: 一个数组或类数组,用于将类数组拷贝成真正数组,
+          第二个参数:  类似于map的方法,用于对每一个元素进行处理,然后将处理后的值返回成新数组
+          第三个参数:  第二个回调函数里面的this指向
+
+
+    */
+  </script>
+</body>
+</html>

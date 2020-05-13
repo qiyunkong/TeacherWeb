@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function Person(name,age){
+    //   this.name = name;
+    //   this.age = age
+    // }
+
+    // Person.prototype.showName = function(){
+    //   return `我的名字是: ${this.name}`
+    // }
+    // Person.prototype.showAge = function(){
+    //   return `我的名字是: ${this.age}`
+    // }
+
+    // Object.assign(Person.prototype,{
+    //   showName(){
+    //     return `我的名字是: ${this.name}`
+    //   },
+    //   showAge(){
+    //     return `我的名字是: ${this.age}`
+    //   }
+    // })
+    
+    
+
+    let Person = class {
+      constructor(name,age){
+        this.name = name;
+        this.age = age
+
+      }
+      showName(){
+        return `我的名字是: ${this.name}`
+      }
+
+      showAge(){
+        return `我的名字是: ${this.age}`
+      }
+    }
+
+  // let p1  = new Person("wuwei",18)
+    /*
+      ES 6 类 
+        更接近于传统编程语言的写法
+        class 类名{}
+
+      不推荐表达式的写法
+          let 类名=  class{}
+
+      constructor
+        是类的默认方法,如果没有添加constructor方法,会被默认添加
+      
+        constructor 方法返回的就是实例对象,就是this, 
+          以为constructor 指向的就是构造函数,constructor执行就是在执行构造函数
+
+
+        类class必须通过new操作符来执行
+    */
+
+
+  //  function Person(name){
+  //    // var this = {}
+  //    this.name = name   //{ name:'wuwei'}
+  //    // return this
+   
+  //  }
+  //   let obj = new Person('wuwei')   
+  </script>
+</body>
+</html>

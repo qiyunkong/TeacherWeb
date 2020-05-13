@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul {
+      height: 100px;
+      margin-top: 10px;
+      list-style: none;
+    }
+
+    .item {
+      float: left;
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      margin-right: 10px
+    }
+
+    .item2 {
+      float: left;
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      margin-right: 10px
+    }
+
+    #box {
+      height: 100px;
+      width: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li class="item">1</li>
+    <li class="item">2</li>
+    <li class="item">3</li>
+    <li class="item">4</li>
+  </ul>
+  <ul>
+    <li class="item2">11</li>
+    <li class="item2">22</li>
+    <li class="item2">33</li>
+    <li class="item2">44</li>
+  </ul>
+
+  <div id="box"></div>
+  <script>
+    // box.onclick = fn
+
+    // box2.onclick = fn
+
+    // setTimeout(function () {
+    //   box.onclick = null
+    // }, 3000)
+
+    // function fn() {
+    //   // console.log(1)
+    //   alert("兄弟,你吃了吗");
+    // }
+
+    // 批量绑定事件
+    // var aItem = document.querySelectorAll(".item");
+    // var len = aItem.length;
+
+    // 自执行函数处理异步事件索引问题
+    // for (var i = 0; i < len; i++) {
+    //   (function (j) {
+    //     aItem[j].onclick = function () {
+    //       console.log(j)
+    //     }
+    //   })(i)
+
+    // }
+    // 自定义属性处理异步事件索引问题
+    // for (var i = 0; i < len; i++) {
+    //   aItem[i].j = i;
+    // aItem[i].onclick = function () {
+    //   console.log(this.j)
+    // }
+    // }
+
+    // 对应
+    // var aItem = document.querySelectorAll(".item");
+    // var aItem2 = document.querySelectorAll(".item2");
+    // var len = aItem.length;
+
+    // for (var i = 0; i < len; i++) {
+    //   aItem[i].j = i;
+    //   aItem[i].onclick = function () {
+    //     console.log(this.j)
+    //     aItem2[this.j].style.background = "red"
+    //   }
+    // }
+
+    //  排他
+    // for (var i = 0; i < len; i++) {
+    //   aItem[i].j = i;
+    //   aItem[i].onclick = function () {
+    //     console.log(this.j)
+    //     for (var j = 0; j < len; j++) {
+    //       aItem[j].style.background = "#ccc"
+    //     }
+    //     this.style.background = "red"
+    //   }
+    // }
+    // var num = 0;
+    // for (var i = 0; i < len; i++) {
+    //   aItem[i].j = i;
+    //   aItem[i].onclick = function () {
+    //     // console.log(this.j)
+    //     aItem[num].style.background = "#ccc"
+    //     this.style.background = "red";
+    //     num = this.j
+    //   }
+    // }
+
+
+
+    /*
+      1.什么是事件
+        用户或者浏览器自身执行的某个动作,比如click
+
+      2. 事件的绑定
+        事件处理的程序是以on-开始
+        box.onclick = function () {
+          console.log(1)
+        }
+
+        DOM分级: 0级  1级 2级 3级
+
+        2.1DOM0级事件绑定
+          绑定事件的语法:dom.on+type = fn
+
+          事件函数可以是匿名也可是有名函数
+          有名事件函数可以给多个DOM绑定事件
+
+        2.2DOM 0级 接触事件绑定
+          语法:dom.on+type = null
+          box.onclick = null
+    */
+
+
+    // box.onclick = function () {
+    //   console.log(1);
+    // }
+
+
+    // box.onclick = function () {
+    //   console.log(2);
+    // }
+
+    // DOM 0事件只能绑定一个函数
+  </script>
+
+</body>
+
+</html>

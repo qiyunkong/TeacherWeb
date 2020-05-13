@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul {
+      background-color: pink;
+    }
+
+    li {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      list-style: none;
+      font-size: 20px;
+      text-align: center;
+      line-height: 50px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <ul id="list">
+    <li class="item">1</li>
+    <li class="item">2</li>
+    <li class="item">3</li>
+    <li class="item">4</li>
+
+  </ul>
+  <script>
+    var aLi = document.querySelectorAll('.item');
+    var len = aLi.length;
+    for (var i = 0; i < len; i++) {
+      aLi[i].onclick = function () {
+        console.log(this)
+      }
+    }
+
+    list.onclick = function (ev) {
+      ev = ev || window.event;
+      console.log(ev.target)
+    }
+
+    /*
+      事件委托: 利用事件冒泡的原理吧子级的事件委托给祖先元素
+
+      优点:
+        1.不需要循环给每一个子元素绑定事件
+        2.可以节约浏览器性能
+        3.在新增加子元素的时候,不需要在考虑给新元素绑定事件问题
+    */
+
+
+    /*
+    事件流: 事件传递的一个过程: 事件捕获 事件冒泡
+    事件对象:
+      dom.onclick = fucntion(ev){
+        ev = en || window.event;
+      }
+
+    常用的属性
+      event.type  事件的类型
+      event.target  事件源
+      event.currentTarget 返回绑定事件的元素
+      event.button  0,1,2
+      event.stopPropagation() 阻止事件传播
+      event.perventDefault();  阻止默认事件
+
+    事件对象上的存的一些常用信息
+      clientX/Y
+      pageX/Y
+      offsetX/Y
+      layerX/Y
+      screenx/Y
+
+    阻止事件冒泡
+      主:event.stopPropagation()    addEventListener()
+      IE:event.cancelBubble = true   attachEvent()
+
+      兼容
+        if(event.stopPropagation){
+          event.stopPropagation()
+        }else{
+          event.cancelBubble = true
+        }
+
+    阻止默认事件
+        DOM 0 :return false (所有浏览器都支持)
+        主    :event.perventDefault(); (IE ,6,7,8不能用)
+        IE低  :event.returnValue = false(ＩＥ９不能用)
+
+      兼容
+        if(event.perventDefault){
+          event.perventDefault()
+        }else{
+          event.returnValue = false
+        }
+
+    关于事件源的兼容
+        主: event.target
+        IE低:event.srcElement
+  */
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 数组(array)是一组数的集合;
+    // 数组里面可以放任意数据类型
+
+    // 1. 创建数组
+    // 1.1数组的字面量,界定符就是[]
+    // var arr = [2, 'a', true, undefined, {}]
+
+    // console.log(arr[0])
+    // console.log(arr[1])
+    // console.log(arr[3])
+
+    // 1.2通过Array内置的构造函数创建数组
+    // var arr = new Array(); // 没有参数创建的是空数组
+    // var arr = new Array(6); // 如果只有一个参数,并且是数字,那么表示的是数组的项数
+    // var arr = new Array("6"); // 如果只有一个不是数字的参数,表示数字的第一项的值
+    // var arr = new Array("6", "wuwei", 'aa')
+
+    // var arr = Array("6", "wuwei", 'aa'); new 操作符也可以不写
+
+    // 2. 数组的类型(引用类型)
+    // var arr = [1, 2]
+    // console.log(typeof arr); // object
+
+    // var arr = [1, 2, 3];
+    // var newArr = arr;
+    // newArr[0] = 10;
+    // console.log(arr);
+
+    // console.log(newArr === arr)
+
+    // 虽然这两个数组从内容长度,每一项的值都一样,但是他们不是同一个数组
+    // var arr = [1, 2, 3]
+    // var newArr = [1, 2, 3]
+    // console.log(newArr == arr)
+
+    // // 3.数组属性
+    // var arr = [1, 2, 3, 5, 6]
+    // // console.log(arr.length)
+    // // console.log(arr.length - 1)
+    // // console.log(arr[100])
+
+    // arr[10] = 20;
+
+    // 关于length的修改
+    // var arr = [1, 2, 3, 4, 5, 6]
+    // length是可以修改的,一但修改时,数组的数据就会发生变化,一般没人这么干
+
+
+    // 4. 数组的遍历
+    // 需要借用for循环, 来遍历拿到数组的每一项的值
+    // var arr = ['菊', '兰', "竹", "梅"];
+    // var len = arr.length
+    // for (var i = 0; i < len; i++) {
+    //   console.log(arr[i])
+    // }
+
+  </script>
+</body>
+
+</html>

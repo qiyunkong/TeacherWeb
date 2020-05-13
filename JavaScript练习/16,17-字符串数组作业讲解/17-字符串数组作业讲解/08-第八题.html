@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+  封装函数 实现toUpperCase方法
+
+例如:
+
+输入myUpperCase("hello"); 返回HEllo
+    */
+
+    function myUpperCase(str) {
+      str = str || "";
+      var newStr = "";
+      var len = str.length;
+      var charCode = 0;
+      for (var i = 0; i < len; i++) {
+        charCode = str.charCodeAt(i);
+        if (97 <= charCode && charCode <= 122) {
+          newStr += String.fromCharCode(charCode - 32)
+        } else {
+          newStr += str[i]
+        }
+
+      }
+      return newStr;
+    }
+
+    myUpperCase("Hello");
+
+  </script>
+
+
+</body>
+
+</html>

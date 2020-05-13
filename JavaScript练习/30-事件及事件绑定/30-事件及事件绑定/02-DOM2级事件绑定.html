@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box,
+    #box2 {
+      height: 100px;
+      width: 100px;
+      background-color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <div id="box2"></div>
+  <script>
+
+    // 解除不了
+    // box.addEventListener("click", function () {
+    //   console.log(1)
+    // }, false)
+    // box.removeEventListener("click", function () {
+    //   console.log(1)
+    // }, false)
+
+    // // 可以解除
+    // box2.addEventListener("click", fn, false)
+
+    // function fn() {
+    //   console.log(1)
+    // }
+    // box2.removeEventListener("click", fn, false)
+
+
+    // IE8 及以下DOM2级事件绑定
+    // box.attachEvent("onclick", fn)
+    // box.detachEvent("onclick", fn)
+    // function fn() {
+    //   console.log(1)
+    // }
+
+    /*
+      1.DOM2级事件绑定
+       1.1 主流浏览器事件绑定和解绑的方法
+        语法 dom.addEventListener(type,fn,bol)
+        // 第一个参数只是事件类型 不用加on
+        // 第三个 参数是,布尔值,是否监听捕获阶段,默认是false 可以省略
+
+        this指向绑定的DOM元素
+
+        可以绑定多个函数
+
+        解除事件绑定(只能是绑定有名函数)
+        语法 dom.removeEventListener(type,fn,bol)
+
+        1.2低版本IE的事件绑定和解除事件绑定
+          语法 dom.attachEvent("on"+type,fn)
+          第一个参数 要加on
+          没有第三个参数
+
+          this指向的window
+
+          如果同一个绑定多个函数,是从后往前执行
+
+          detachEvent("on"+type,fn) (只能解除绑定的有名函数)
+
+    */
+
+    // 兼容
+    function addEvent(obj, type, callback) {
+      if (obj.addEventListener) {
+        obj.addEventListener(type, callback, false)
+      } else if (obj.attachEvent) {
+        obj.attachEvent("on" + type, function () {
+          callback.call(obj)
+        })
+      } else {
+        obj["on" + type] = callback
+      }
+
+    }
+    addEvent(box, "click", function () {
+      console.log(this)
+    })
+  </script>
+
+</body>
+
+</html>

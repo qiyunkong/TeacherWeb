@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // console.log(1);
+    // console.log(2);
+    // console.log(3);
+    // console.log(4);
+    // console.log(5);
+    // console.log(6);
+
+    // 条件分支
+    // if的条件分支(这是js主力语法)
+    // 1. if判断语句  if(){}
+    // ()里面的语句最终会被转换为boolean
+    // 如果为true就执行大括号{}里面的 内容
+    // var a = 10;
+    // if (a >= 60) {   //false
+    //   alert('及格了')
+    // }
+    // alert(33)
+
+    // 2.if...else..语句
+    // var a = 80;
+    // if (a >= 60) {
+    //   alert('及格了')
+    // } else {
+    //   alert('没及格')
+    // }
+    // alert(11)
+
+    // if (测试表达式) {  // 测试表达式的结果是一个布尔值
+    //   如果测试表达式为真(true), 执行这里面的语句
+    // } else {
+    //   如果测试表达式为假(false), 执行这里面的语句
+    // }
+
+    // var a = 70;
+    // if (a > 60) {
+    //   console.log(1);
+    //   console.log(2);
+    //   console.log(3);
+    // } else {
+    //   console.log(4);
+    //   console.log(5);
+    //   console.log(6);
+    // }
+    // console.log(7)
+
+    // // 第一步获取用户的年龄
+    // var age = parseInt(prompt('请输入你的年龄'));
+    // // 第二步 判断是否可以考驾照18-70
+    // if (18 <= age && age <= 70) {
+    //   alert('你可以考驾照')
+    // } else {
+    //   alert('你不可以考驾照')
+    // }
+
+    // 3. if...esle if...else if...else
+    //如果...否则 如果...否则 如果...否则
+
+    // var score = 76;
+    // if (score >= 85) {
+    //   alert('优秀')
+    // } else if (score >= 70) {
+    //   alert('良好') // 程序如果走到这里,隐含的就是上一层楼的结果是false
+    // } else if (score >= 60) {
+    //   alert('及格')
+    // } else {
+    //   alert('不及格')
+    // }
+
+    // if (条件表达式1) {
+    //   当条件表达式1为真的时候要做到事
+    // } else if (条件表达式2) {
+    //   当条件表达式1为假
+    //   当条件表达式2为真的时候要做到事
+    // } else if (条件表达式3) {
+    //   当条件表达式1为假
+    //   当条件表达式2为假
+    //   当条件表达式3为真的时候要做到事
+    // } else {
+    //   当以上所有条件都为假的时候要做到事
+    // }
+
+    // 错误的写法
+    // var score = 100;
+    // if (score >= 0) {
+    //   alert('你没有及格')
+    // } else if (score >= 60) {
+    //   alert('你及格了')
+    // } else if (score >= 75) {
+    //   alert('良好')
+    // } else if (score >= 85) {
+    //   alert('优秀')
+    // }
+
+    // 修改正确的
+    // var score = 100;
+    // if (score < 60) {
+    //   alert('你没有及格')
+    // } else if (score <= 75) {
+    //   alert('你及格了')
+    // } else if (score <= 75) {
+    //   alert('良好')
+    // } else if (score <= 100) {
+    //   alert('优秀')
+    // }
+
+    // var a = 6;
+
+    // if (a < 8) {
+    //   a = a + 3;
+    // } else if (a == 9) {
+    //   a = a + 4
+    // } else if (a == 13) {
+    //   a = a + 5;
+    // } else if (a == 18) {
+    //   a = a + 6
+    // }
+    // console.log(a)
+
+    // var sex = prompt('请输入性别');
+    // var age = parseInt(prompt('请输入年纪'))
+
+    // if (sex == '男') {
+    //   if (age >= 22) {
+    //     alert('男同志你好,你可以结婚')
+    //   } else {
+    //     alert('你不能结婚,不够年龄')
+    //   }
+    // } else {
+    //   if (age >= 20) {
+    //     alert('女士你好,你可以结婚')
+    //   } else {
+    //     alert('你不能结婚,不够年龄')
+    //   }
+    // }
+
+    // if语句可以嵌套
+
+
+    // switch..case..
+    // switch 能处理的事情,if ..else 可以处理
+
+    // var xinzuo = prompt('请输入你的星座');
+
+    // switch (xinzuo) {
+    //   case '白羊座':
+    //     alert('单身的白羊在本月桃花可谓是朵朵开，想要脱单的在本月很有可能会遇到一个在你看来各方面都很合适的对象，')
+    //     break;
+    //   case '金牛座':
+    //     alert('单身的金牛很有可能会结束一段苦苦无果的单恋，')
+    //     break;
+    //   case '双子座':
+    //     alert('单身的双子会对脱单这件事充满了期待以及美好的憧憬，')
+    //     break;
+    //   default:
+    //     alert('没有你的星座')
+    //     break;
+    // }
+    // if (xinzuo == '白羊座') {
+    //   alert('单身的白羊在本月桃花可谓是朵朵开，，')
+    // } else if (xinzuo == '金牛座') {
+    //   alert('单身的金牛很有可能会结束一段苦苦无果的单恋，')
+    // } else {
+    //   alert('没有你的星座')
+    // }
+
+    // switch (等待检测的值) {
+    //   case 值1:
+    //     等待检测的值如果为值1的时候要做到事情;
+    //     break;
+    //   case 值2:
+    //     等待检测的值如果为值2的时候要做到事情;
+    //     break;
+    //   case 值3:
+    //     等待检测的值如果为值3的时候要做到事情;
+    //     break;
+    //   case 值4:
+    //     等待检测的值如果为值4的时候要做到事情;
+    //     break;
+    //   default:
+    //     默认要做的事情
+    //     break;
+    // }
+
+
+    // 关于break
+    // var a = 5;
+    // switch (a) {
+    //   case 4:
+    //     alert('我是4');
+    //     break;
+    //   case 5:
+    //     alert('我是5');
+    //     break;
+    //   case 6:
+    //     alert('我是6');
+    //     break;
+    //   case 7:
+    //     alert('我是7');
+    //     break;
+    //   default:
+    //     alert('我是默认值');
+    //     break;
+    // }
+    // break 是阻止程序在switch里面继续的运行
+
+    // var month = 12;
+    // switch (month) {
+    //   case 1:
+    //   case 3:
+    //   case 5:
+    //   case 7:
+    //   case 8:
+    //   case 10:
+    //   case 12:
+    //     console.log('这个月是31天');
+    //     break;
+    //   case 4:
+    //   case 6:
+    //   case 9:
+    //   case 11:
+    //     console.log('这个月是30天');
+    //     break;
+    //   case 2:
+    //     console.log('这个月是28天');
+    //     break;
+    // }
+
+    // 三元(三目)运算符 
+    // 条件?值1:值2;
+    // ? :
+
+    // console.log(false ? 1 : 2)
+    // if (false) {
+    //   console.log(1)
+    // } else {
+    //   console.log(2)
+    // }
+    // false ? console.log(1) : console.log(2)
+
+    // var a = 8001;
+    // var xishu = a > 8000 ? 1.2 : 1;
+    // // if (a > 8000) {
+    // //   xishu = 1.2
+    // // } else {
+    // //   xishu = 1
+    // // }
+    // console.log(xishu);
+    // console.log(a * xishu);
+
+    // 条件分支总结
+    // if..else 
+    // switch ..case
+    // 三目运算
+    // && 短路算法
+    // var a = 8 && 10;
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let arr = [3,5]
+    let obj = {
+      d:20
+    }
+    function add({c=20,d=5} ={}){
+      console.log(c+d) 
+    }
+    add({c:10,d:15})
+    add({d:15})
+    add({})
+    add()
+
+// let {c=20,d=5} =undefined
+
+    /*
+      函数参数的解构赋值
+      1. 函数参数的解构
+          let arr = [3,5]
+            function add([a,b]){
+              console.log(a+b) 
+            }
+            add(arr)
+
+      2. 也可使用默认值
+          function add({c=20,d=5} ={}){
+            console.log(c+d) 
+          }
+          add({c:10,d:15})
+          add({d:15})
+          add({})
+          add()
+    */
+  
+  
+  </script>
+</body>
+</html>

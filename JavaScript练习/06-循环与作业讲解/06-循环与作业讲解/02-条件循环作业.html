@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 第一题
+    // var a = parseInt(prompt('请输入一个整数'));
+    // if (a % 5 == 0 && a % 6 == 0) {
+    //   alert('这个数字能同时被5和6整除')
+    // } else if (a % 5 == 0 && a % 6 != 0) {
+    //   alert('这个数字能被5整除,但是不能被6整除')
+    // } else if (a % 5 != 0 && a % 6 == 0) {
+    //   alert('这个数字能被6整除,但是不能被5整除')
+    // } else if (a % 5 != 0 && a % 6 != 0) {
+    //   alert('这个数字即不能被6整除,但是不能被5整除')
+    // }
+
+    // 第二题
+    // var a = parseInt(prompt('请输入第一整数'));
+    // var b = parseInt(prompt('请输入第二整数'));
+
+    // if (a % 2 == 0 && b % 2 == 0 || a % 2 != 0 && b % 2 != 0) {
+    //   alert('这两个数字奇偶性相同')
+    // } else {
+    //   alert('这两个数字奇偶性不相同')
+    // }
+
+    // if (a % 2 == b % 2) {
+    //   alert('这两个数字奇偶性相同')
+    // } else {
+    //   alert('这两个数字奇偶性不相同')
+    // }
+
+    // if ((a + b) % 2 == 0) {
+    //   alert('这两个数字奇偶性相同')
+    // } else {
+    //   alert('这两个数字奇偶性不相同')
+    // }
+
+    // 第三题
+    // var year = parseInt(prompt('请输入工作年限'));
+    // var salary = parseInt(prompt('请输入月薪'));
+
+    // var xishu;
+
+    // if (year == 0) {
+    //   if (salary > 8000) {
+    //     xishu = 1.2;
+    //   } else {
+    //     xishu = 1.0;
+    //   }
+    // } else if (year == 1) {
+    //   if (salary > 10000) {
+    //     xishu = 1.7;
+    //   } else {
+    //     xishu = 1.5;
+    //   }
+    // } else {
+    //   if (salary > 12000) {
+    //     xishu = 3.2;
+    //   } else {
+    //     xishu = 3;
+    //   }
+    // }
+
+
+    // if (year == 0) {
+    //   xishu = salary > 8000 ? 1.2 : 1.0
+    // } else if (year == 1) {
+    //   if (salary > 10000) {
+    //     xishu = 1.7;
+    //   } else {
+    //     xishu = 1.5;
+    //   }
+    // } else {
+    //   if (salary > 12000) {
+    //     xishu = 3.2;
+    //   } else {
+    //     xishu = 3;
+    //   }
+    // }
+
+    // switch (year) {
+    //   case 0:
+    //     xishu = salary > 8000 ? 1.2 : 1.0
+    //     break;
+    // }
+
+    // console.log(salary * xishu)
+
+
+    // 第四题
+    // var n = parseInt(prompt('请输入一个整数'));
+
+    // var sum = 0;
+    // for (var i = 0; i <= n; i++) {
+    //   sum += i;
+    // }
+    // console.log(sum)
+
+    //  第五题
+    // var n = parseInt(prompt('请输入一个整数'));
+
+    // var sum = 0;
+    // for (var i = 2; i <= n; i++) {
+    //   sum += (i + 1) / i;
+    // }
+    // console.log(sum)
+
+
+    //  第六题
+    // var n = parseInt(prompt('请输入一个整数'));
+
+    // for (var i = 1; i <= n; i++) {
+    //   if (n % i == 0) {
+    //     console.log(i)
+    //   }
+    // }
+
+    // 第七题
+    // for (var i = 1; i <= 1000; i++) {
+    //   if (i % 5 == 0 || i % 6 == 0) console.log(i)
+    // }
+
+    // 第八题
+    // for (var i = 1; i <= 60; i++) {
+    //   if (i % 7 != 0 && i % 10 != 7) console.log(i)
+    // }
+
+    //  第九题
+    // for (var i = 100; i < 1000; i++) {
+    //   var gewei = i % 10;
+    //   var shiwei = parseInt(i / 10) % 10;
+    //   var baiwei = parseInt(i / 100);
+
+    //   var a = Math.pow(gewei, 3);
+    //   var b = Math.pow(shiwei, 3);
+    //   var c = Math.pow(baiwei, 3);
+
+    //   if (a + b + c == i) {
+    //     console.log(i)
+    //   }
+    // }
+
+    // 第十题
+
+    // for (var i = 1; i < 10000; i++) {
+    //   var sum = 0;
+    //   for (var j = 1; j < i; j++) {
+    //     if (i % j == 0) {
+    //       sum += j;  // sum = sum + j
+    //     }
+    //   }
+
+    //   if (sum == i) {
+    //     console.log(i)
+    //   }
+
+    // }
+
+    // 第十一题
+    // for (var x = 0; x <= 100; x++) {
+    //   for (var y = 0; y <= 100; y++) {
+    //     for (var z = 0; z <= 100; z++) {
+    //       if (x + y + z === 100 && 3 * x + 2 * y + z == 200) {
+    //         console.log(x, y, z)
+    //       }
+    //     }
+    //   }
+    // }
+
+
+    // for (var x = 0; x <= 50; x++) {
+    //   for (var y = 0; y <= 100 - x; y++) {
+    //     var z = 100 - x - y;
+    //     if (3 * x + 2 * y + z == 200) {
+    //       console.log(x, y, z)
+    //     }
+    //   }
+    // }
+
+
+    //  十二题
+
+    // var n = parseInt(prompt('请输入一个整数'));
+
+    // var count = 0;
+    // for (var i = 1; i <= n; i++) {
+    //   if (n % i == 0) {
+    //     count++
+    //   }
+    // }
+    // if (count == 2) {
+    //   console.log('这是一个质数')
+    // }
+
+
+
+  </script>
+
+</body>
+
+</html>

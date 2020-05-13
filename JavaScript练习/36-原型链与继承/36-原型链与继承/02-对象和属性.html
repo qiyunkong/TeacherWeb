@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var obj = {
+    //   a: 1,
+    //   b: 2,
+    //   c: 3
+    // }
+    // obj.__proto__ = {
+    //   d: "wuwei"
+    // }
+
+    // for (var key in obj) {
+    //   // if (obj.hasOwnProperty(key)) {
+    //   //   console.log(key)
+    //   // }
+    //   // 短路算法
+    //   obj.hasOwnProperty(key) && console.log(key)
+    // }
+
+    // var obj = {}
+
+    // Object.defineProperty(obj, "name", {
+    //   configurable: false,  // 能不能通过delete删除属性,false 不能再通过defineProperty进行配置
+    //   enumerable: true,  // 表示是否可枚举
+    //   writable: false,    // 表示属性的值是否可修改
+    //   value: "wuwei"    // 配置属性值
+    // })
+
+    // Object.defineProperties(obj, {
+    //   name: {
+    //     configurable: false,
+    //     enumerable: true,
+    //     writable: false,
+    //     value: "wuwei"
+    //   },
+    //   age: {
+    //     configurable: false,
+    //     enumerable: true,
+    //     writable: false,
+    //     value: "wuwei"
+    //   }
+    // })
+
+    // Object.defineProperty(obj, "name", {
+    //   enumerable: false   // 能不能通过delete删除属性
+    // })
+
+    function Dog() { }
+
+    function Cat() { }
+
+    Cat.prototype = new Dog();
+
+    var cat = new Cat()
+
+    console.log(cat instanceof Dog)
+
+
+    /*
+      一.判断一个对象是否具有某个属性
+        1.对象.属性的方法不一定准确
+          有可能在原型对象上就存在这个属性,只不过值为undefined
+
+        2. in 运算符
+          console.log("a" in obj)
+          返回一个布尔值,判断"a"是不是obj的属性,包括原型链上的属性
+
+          for (var key in obj) {
+            console.log(key)
+          }
+
+          for..in ..循环,会将原型链上的 所有的可枚举的属性全部列出来
+          什么是可枚举, 系统默认的属性都是不可枚举的,
+
+        3.hasOwnProperty
+          obj.hasOwnProperty("属性名")
+          返回布尔值
+
+        遍历对象自己的属性
+        for (var key in obj) {
+          obj.hasOwnProperty(key) && console.log(key)
+        }
+
+      二.定义对象的属性
+       Object.defineProperty(obj, "name", {})
+
+       查看对象属性的配置
+
+
+       三.instanceof 运算符
+        类 class  实例 instance
+        判断一个对象是不是通过某个类创建出来的
+
+        运行机理,遍历对象cat原型链上的所有的原型对象,如果遍历的原型对象,是某个构造函数构造出来的,那么就返回true
+
+        可以利用这个方法判断一个数组是不是数据
+        var arr  = [];
+        arr instanceof Array
+
+        ECMAScript5  标准给我们提供了一个判断数组的方法(API)
+        Array.isArray(arr)   IE 9 开始兼容
+
+
+      四.检测数据类型
+      Object.prototype.toString.call(obj)
+
+    */
+
+
+
+    function getType(obj) {
+      switch (Object.prototype.toString.call(obj)) {
+        case "[object Function]":
+          return "function"
+          break;
+        case "[object Array]":
+          return "array"
+          break;
+        case "[object String]":
+          return "string"
+          break;
+        case "[object Object]":
+          return "object"
+          break;
+        case "[object Number]":
+          return "number"
+          break;
+        case "[object Undefined]":
+          return "undefined"
+          break;
+        case "[object Null]":
+          return "null"
+          break;
+        case "[object Boolean]":
+          return "boolean"
+          break;
+      }
+    }
+  </script>
+</body>
+
+</html>

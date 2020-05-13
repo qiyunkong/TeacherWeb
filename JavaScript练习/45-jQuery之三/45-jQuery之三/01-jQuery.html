@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 500px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+
+  <script src="./jquery.js"></script>
+  <script>
+  var $p = $("<h3>This is H3</h3>")
+  // $(".box").append($p)
+  // $p.appendTo($('.box'))
+    
+  // $(".box").prepend($p)
+  // $p.prependTo($('.box'))
+
+  // $(".wrap").after($p)
+  // $(".box").before($p)
+
+  // $p.insertBefore($(".box"))
+
+  // $('.box').wrapAll('<div class="wrap2"></div>')
+
+  // $(".box2").replaceWith($("<p></p>"))
+
+  // $(".box2").empty()
+  // console.log($(".box2").clone()[0])
+
+  // var box2 = document.getElementsByClassName("box2")[0]
+  // box2.onclick = function(){
+  //   console.log(11)
+  // }
+//   var box = document.getElementsByClassName("box")[0]
+// var div = box2.cloneNode(true);
+
+// box.appendChild(div)
+
+//   console.log(box2.cloneNode(true))
+// $(".box2").click(function(){
+//   console.log(111)
+// })
+
+//   $('.box0').append($('.box2').clone())
+
+// $('.box').on("click",function(){
+//   $(this).css("background-color","#369")
+// })
+// $('.box').click(function(){
+//   $(this).css("background-color","#369")
+// })
+// $('.box').on("mouseenter",function(){
+//   $(this).css("background-color","red")
+// })
+// $('.box').on("mouseleave",function(){
+//   $(this).css("background-color","skyblue")
+// })
+
+$('.box').off("click")
+
+// $('.box').one("click",function(){
+//  console.log(111)
+// })
+
+// $(".box").hover(function(){
+//   // 鼠标移入的时候触发
+//   $(this).css("background-color","red")
+// },function(){
+//   // 鼠标移出的时候触发
+//   $(this).css("background-color","skyblue")
+// })
+
+ $('.box').click(function(e){
+  console.log(e.target)   // 获取的事件源是一个原生的DOM对象
+})
+
+    /*
+      一.节点的操作
+        1.append()  类似原生的appendChild()
+          父节点.append(子节点)
+          在父元素里面最后面添加子节点  
+          
+          1.2 $()可以将一个普通节点字符串转成jQuery元素
+            var $p = $("<p></p>")
+            千万不要这么写 $("p"),因为这样是获取元素节点
+    
+            $() 不单单可以获取节点还可以创建节点
+
+        2.appendTo()
+          子节点.appendTo(父节点)
+          和append()方法相反,被动形式,追加于
+          $p.appendTo($('.box'))
+
+        3.prepend()
+          在父元素最前面插入节点元素
+          父节点.prepend(子节点)
+          父节点.insertBefore(新子,父节点.children[0])
+
+        4.prependTo()
+          prepend()方法的被动形式
+          子节点.prependTo(父节点)
+
+        5.after()
+          在选中的元素后面插入一个兄弟元素节点
+          $(".wrap").after($p)
+
+        6.before()'
+          在选中的元素前面插入一个兄弟元素节点
+          $(".box").before($p)
+
+        7.insertBefore();
+          不同于原生的方法,虽然名字一样,
+          在兄弟节点前插入新的节点
+          需要插入的节点.insertBefore(确定位置的节点(也就是在这个节点前插入))
+          before()的反向形式
+          $p.insertBefore($(".box"))
+
+        8.wrap()
+          给选中的元素外加一个包裹元素
+          $('.box').wrap('<div class="wrap2"></div>')
+
+        9.wrapAll()
+          将所有选中的元素外统一包裹一个元素
+           $('.box').wrapAll('<div class="wrap2"></div>')
+
+        10 replaceWith()
+          将选中的元素替换掉,元素节点的替换
+          会将参数转为jQuery节点
+          $(".box2").replaceWith("<p></p>")
+          $(".box2").replaceWith($("<p></p>"))
+
+        11. empty()
+          清空元素内容
+          $(".box2").empty()
+
+        12.remove()
+          删除节点
+          节点.remove() 
+          $(".box2").remove()
+
+        13. clone()
+          节点的克隆
+          参数为布尔值
+
+          13.1 原生JS的DOM克隆 使用cloneNode()
+            如果不传参数默认为false,表示不克隆元素的后代节点,只克隆当前节点
+            如果参数为true,表示不仅克隆当前的节点,还会将所有后代节点克隆下来
+            元素的克隆方法不会克隆事件
+
+            var box2 = document.getElementsByClassName("box2")[0]
+            box2.onclick = function(){
+              console.log(11)
+            }
+            var box = document.getElementsByClassName("box")[0]
+            var div = box2.cloneNode(true);
+
+            box.appendChild(div)
+
+            console.log(box2.cloneNode(true))
+
+          13.2  jQuery克隆节点使用clone()方法
+            如果 不传参数默认为false,表示不可克隆元素的事件
+            如果 参数为true表示可克隆元素的事件
+
+            不管参数是true还是false都会克隆元素的后代节点
+
+      二.事件监听
+        1. 通过事件名绑定事件
+          在jQuery里,点击事件都变成了回调函数
+          通过事件名绑定的事件一律不加on
+
+          $('.box').click(function(){
+            $(this).css("background-color","#369")
+          })
+          $('.box').mouseenter(function(){
+            $(this).css("background-color","red")
+          })
+          $('.box').mouseleave(function(){
+            $(this).css("background-color","skyblue")
+          })
+
+
+        2. 通过on来绑定事件
+          $('.box').on("click",function(){
+            $(this).css("background-color","#369")
+          })
+          $('.box').on("mouseenter",function(){
+            $(this).css("background-color","red")
+          })
+          $('.box').on("mouseleave",function(){
+            $(this).css("background-color","skyblue")
+          })
+
+        3. 解除事件绑定 off()
+          off(需要解绑的事件名)
+          无论是事件名绑定的事件还是on绑定的事件都可以通过这种方式解绑
+          
+          $('.box').off("click")
+
+        4. 只绑定一次事件  one()
+          绑定后 事件只会触发一次,之后再触发将无效果
+          $('.box').one("click",function(){
+            console.log(111)
+            })
+
+        5. 移入移出事件 hover
+          $(".box").hover(function(){
+            // 鼠标移入的时候触发
+            $(this).css("background-color","red")
+          },function(){
+            // 鼠标移出的时候触发
+            $(this).css("background-color","skyblue")
+          })
+
+        6.事件对象,以及事件源
+          $('.box').click(function(e){
+            console.log(e.target)   // 获取的事件源是一个原生的DOM对象
+          })
+    */  
+  </script>
+</body>
+</html>

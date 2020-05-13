@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // let fnName = "showName"
+    // class Person {
+    //   constructor(name){
+    //     this.name = name
+    //   }
+
+    //   [fnName+'_a'] () {
+    //     console.log(this.name)
+    //   }
+    // }
+
+    // let p1 = new Person("wuwei")
+
+    
+  
+    // class Person {
+    //   constructor (name) {
+    //     this._name = name
+    //   }
+
+    //   get name () {
+    //     console.log("你想获取的是name属性的值,但是就是不给你")
+    //     return this._name
+    //   }
+
+    //   set name (val) {
+    //     console.log("你想给name属性设置的值为"+val)
+    //     this._name = val
+    //   }
+    // }
+    // let p1 = new Person("wuwei")
+
+
+
+    // class Person {
+    //   constructor(name){
+    //     this.name = name
+    //   }
+
+    //   static showName () {
+    //     console.log(this.name)
+    //   }
+    // }
+
+    // let p1 = new Person("wuwei")
+
+    // ES 5 的继承
+    // 父类
+  //   function Person (name) {
+  //     this.name = name
+  //   }
+  //   Person.prototype.showName = function () {
+  //     return `名字是${this.name}`
+  //   }
+
+  //   // 子类
+  //   function Student (name,skill) {
+  //     // this {}
+  //     // 属性继承
+  //     Person.call(this,name)
+  //     this.skill = skill;
+  //   }
+
+  //   // 原型继承
+  //   Student.prototype = new Person
+    
+  //  let stu =  new Student("xiaoming","逃学威龙")
+
+
+  // ES6 继承
+  // 父类
+  class Person {
+    constructor (name) {
+      this.name = name
+    }
+
+    showName () {
+      console.log("这是父类的方法")
+      return this.name
+    }
+  }
+
+  // 子类
+  class Student extends Person {
+    constructor (name,skill) {
+      super(name)    // 会先执行父类的属性,继承后在设置给自己的属性
+      this.skill = skill
+    }
+
+    showName () {
+      super.showName()   // 先执行父类的showName方法
+      // 在执行设置在子类里面同类型发方法
+      console.log("这个是执行在子类的方法")
+    }
+
+    showSkill (){
+      return `技能: ${this.skill}`
+    }
+  }
+
+  let stu = new Student("xiaoming","逃学")
+
+
+    /*
+      class Person{
+        constructor(name){
+          this.name =name
+          return {}
+        }
+
+        showName(){
+
+        }
+      }
+      new Peroson("wuwei")
+
+      1. 方法名可以变量
+        可是字符串的表达式
+
+      2. ES6的类没有提升的功能,在定义之前不能使用他来创建对象
+
+
+      3. get set
+        如果你使用了get 和set来监听一个属性,那么这个数据将变成不可枚举
+        用的会比较少,先了解有这么个东西就可以了 以后用到在查
+
+      4. 静态方法
+        希望我们吧方法挂在到构造函数身上,而不是挂在到原型对象身上.因为原型对象身上的方法会别实例化的对象所继承
+
+        ES6 的类 提供了一个关键字 static 用力创建静态方法,也就是将方法挂在到构造函数身上,这样实例化出来的对象将无法调用静态方法
+
+
+      5. 继承
+          extends
+            配合super 来一起完成继承
+
+    
+    */
+  
+  
+  </script>
+</body>
+</html>

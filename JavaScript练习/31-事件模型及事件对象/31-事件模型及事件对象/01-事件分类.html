@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <input type="text" id="input">
+  <input type="text" id="input2">
+  <script>
+    box.onclick = function () {
+      console.log(1)
+    }
+    box.ondblclick = function () {
+      console.log(2)
+    }
+    box.onmousedown = function () {
+      console.log(3)
+    }
+    box.onmouseup = function () {
+      console.log(4)
+    }
+    box.oncontextmenu = function () {
+      console.log(5)
+    }
+    box.onmouseenter = function () {
+      console.log(6)
+    }
+    box.onmouseleave = function () {
+      console.log(7)
+    }
+    box.onmouseover = function () {
+      console.log(8)
+    }
+    box.onmouseout = function () {
+      console.log(9)
+    }
+    box.onmousemove = function () {
+      console.log(10)
+    }
+
+    input.onfocus = function () {
+      console.log("focus")
+    }
+    input.onblur = function () {
+      console.log("blur")
+    }
+    input2.onblur = function () {
+      if (input.value !== input2.value) {
+        alert("两次密码不同")
+      }
+    }
+    /*
+    1.鼠标事件
+      onclick  左键事件
+      oncontextmenu   鼠标左键事件(浏览器有默认的行为,不常用)
+      ondblclick      鼠标左键双击事件
+      onmousedown      鼠标任健按下时都会触发
+      onmouseup        鼠标任健抬起时都会触发
+      onmouseenter     鼠标进入元素触发
+      onmouseleave     鼠标离开元素触发
+      onmouseover      鼠标进入元素触发
+      onmouseout       鼠标离开元素触发
+      onmousemove      鼠标在元素上移动的 时候触发
+
+      注意: onclick  = onmousedown + onmouseup
+
+    2.滚轮事件
+      onmousewheel   鼠标滚轮事件  (IE+chrome)
+      DOMMouseScroll   鼠标滚轮事件  (firefix)
+
+    3.键盘事件
+      onkeydown     按住键盘上的任意键触发    持续触发
+      onkeypress    按住键盘上的部分键触发    持续触发
+      onkeyup       键盘抬起时触发
+
+    4.资源加载的事件
+      onload        页面或者图片加载完后触发事件
+
+
+    5.window 事件
+      onresize  在浏览器窗口发生变化的时候触发
+      onscroll  在页面滚动的时候触发
+
+    6.焦点事件
+      onfocus   获取焦点
+      onblur   失去焦点
+
+
+  */
+
+  </script>
+</body>
+
+</html>

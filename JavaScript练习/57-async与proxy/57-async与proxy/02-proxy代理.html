@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  
+    let obj = {
+      name : 'aa',
+      age: 18
+    }
+    // let proxy = new Proxy(obj,{
+    //   get(target,property){
+    //     // console.log('你是想获取属性是吗,看我心情')
+    //     // return 123
+    //     // console.log(arguments)
+    //     // if(property in obj){
+    //     //   return target[property]
+    //     // }else{
+    //     //   throw new ReferenceError(`${property}属性不存在于对象上`)
+    //     // }
+    //     console.log(11)
+        
+    //   },
+    //   set(){
+    //     console.log(22)
+    //   }
+    // })
+
+    //  let proxy = new Proxy(obj,{
+    //   set(target,prop,value){
+    //     // console.log(arguments)
+    //     if(prop == 'age'){
+    //       if(!Number.isInteger(value)){
+    //         throw new TypeError("年龄必须为整数")
+    //       }
+    //       if(value > 200){
+    //         throw new RangeError("年龄超标了,必须小于200岁")
+    //       }
+    //     }
+
+    //     target[prop]  = value;
+    //   }
+    // })
+
+    // let proxy = new Proxy(obj,{
+     
+    //  deleteProperty(target,prop){
+    //   //  console.log(arguments)
+    //    if(prop == 'name') {
+    //      console.log(`${prop}属性不允许删除`)
+    //      return
+    //    } 
+    //    delete target[prop]
+    //  }
+    // })
+
+    // let proxy = new Proxy(obj,{
+     
+     
+    //   has(target,prop){
+    //     // console.log(arguments)
+        
+    //     return prop in target
+    //   }
+    // })
+
+    // function show (){
+    //   return "haha"
+    // }
+    // let proxy = new Proxy(show,{
+     
+    //  apply(){
+    //    return '我已经被拦截'
+    //  }
+     
+    // })
+    // let handle= {
+    //   get(){
+    //     return 'bb'
+    //   }
+    // }
+
+    // let {proxy,revoke} = Proxy.revocable(obj,handle)
+
+    // console.log(proxy.name)
+    // console.log(proxy.age)
+
+    // revoke()  // 取消代理
+
+
+    // console.log(proxy.name)
+
+
+    /*
+    
+      语法: new proxy(target,handle)
+
+      handle 
+        set(){}
+        get(){}
+        deleteProperty()
+        has(){}
+        apply(){}
+
+
+      Proxy.revocable()
+    */
+  </script>
+</body>
+</html>

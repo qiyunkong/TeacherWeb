@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>please enter your title</title>
+	<meta charset="utf-8">
+	<meta name="Author" content="">
+	<style type='text/css'>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			overflow: hidden;
+		}
+
+		#btn {
+			position: relative;
+			left: 50%;
+			margin-top: 50px;
+		}
+
+		#wrap {
+			position: relative;
+			margin: 0px auto;
+			background: url(img/block.gif);
+		}
+
+		#wrap div {
+			position: absolute;
+			width: 35px;
+			height: 35px;
+			transition: .1s;
+		}
+
+		#wrap div img {
+			position: absolute;
+			bottom: 0;
+		}
+
+		#wrap div.ball img {
+			left: 50%;
+			bottom: 50%;
+			margin-left: -15px;
+			margin-bottom: -15px;
+		}
+
+
+		#wrap div.person img {
+			left: 50%;
+			margin-left: -25px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="btn">
+
+		<input type="button" id="auto" value="哥！救我！" />
+		<input type="button" id="prev" value='上一步' />
+
+		<input type="button" id="nextLevel" value="下一关" />
+		<input type="button" id="prevLevel" value="上一关" />
+	</div>
+	<div id="wrap"></div>
+
+	<script>
+		//获取元素
+		var oWrap = document.getElementById('wrap');
+
+		// 地图大小
+		var size = {
+			x: 16,
+			y: 16
+		}
+
+		// 第几关
+		var level = 0;
+
+		// 关卡数据
+		var mapData = [
+			// 第一关的数据
+			[
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 1, 1, 3, 0, 3, 2, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 2, 0, 3, 4, 1, 1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 1, 1, 1, 3, 1, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			],
+
+			// 第二关
+		]
+
+		init()
+
+		// 初始化游戏
+		function init() {
+			// console.log(1)
+			// 初始化地图大小(宽高)
+			oWrap.style.cssText = "width:" + size.x * 35 + "px;height:" + size.y * 35 + "px;"
+
+			createMap(level)
+		}
+
+		// 创建地图
+		function createMap(lv) {
+			// console.log(lv)
+
+			// 创建使用变量
+			var oPerson, oDiv, oImg;
+
+			// 清空地图信息
+			oWrap.innerHTML = "";
+
+			// 需要创建16*16个小格子
+			for (var i = 0; i < size.x * size.y; i++) {
+				switch (mapData[lv][i]) {
+					case 1:
+						appDiv(i);
+						oDiv.className = "wall"
+						oImg.src = 'img/wall.png'
+						break;
+					case 2:
+						appDiv(i)
+						oDiv.className = "ball"
+						oImg.src = 'img/ball.png'
+						break;
+					case 3:
+						appDiv(i)
+						oDiv.className = "box"
+						oImg.src = 'img/box.png'
+						break;
+					case 4:
+						appDiv(i)
+						oDiv.className = "person";
+						oImg.src = 'img/down.png';
+						oPerson = oImg;
+						break;
+				}
+			}
+
+
+			// 创建div与div里面img标签
+			function appDiv(i) {
+				// 计算当前创建的div的位置在哪里
+				var x = i % size.x;
+				var y = parseInt(i / size.x);
+				// console.log(x, y)
+
+				oDiv = document.createElement("div");
+
+				// 让div记录自己所在的位置
+				oDiv.x = x;
+				oDiv.y = y;
+				oDiv.style.cssText = "left:" + x * 35 + "px;top:" + y * 35 + "px;z-index:" + (y * size.x) + ";"
+
+				oImg = new Image();
+
+				oDiv.appendChild(oImg);
+				oWrap.appendChild(oDiv)
+			}
+
+
+			// console.log(oPerson)
+
+			controlPerson(oPerson)
+		}
+
+
+		// 定义人物运动的控制器
+		function controlPerson(oP) {
+
+			var oParent = oP.parentNode;
+
+			// 绑定键盘按下事件
+			document.onkeydown = function (ev) {
+				ev = ev || window.event;
+
+				// 获取键码
+				var keycode = ev.keyCode;
+
+				//  判断按键方向
+				switch (keycode) {
+					// 左方向
+					case 37:
+						oP.src = 'img/left.png';
+						movePerson({ x: -1 }, oParent)
+						break;
+					// 上方向
+					case 38:
+						oP.src = 'img/up.png';
+						movePerson({ y: -1 }, oParent)
+						break;
+					// 右方向
+					case 39:
+						oP.src = 'img/right.png';
+						movePerson({ x: 1 }, oParent)
+						break;
+					// 下方向
+					case 40:
+						oP.src = 'img/down.png';
+						movePerson({ y: 1 }, oParent)
+						break;
+				}
+			}
+		}
+
+
+		// 人物运动
+		function movePerson(mJson, oParent) {
+			console.log(oParent.x, oParent.y)
+			var x = mJson.x || 0;
+			var y = mJson.y || 0;
+
+			// 获取所有的箱子
+			var aBox = getBox('box', oWrap);
+			console.log(aBox)
+
+			// 判断下一步的位置是不是墙壁,如果不是就运动,如果是,那么就不能运动
+			if (mapData[level][(oParent.x + x) + (oParent.y + y) * size.x] !== 1) {
+				oParent.x += x;
+				oParent.y += y;
+				oParent.style.left = oParent.x * 35 + 'px';
+				oParent.style.top = oParent.y * 35 + 'px';
+				oParent.style.zIndex = oParent.x + oParent.y * size.x;
+
+				// 判断你的下一步是不是箱子
+				for (var i = 0; i < aBox.length; i++) {
+
+					// 判断人物运动的下一步的位置是箱子
+					if (aBox[i].x == oParent.x && aBox[i].y == oParent.y) {
+
+
+						// 判断箱子的下一步是不是墙壁
+						if (mapData[level][(aBox[i].x + x) + (aBox[i].y + y) * size.x] !== 1) {
+							// 箱子的下一步不是墙壁
+							// 不是墙壁就应该让箱子也进行移动
+							aBox[i].x += x;
+							aBox[i].y += y;
+							aBox[i].style.left = aBox[i].x * 35 + 'px';
+							aBox[i].style.top = aBox[i].y * 35 + 'px';
+							aBox[i].style.zIndex = aBox[i].x + aBox[i].y * size.x;
+
+						} else {
+							// 箱子的下一步是墙壁,那么就不能让人物进行移动
+							oParent.x -= x;
+							oParent.y -= y;
+							oParent.style.left = oParent.x * 35 + 'px';
+							oParent.style.top = oParent.y * 35 + 'px';
+							oParent.style.zIndex = oParent.x + oParent.y * size.x;
+						}
+					}
+				}
+
+			}
+		}
+
+		// 获取所有box箱子的个数
+		function getBox(cName, obj) {
+			obj = obj || document;
+
+			// 判断用户使用浏览器是不是支持class类名获取元素
+			if (obj.getElementsByClassName) {
+				return obj.getElementsByClassName(cName)
+			} else {
+				var arr = [];
+				var arrT = obj.getElementsByTagName('*');
+				for (var i = 0; i < arrT.length; i++) {
+					// 切割获取标签的数组
+					var arrTArr = arrT[i].className.split(' ');
+					for (var j = 0; j < arrTArr.length; j++) {
+						if (arrTArr[j] == cName) {
+							arr.push(arrT[i]);
+							break;
+						}
+					}
+				}
+
+				return arr;
+			}
+		}
+
+
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // let name = "wuwei";
+    // let age = 18;
+    // let obj = {
+    //   name:name,
+    //   age:age,
+    //   show:function(){
+    //     console.log(this.name)
+    //   }
+    // }
+    // ES6 的简写方式
+    // let obj = {
+    //   name,   // 相当于name:name,
+    //   age,
+    //   show(){
+    //     console.log(this.name)
+    //   }
+    // }
+
+    // let obj = {}
+    // obj.name = "wuwei";
+    // obj["n" + "ame"] = "wuwei"
+
+    // console.log(obj)
+    // let aa = "ello"
+    // let obj = {
+    //   ["n" + "ame"]: "wuwei",
+    //   ["h"+aa](){
+    //     console.log(this.name)
+    //   }
+    // }
+    // console.log(obj)
+
+    // let foo = ["wuwei"]
+    // let obj = {
+    //   [foo]:[foo]
+    // }
+    // console.log(obj)
+
+  //  let obj1 = {
+  //    a: 10
+  //  }
+  //  let obj2 = {
+  //    b: 50,
+  //    a:20
+  //  }
+  //  let obj3 = {
+  //    c: 30
+  //  }
+
+  //  let obj = Object.assign({},obj1,obj2,obj3)
+  //  let obj = Object.assign({},obj2,obj1,obj3)
+  //  let obj = Object.assign(obj1)
+  //  let obj = Object.assign(undefined)
+  //  let obj = Object.assign(null)
+  //  let obj = Object.assign(123)
+
+
+  // let arr = [1,2,3,4]
+  // let arr2 = ['a','b']
+  // // let arr3 = Object.assign([],arr2,arr)
+  // let arr3 = Object.assign([],arr)
+
+  // let obj = {
+  //   name: "wuwei",
+  //   age: 18,
+  //   sex: "不详"
+
+  // }
+  // for(let key in obj){
+  //   console.log(obj[key])
+  // }
+
+// console.log(Object.keys(obj))
+// console.log(Object.values(obj))
+// console.log(Object.entries(obj))
+
+// 通过解构吧我们想要的方法解构出来
+// let {keys,values,entries} = Object;
+
+
+//    for(let key of keys(obj)){
+//     console.log(key)
+//   }
+
+//    for(let val of values(obj)){
+//     console.log(val)
+//   }
+
+//    for(let item of entries(obj)){
+//     console.log(item)
+//   }
+
+//   for(let [key,value] of entries(obj)){
+//     console.log(key,value)
+//   }
+
+  // 这是剩余运算符
+  // let {x,y,...z} = {x:1,y:2,z:3,a:4,b:5}
+  // console.log(x,y,z)   
+
+  // 这是扩展运算符
+  // let obj = {x:1,y:2,z:3,a:4,b:5}
+  // let obj2 = {...obj}
+  // // 等同于
+  // let obj3 = Object.assign({},obj)
+
+  // console.log(obj2)  
+
+
+// let {x,y,...z} = null
+// let {x,y,...z} = undefined
+  // console.log(x,y,z)   
+
+  // let obj = {a:{b:10}}
+  // let {...x} = obj;
+  // console.log(x)
+
+  //  let obj = {a:{b:10}}
+  // let {a,a:{b}} = obj;
+  // console.log(a,b)
+
+    /*
+      一.对象语法的简写形式
+        let obj = {
+            name,   // 相当于name:name,
+            age,
+            show(){
+              console.log(this.name)
+            }
+          }
+
+      二.对象属性表达式
+        属性名表达式([])与简洁表示发,尽量不用混用
+        属性表达式和方法的简写方式可以一起用,不能跟属性的简写方式不能一起用
+
+      三. 对象新增
+        1. Object.is()
+          用来比较两个数相不相等
+
+          ＥＳ５　  相等运算符 ==  全等运算符===
+          前者会自动进行类型转换,  后者 NaN 都不等于自己
+        
+          不能进行隐式类型转换,以我们肉眼为标准,我们看到一样的就相等,不一样就不相等(要是基本数据类型),
+          因为引用类型比较的是内存地址
+          Object.is(NaN,NaN)    // true
+          Object.is(+0,-0)      // false
+          Object.is({},{})      // false
+
+    
+        2.Object.assign()
+          用来合并对象
+          第一个参数是合并的目标对象
+          后面的参数就是需要合并对象
+            let obj = Object.assign({},obj1,obj2,obj3)
+
+          如果合并的对象具有相同属性,则在后面的对象覆盖在前面的对象
+
+          如果只有一个参数对象,那么将返回这个对象
+            let obj = Object.assign(obj1)
+
+          如果参数undefined,或者null,由于undefined和null没法转成对象,所以报错
+
+          如果参数不是一个对象,会转成一个对象,或者包装类,转不了就报错
+
+          利用合并来拷贝一个数组
+             let arr3 = Object.assign([],arr)
+
+        3. Object.keys()  Object.values() Object.entries()
+
+
+      四. 对象的扩展运算符
+          1. 对象的解构赋值与...运算符
+    */  
+
+  </script>
+</body>
+</html>

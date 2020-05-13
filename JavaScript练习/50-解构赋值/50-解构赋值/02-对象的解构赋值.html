@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    // let {name,age} = {name:"wuwei",age:18}
+    // console.log(name,age)
+    // let obj = {
+    //   name:"Evan",
+    //   age:18,
+    //   friend:{
+    //     name:"帅哥",
+    //     age: 20
+    //   }
+    // }
+    // let {friend,friend:{name}} = obj
+    // console.log(friend)
+
+    // let {x,y=x} = {x:1}
+    // console.log(x,y)
+
+    // let  {0:first,2:aa}  = [1,2,3]
+    // console.log(first,aa)
+
+    // function getPos(){
+    //   //.....
+    //   return {
+    //     left:20,
+    //     top: 50
+    //   }
+    // }
+    // // let obj = getPos()
+    // let {left,top:tp} = getPos();
+    // console.log(left,tp)
+   
+    /*
+      1.对象的解构赋值
+        解构赋值不单单可以用在数组上,还可以用在对象上
+
+      2. 对象的解构赋值的变量必须和对象的属性名相同
+        对象的解构与数组不一样的地方就是变量名不能乱起,原因在于数组是按照固定次序排列的,变量的取值由他的位置决定
+        对象属性的排列是没有规则的,也就是说我们不能按照固定的次序来进行结构,我们只能采用 属性名匹配的方式来结构
+        let {name,age} = {name:"wuwei",age:18}
+
+        其实就是
+         let {name:name,age:age} = {name:"wuwei",age:18}
+         的简写形式
+
+      3. 自定义变量名与属性名不同
+        也就是说,对象解构,内部的机制,是先找到同名属性,然后将对象值赋值给对应的变量,真正被赋值的是后者
+       let {name:na,age:bb} = {name:"wuwei",age:18}
+
+      4. 对象的解构赋值可以嵌套
+         let obj = {
+            name:"Evan",
+            age:18,
+            friend:{
+              name:"帅哥",
+              age: 20
+            }
+          }
+          let {friend,friend:{name}} = obj
+          console.log(friend)
+
+      5. 对象的解构赋值也可以执行默认值
+        let {x,y=5} = {x:1}
+        console.log(x,y)
+
+      6. 数组也可以按照对象的方式进行解构
+        let  {0:first,2:aa}  = [1,2,3]
+        console.log(first,aa)
+
+      7. 注意的点
+        let a;
+        {a} = {a:20}   
+        console.log(a)
+        这样写会报错
+        如果想先定义变量在解构可以如下写法
+         let a;
+        ({a} = {a:20})
+        console.log(a)
+
+        
+    */
+  
+  </script>
+</body>
+</html>

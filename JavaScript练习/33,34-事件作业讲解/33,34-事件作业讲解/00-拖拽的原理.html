@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #box {
+      position: fixed;
+      left: 20px;
+      top: 20px;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+
+    p {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background-color: blue;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    // box.onmousedown = function (ev) {
+    //   ev = ev || window.event;
+    //   var oldLeft = ev.clientX;
+    //   var oldTop = ev.clientY;
+    //   console.log(oldLeft, oldTop)
+    //   var startLeft = this.offsetLeft;
+    //   var startTop = this.offsetTop;
+
+    //   var x = oldLeft - startLeft;
+    //   var y = oldTop - startTop
+
+    //   var This = this;
+
+    //   document.onmousemove = function (ev) {
+    //     ev = ev || window.event;
+    //     var newLeft = ev.clientX;
+    //     var newTop = ev.clientY;
+
+
+
+    //     var _x = newLeft - x;
+    //     var _y = newTop - y;
+
+    //     This.style.left = _x + "px";
+    //     This.style.top = _y + "px"
+    //   }
+
+    //   document.onmouseup = function () {
+    //     document.onmousemove = null
+    //   }
+
+    // }
+
+    // 第一种思路  先算我鼠标的偏移量 + 移动元素原有的左侧和顶部的距离
+    // 第二种思路
+    // 先去鼠标点击的x, y 值减掉盒子定位的left, top值, 求出鼠标点击点距离盒子左侧和顶部的距离_x, _y
+    // 在获取鼠标移动后的x, y值, 减掉那个差值就是left, 和top值
+
+
+    document.onmousedown = function (ev) {
+      ev = ev || window.event;
+
+      document.onmousemove = function (ev) {
+        ev = ev || window.event;
+        var newLeft = ev.clientX;
+        var newTop = ev.clientY;
+
+        var p = document.createElement("p");
+        p.style.left = newLeft + 'px';
+        p.style.top = newTop + 'px';
+
+        document.body.appendChild(p)
+      }
+
+      document.onmouseup = function () {
+        document.onmousemove = null
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>

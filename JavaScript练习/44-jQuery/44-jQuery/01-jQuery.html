@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    p{
+      width: 200px;
+      height: 30px;
+      border:1px solid #369;
+      margin-top:10px;
+    }
+    .box1{
+      position: relative;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box1">
+    <p class="p1">this is box1 p1</p>
+    <p class="p2">this is box1 p2</p>
+    <p class="p3">this is box1 p3</p>
+    <div class="div4">
+      this is box1 div1
+      <p class="aa"> this is box1 div p1</p>
+      <p> this is box1 div p2</p>
+      <p> this is box1 div p3</p>
+    </div>
+    <div class="div5">this is box1 div2</div>
+  </div>
+  <div class="box2">
+    <p>this is box2 p1</p>
+    <p>this is box2 p2</p>
+    <p>this is box2 p3</p>
+  </div>
+
+  <script src="./jquery.js"></script>
+  <!-- <script src="https://cdn.bootcss.com/jquery/1.6.2/jquery.js"></script> -->
+  <script>
+  // 1. 序号eq
+    // console.log($("p"))
+    // $("p").eq(2).css("background-color","red")
+    // console.log($(".box2 p"))
+    // $(".box2 p").eq(2).css("background-color","pink")
+
+  // 2. index()
+    // $('p').click(function(){
+    //   console.log($(this).index())
+    // })
+
+  // 3. each()
+    // $('p').css("background-color","red")
+    // $('p').each(function(i,item){
+    //   console.log(i)
+    //   console.log(item)
+    //   // item.style.backgroundColor= "red";
+    //   // $(item).css("background-color","pink")
+    //   // console.log(this == item)
+    //   $(this).css("width",50*i)
+    // })
+
+  // 4. size() 和 length
+
+    // console.log($('p').size())
+    
+  // 5. get()
+    // console.log($('p').get(2))
+    // console.log($('p').eq(2))
+    // $('p').get(2).style.backgroundColor="red"
+    // $('p').eq(2).css("background","pink")
+    // $('p').first().attr("data-wuwei",'wuwei')
+    // console.log($('p').first().css('width'))
+
+  // 二. css方法
+
+    // 1. 读取样式值
+
+    // console.log($('p').eq(3).css("width"))
+    // $("p").css("width","500px")
+
+    // $("p").click(function(){
+    //   console.log(this)
+    //   // $(this).addClass("title")
+    //   // $(this).removeClass("remove")
+    //   // $(this).toggleClass("wuwei")
+
+    //   // this.innerText = "<h1>this is h1</h1>"
+    // // $(this).html("<h4>this is wuwei</h4>")
+    // //   console.log($(this).html())
+
+    // $(this).text("<h4>this is wuwei</h4>")
+    //   console.log($(this).text())
+      
+
+    // })
+
+  // 三.节点关系
+    // 1. children()
+
+    // console.log($('.box1').children())
+    // console.log($('.box1').children('div'))
+    // console.log($('.box1').children('div:even'))
+
+    // 2. find()
+    // console.log($('.box1').find('p'))
+
+    // 3. parent()  方法
+    // console.log($('.aa').parent('.box1'))
+
+    // 4.parents()
+      //  $('.aa').parents('.box1').css("background","red")
+      // console.log($('.aa').parents('.box1'))
+
+    // 5.sibling()
+      // console.log($('.p1').siblings('p'))
+      // $(".box1>p").click(function(){
+      //   $(this).css("background","red").siblings().css("background","white")
+      // })
+
+    // 6. 一组
+    // console.log($(".p3").nextAll())
+
+    // 7. offsetParent()
+      console.log($('.p2').offsetParent())
+
+
+  /*
+    一.序与迭代
+      1.序号eq()
+        按照选中的元素进行序号挑选
+        说白了就是$获取的元素是一个对象队列,eq只是从这个对立里跳出你要的
+        $("p").eq(2)
+        $(".box2 p")
+
+      2.index() 方法
+        返回这个元素在亲兄弟中的排名,无视选择器怎么选
+        $(this).index() 这是一个很常见的写法,表示这个触发事件元素在亲兄弟中序号
+         $('p').click(function(){
+          console.log($(this).index())
+        })
+
+      3.each() 方法  迭代
+        遍历节点,也叫做迭代符合条件节点
+        $('p').each(function(i,item){
+          console.log(i)
+          console.log(item)
+          // item.style.backgroundColor= "red";
+          // $(item).css("background-color","pink")
+          // console.log(this == item)
+          $(this).css("width",50*i)
+        })
+      
+      4. size() 和 length
+        size() 方法和length属性是一样的,获取jQuery对象中的元素个数
+        这两个数字永远相同
+        $('p').size()  // 1.8 以下的版本才能使用
+        $('p').length
+
+      5. get() 方法
+        get()方法和eq()方法基本一致,都仰赖与$()获取的对象序列,
+        不一样的是eq() 返回的是jQuery对象, get()放回的是原生js对象
+        console.log($('p').get(2))
+        console.log($('p').eq(2))
+        $('p').get(2).style.backgroundColor="red"
+        $('p').eq(2).css("background","pink")
+
+    二.CSS方法
+      css方法可以读取样式,可以设置样式
+
+      1. 读取CSS样式值
+        可以读取计算后的样式,
+        css()
+        参数为你要获取的css属性,属性是字符串
+        读取的值是有单位的
+        获取是没有迭代的,如果是多个元素,只会获取第一个元素的属性
+        $('p').eq(3).css("width")
+
+      2. 设置宽度
+        css()方法  如果只有一个参数,表示获取,两个参数表示设置属性
+        第一个参数是属性名,字符串
+        第二个参数是属性值
+        设置是有迭代的,如果是多个元素,将会把所有元素的属性都进行设置
+         $("p").css("width",500)
+
+      3. 同时设置多个属性
+        css() 传入一个JSON对象
+        也会进行迭代
+        $("p").css({
+          "width":500,
+          "height":50,
+          "background":"pink"
+        })
+
+      4. 设置属性可以多样性
+        设置属性在元素有基础上进行的改变
+         $("p").css("width","+=50px")
+        $("p").css("width","+=50")
+
+      5. 获取自定义属性 attr() 方法
+
+        5.1 获取自定义属性
+          $('p').first().attr("data-title")
+        5.2 设置自定义属性
+          $('p').first().attr("data-title",'wuwei')
+
+      6. 关于class类名的操作
+        6.1 添加类名
+          $(this).addClass("title")
+        6.2 删除类名
+          $(this).removeClass("remove")
+        6.3 切换类名
+          $(this).toggleClass("wuwei")
+      
+      7.关于节点值
+        7.1 html() 方法
+          就是innerHTML
+          $(this).html()   // 获取节点的html值
+          $(this).html("<h4>this is wuwei</h4>")  // 设置节点值
+
+        7.2 text() 方法
+          就是innerText
+          $(this).text()   // 获取节点的text值
+          $(this).text("<h4>this is wuwei</h4>")  // 设置节点值
+
+    三. 节点之间的关系
+      1. children()
+        选中所有的子元素
+
+        1.1 获取box1的所有子元素
+          $('.box1').children()
+        1.2 获取box1的所有子元素的标签为div的子元素
+          $('.box1').children('div')
+        1.3 获取box1的所有子元素的标签为div索引为偶数的子元素      
+          $('.box1').children('div:even')
+
+      2. find() 
+        查询所有的后代选择器
+        和children() 方法不一样,必须写参数,表示你要查询后代的谁
+        $('.box1').find('p')  // 查询.box1的所有p标签后代元素
+
+      3.parent()
+        找父元素,任何一个元素的父元素只有一个
+        $('.box1').parent()
+
+      4. parents()
+        4.1 找所有元素的祖先元素
+          $('.aa').parents()  
+        4.2 选择祖先元素中类名叫做box1的
+          $('.aa').parents('.box1')
+
+      5. siblings() 
+        5.1 获取所有亲兄弟元素
+          $('.p1').siblings()
+        5.2 获取所有亲兄弟里面标签名为p的元素
+          $('.p1').siblings('p')
+
+      6.prev(),next() prevAll() nextAll()
+        前面一个兄弟,后面一个兄弟,前面所有兄弟,后面所有的兄弟
+
+      7. offsetParent()  定位父级
+        $('.p2').offsetParent()
+
+  */
+
+
+
+
+
+
+
+
+
+
+    /*
+
+    复习
+      筛选器
+        $('.box')
+        $('.box:first')
+        $('.box:last')
+        $('.box:eq(2)')
+        $('.box:lt(2)')
+        $('.box:gt(2)')
+        $('.box:odd(2)')
+        $('.box:even(2)')
+
+        过滤器
+          $('.box').eq(2)
+          $('.box').first()
+          $('.box').last()
+          $('.box').not('.ta')
+          $('.box').hasClass('ta')
+          $('.box').is(':event')
+
+    */
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box1 {
+      width: 200px;
+      height: 200px;
+      margin: 50px;
+      padding: 50px;
+      background-color: pink;
+
+    }
+
+    #box2 {
+      width: 100px;
+      height: 100px;
+      padding: 50px;
+      background-color: blue;
+
+    }
+
+    #box3 {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+
+    }
+  </style>
+</head>
+
+<body id="body">
+  <div id="box1">
+    <div id="box2">
+      <div id="box3"></div>
+    </div>
+  </div>
+  <script>
+    // 事件流: 事件传递的过程 捕获阶段  冒泡阶段  
+    // box3.onclick = function (ev) {
+    //   ev = ev || window.event
+    //   console.log("box3")
+    //   // return false;
+    //   ev.stopPropagation()
+    //   // ev.cancelBubble = true;
+    // }
+    // box1.onclick = function () {
+    //   console.log("box1")
+
+    // }
+    // box2.onclick = function (ev) {
+    //   console.log("box2")
+
+    // }
+
+    // body.onclick = function () {
+    //   console.log("body")
+    // }
+    // html.onclick = function () {
+    //   console.log("html")
+    // }
+    // document.onclick = function () {
+    //   console.log("document")
+    // }
+    // window.onclick = function () {
+    //   console.log("window")
+    // }
+
+    // box1.addEventListener("click", function () {
+    //   console.log("box11")
+    // }, true)
+    // box2.addEventListener("click", function () {
+    //   console.log("box22")
+    // }, true)
+    // box3.addEventListener("click", function () {
+    //   console.log("box33")
+    // }, true)
+
+    // box1.addEventListener("click", function (ev) {
+    //   console.log("box1")
+    //   // console.log(ev.target)
+    //   // console.log(ev.currentTarget)
+    // }, false)
+    // box2.addEventListener("click", function () {
+    //   console.log("box2")
+    // }, false)
+    // box3.addEventListener("click", function (ev) {
+    //   ev.stopPropagation();
+    //   console.log("box3")
+    // }, false)
+
+
+    box1.attachEvent("onclick", function () {
+      console.log("box1")
+    })
+    box2.attachEvent("onclick", function () {
+      console.log("box2")
+    })
+    box3.attachEvent("onclick", function () {
+      console.log("box3")
+      event.cancelBubble = true;
+    })
+
+
+
+
+    /*
+      1. DOM 0级事件是绑定在冒泡阶段
+          IE9 Chrome  冒泡到window  IE6,7,8 冒泡到document
+
+      2. DOM 2级事件绑定
+        2.1 addEventListener(type,callback,bol)
+        bol 为true 就是事件绑定在捕获阶段 false 默认 绑定在冒泡阶段
+
+        2.2 attachEvent("on"+type,callback)
+        在冒泡阶段
+
+
+      总结:
+        事件流先下后上,先是捕获阶段后是冒泡阶段,
+
+        1. DOM0级方式,
+          只能监听冒泡阶段,不能有同名的事件,会覆盖
+          this就是触发这个事件的元素
+          高版本浏览器,冒泡到window
+          低版本浏览器,冒泡到document
+
+        2. DOM2 级的 addEventListener()
+          可以自由设置将事件绑定在冒泡还是捕获阶段
+          事件名不需要加on,有同名事件不覆盖
+          this就是触发事件的这个元素
+          事件冒泡到window
+
+        3. IE 6,7,8  attachEvent()
+          只能监听冒泡阶段
+          事件名需要加on,有同名事件不覆盖,但会反着执行
+          this指向window
+          事件冒泡到document
+    */
+
+
+
+  </script>
+</body>
+
+</html>

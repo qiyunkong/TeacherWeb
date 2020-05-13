@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  // function show(){}
+  
+  // let show = (a,b) => {
+  //     console.log(a,b)
+  //     return {id:10,name:'wuwei'}
+  //   }
+// var age = 20
+//   let obj = {
+//     age:18,
+//     show:function(){
+//       setTimeout(()=>{
+        
+//         console.log(this.age)
+//       },2000)
+//     }
+//   }
+  
+//   var aa = obj.show
+//   aa()
+
+
+
+// let show = () => {
+//   this.name = 'abc'
+// }
+// let aa = new show()
+
+// function show(a,b,c,){
+//   console.log(a,b,c)
+
+// }
+// show(3,1,2,)
+
+
+   /*
+    箭头函数
+      1.基本用法
+        () => {}
+
+        1.1 形参的小括号
+          如果只有一个形参,小括号可以省略
+          let show = a => {
+            console.log(a)
+          }
+          如果没有形参或者有两个以上的形参,小括号都不能省略
+
+        1.2 箭头函数里如果只有return 一行语句,那么大括号可以省略,   
+          return也可以省略
+           let show = () => [10,20]
+           如果想return一个对象,js会吧{}当做代码块执行,所以要加()
+            let show = (a,b) => ({id:10,name:'wuwei'})
+            
+        1.3 常用使用方法    
+          () => {
+            语句
+            return;
+          }  
+
+      2. 箭头函数的注意点
+        2.1. 箭头函数内部this指向
+          箭头函数作用域内没有this指向,箭头函数中的this永远指向父作用域中的值
+
+        2.2 箭头函数内部的arguments
+          箭头函数内部没有arguments
+          let show = () => {
+            console.log(arguments)
+          }
+          show(10,20,30)
+
+          采用...运算符替代arguments
+          let show = (...arg) => {
+            console.log(arg)
+          }
+          show(10,20,30)
+
+      3. 箭头函数不能作为构造函数使用
+        1.箭头函数内部没有this
+        2. 箭头函数是函数表达式
+          let show = () => {
+            this.name = 'abc'
+          }
+          let aa = new show()
+
+      总结:
+        1. 箭头函数内没有this
+        2. 箭头函数内没有arguments
+        3. 箭头函数不能作为构造函数使用 不能用new命令
+
+
+      函数参数的尾逗号
+        ES2017 以后允许最后一个参数有尾逗号
+     */
+  </script>
+</body>
+</html>

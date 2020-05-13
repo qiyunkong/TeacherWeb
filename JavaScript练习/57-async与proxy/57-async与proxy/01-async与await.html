@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script>
+    // function * show(){
+    //   yield 'aa';
+    //   yield 'bb';
+    //   console.log(11111);
+    // }
+
+    // let g1 = show();
+
+    // async function showAsync(){
+    //   // let aa = await Promise.resolve('成功')
+    //   let aa = await Promise.reject('失败')
+    //   console.log(aa)
+      
+    // }
+
+    // let as = showAsync();
+
+    // async function show(){
+    //   try{
+    //      var bb = await Promise.reject('失败')
+    //      var aa = await Promise.resolve('成功')
+    //   }catch(er){
+    //     console.log(er)
+    //     // throw new TypeError('这是一个类型错误')
+    //   }
+     
+    //   console.log(aa)
+    // }
+
+
+
+
+    // async function show(){
+      
+    //     let bb = await Promise.reject('失败').catch(err =>{
+    //         console.log(err)
+    //     })
+    //       console.log(bb)
+    
+     
+    //   let aa = await Promise.resolve('成功')
+    //   console.log(aa)
+    // }
+
+    // async function show(){
+    //   let [f1,f2,f3] = await Promise.all([
+    //     Promise.resolve("成功1"),
+    //     Promise.resolve("成功2"),
+    //     Promise.resolve("成功3")
+    //   ])
+      
+    // }
+
+   
+
+    // let  as = show();
+
+    function ajax(url){
+      return new Promise((resolve,reject)=>{
+        $.ajax({
+          url,
+          success: resolve,
+          error: reject
+        })
+      });
+    }
+ 
+
+    async function show(){
+      let p1 = await ajax("https://jsonplaceholder.typicode.com/todos/1")
+      let p2 = await ajax("https://jsonplaceholder.typicode.com/todos/2")
+
+      return {
+        p1,p2
+      }
+    }
+
+    let as = show()
+
+    as.then(obj => {
+      console.log(obj)
+    })
+
+    /*
+     async await  ES2017 标准
+
+        对于generator的一种语法糖
+
+        generator  yield
+
+        function * show(){
+          yield 语句1
+          yield 语句2
+        }
+
+
+        async 替换 *   await  替换 yield
+        
+      async 特点
+        1. await 只能放到async函数中使用
+        2. async 相比于generator 语义化更强
+        3. await 后面可以是一个Promise对象,也可以是字符串 数字 布尔值,等普通的数据类型
+        4. async 整体返回一个Promise对象
+        5. 只要await 后面跟的Promise 是一个失败的状态reject,那么整个async函数将会中断执行并报错
+  */
+  </script>
+</body>
+</html>

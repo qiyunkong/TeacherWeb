@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    封装函数 检查字符串结尾:
+    例如:
+      输入confirmEnding("He has to give me a new name", "me")返回true
+    */
+
+    // 方法一:切割字符串比较
+    // function confirmEnding(str, target) {
+    //   var len = target.length;
+    //   var newStr = str.slice(-len);
+    //   // console.log(newStr)
+    //   return newStr == target
+    // }
+
+    // confirmEnding("He has to give me a new name", "me")
+
+
+    // 方法二,切割字符串成为数组
+    function confirmEnding(str, target) {
+      var arr = str.split(target);
+      // console.log(arr)
+      // if (!arr[arr.length - 1]) {
+      //   return true
+      // } else {
+      //   return false
+      // }
+      return (!arr[arr.length - 1]);
+    }
+
+    confirmEnding("He has to give me a new name", "me")
+
+  </script>
+
+
+</body>
+
+</html>

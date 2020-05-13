@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="Anthor" content="阿飞老师" />
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "Microsoft yahei", serif;
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    #box {
+      position: relative;
+      width: 428px;
+      height: 204px;
+      margin: 50px auto;
+    }
+
+    #box .left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 90px;
+    }
+
+    #box .left>li {
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+      margin-bottom: 1px;
+      cursor: pointer;
+    }
+
+    #box .right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 326px;
+      height: 204px;
+    }
+
+    #box .right>li {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #box .right>li.on {
+      display: block;
+    }
+
+    #box .right .img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #box .right .img>li {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #box .right .img>li.on {
+      display: block;
+    }
+
+    #box .right .img>li img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #box .right .tab {
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 25px;
+      line-height: 25px;
+    }
+
+    #box .right .tab>li {
+      float: left;
+      width: 25px;
+      height: 25px;
+      margin: 0 5px;
+      font-size: 12px;
+      color: #fff;
+      background: #000;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    #box .right .tab>li.on,
+    #box .left>li.on {
+      background: #f60;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <ul class="left">
+      <li class="on">豪车</li>
+      <li>美味</li>
+      <li>美女风景</li>
+    </ul>
+
+    <ul class="right">
+      <li class="list on">
+        <ul class="img img1">
+          <li class="on"><img src="img2/1.jpg" /></li>
+          <li><img src="img2/2.jpg" /></li>
+          <li><img src="img2/3.jpg" /></li>
+          <li><img src="img2/4.jpg" /></li>
+        </ul>
+        <ul class="tab tab1">
+          <li class="on">1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+        </ul>
+      </li>
+      <li class="list">
+        <ul class="img img2">
+          <li class="on"><img src="img2/m1.jpg" /></li>
+          <li><img src="img2/m2.jpg" /></li>
+          <li><img src="img2/m3.jpg" /></li>
+          <li><img src="img2/m4.jpg" /></li>
+          <li><img src="img2/m5.jpg" /></li>
+        </ul>
+        <ul class="tab tab2">
+          <li class="on">1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+        </ul>
+      </li>
+      <li class="list">
+        <ul class="img img3">
+          <li class="on"><img src="img2/s1.jpg" /></li>
+          <li><img src="img2/s2.jpg" /></li>
+          <li><img src="img2/s3.jpg" /></li>
+          <li><img src="img2/s4.jpg" /></li>
+          <li><img src="img2/s5.jpg" /></li>
+        </ul>
+        <ul class="tab tab3">
+          <li class="on">1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+        </ul>
+      </li>
+    </ul>
+
+
+  </div>
+  <script>
+
+    // 获取元素
+    var oBox = document.getElementById("box");
+    var aLeftLi = oBox.getElementsByClassName("left")[0].getElementsByTagName("li")
+    var aRightLi = oBox.getElementsByClassName("right")[0].getElementsByClassName("list")
+
+    var index = 0;
+    var len = aLeftLi.length;
+
+    for (var i = 0; i < len; i++) {
+      aLeftLi[i].index = i;
+      aLeftLi[i].onmouseenter = function () {
+        if (index == this.index) return
+        aLeftLi[index].classList.remove("on")
+        aRightLi[index].classList.remove("on")
+
+        index = this.index;
+
+        aLeftLi[index].classList.add("on")
+        aRightLi[index].classList.add("on")
+
+
+      }
+    }
+
+
+    // 第二部分的获取数据
+    var aImg = oBox.getElementsByClassName("img");
+    var aTab = oBox.getElementsByClassName("tab");
+
+    var length = aImg.length;
+    var allImgLi = [];
+    var arrTabLi = []
+
+    for (var i = 0; i < length; i++) {
+      allImgLi[i] = aImg[i].getElementsByTagName("li")
+      arrTabLi[i] = aTab[i].getElementsByTagName("li")
+      arrTabLi[i].showJ = 0;
+
+      for (var j = 0, ll = arrTabLi[i].length; j < ll; j++) {
+        arrTabLi[i][j].indexI = i;
+        arrTabLi[i][j].indexJ = j;
+        arrTabLi[i][j].onmouseenter = function () {
+          var x = this.indexI;
+          var y = arrTabLi[x].showJ;
+
+          if (y == this.indexJ) return
+
+          allImgLi[x][y].classList.remove("on")
+          arrTabLi[x][y].classList.remove("on");
+
+          arrTabLi[x].showJ = y = this.indexJ;
+
+          allImgLi[x][y].classList.add("on")
+          arrTabLi[x][y].classList.add("on");
+        }
+      }
+    }
+    // console.log(allImgLi)
+    // console.log(arrTabLi)
+
+    // arrTabLi[1]
+    // [
+    //   [li.on, li, li, li]
+    //   [li.on, li, li, li, li]
+    //   [li.on, li, li, li, li]
+    // ]
+
+
+
+  </script>
+</body>
+
+</html>

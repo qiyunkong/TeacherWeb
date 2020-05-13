@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box"></div>
+  <script>
+    // 一.定时器   延迟定时器  循环定时器("间隔器")
+    // 1.延迟定时器 setTimeout()
+    // 接收两个参数,第一个是回调函数,第二参数是时间(毫秒数)
+    // this == widow
+
+    // setTimeout(function () {
+    //   console.log(this)
+    //   console.log(1)
+    // }, 1000);  //  一秒钟以后打印1
+
+    // 2. 循环定时器  setInterval()
+    // 接收两个参数,第一个是回调函数,第二参数是时间(毫秒数)
+
+    // setInterval(function () {
+    //   console.log(this)
+    //   console.log(2)
+    // }, 1000)
+
+    // var width = 100;
+    // setInterval(function () {
+    //   width += 20;
+    //   box.style.width = width + "px"
+    // }, 13)
+
+
+    // 二.清除定时器
+    // clearTimeout  clearInteve()
+    // 没开启一个定时器都会返回这个定时器是id数字我们通过定时器id数字清除定时器
+
+    // var time1 = setTimeout(function () {
+
+    //   clearTimeout(time2)
+    //   console.log('aa')
+    // }, 1000)
+    // console.log(time1)
+
+    // var time2 = setTimeout(function () {
+    //   console.log('bb')
+    // }, 2000)
+    // console.log(time2)
+
+    // var time1 = setInterval(function () {
+
+    //   // clearTimeout(time2)
+    //   console.log('aa')
+    // }, 1000)
+
+    // var time1 = setInterval(function () {
+
+    //   console.log('bb')
+    // }, 2000)
+
+    // clearInterval(time1)
+
+    // 三 关于定时器的参数
+    // 定时器可以接受多个参数
+
+    // 1. 第一个参数就是回调函数,必须传,不传就没什么意义了
+    // 2. 第二个参数,是定时器执行的毫秒数,可以不传,不会报错,感觉起来是立即执行的,其实不是
+    // setTimeout(function () { console.log(1) })
+    // 3. 从第三个参数开始所有的参数都将会是回调函数的实参
+
+    // setTimeout(function (a, b) {
+    //   console.log(a, b)
+    // }, 1000, 10, 'wuwei')
+
+    // HTML5 标准的规范,setTimeout()的第二个参数的最小值,不得低于4毫秒,如果低于这个值
+    // 那么就会自动增加,
+
+
+    // 四.关于定时器的第一个参数
+    // 1.匿名函数
+    // setTimeout(function () {
+    //   console.log(1)
+    // }, 1000)
+
+    // 2.有名函数
+    // setTimeout(function haha() {
+    //   console.log(num)
+    // }, 1000)
+
+    // 3.有名函数的函数名
+    // function hh() {
+    //   console.log(1)
+    // }
+    // setTimeout(hh, 1000)
+
+    // 4.能够被当成js语句执行的字符串
+    // setTimeout("console.log(20)", 1000)
+
+    // function hh() {
+    //   console.log(1)
+    // }
+    // setTimeout("hh()", 1000)
+
+
+  </script>
+
+</body>
+
+</html>

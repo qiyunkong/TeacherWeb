@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="keywords" content="关键词">
+  <meta name="description" content="描述">
+  <meta name="author" content="">
+  <style>
+    body {
+      font-family: "Microsoft YaHei", serif;
+    }
+
+    body,
+    dl,
+    dd,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+
+    ol,
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+
+    #wrap {
+      margin: 50px;
+      font-size: 30px;
+    }
+
+    #wrap span {
+      color: #f00;
+      font-weight: bolder;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <!-- 距离元旦还有 <span>0</span> 天 <span>0</span> 小时<span>0</span> 分 <span>0</span>秒 -->
+  </div>
+  <div id="box">
+	  距离元旦还有 <span>0</span> 天 <span>0</span> 小时<span>0</span> 分 <span>0</span>秒
+  </div>
+  <script>
+    // 获取元素
+    var oWrap = document.getElementById("wrap");
+	//自己
+	var oBox = document.getElementById("box");
+
+	//获取明天0点时间戳
+
+    // 获取元旦的时间戳
+    var yuandan = new Date(new Date().getFullYear()+1, 1, 1)
+	//明天的时间
+	//var mingtian = new Date(new Date().getFullYear(), new Date().getMonth()-1, new Date().getDate());
+	var now = new Date();
+	var ts_end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 24, 0, 0);
+
+	console.log(yuandan);
+	console.log(ts_end);	
+
+    // 定时器
+    setInterval(fn, 1000);
+
+    // 时间改变函数
+    function fn() {
+      var date = yuandan - new Date();
+	  var date2 = ts_end -new Date();
+      var DD = Math.floor(date / (24 * 60 * 60 * 1000));
+      var HH = Math.floor(date / (60 * 60 * 1000) % 24);
+      var MM = Math.floor(date / (60 * 1000) % 60);
+      var SS = Math.floor(date / 1000 % 60);
+
+	  //var DD = Math.floor(date2 / (24 * 60 * 60 * 1000));
+      var HH2 = Math.floor(date2 / (60 * 60 * 1000) % 24);
+      var MM2 = Math.floor(date2 / (60 * 1000) % 60);
+      var SS2 = Math.floor(date2 / 1000 % 60);
+
+      // 判断如果是个位数的我们要拼接0变成两位数
+
+      // if (DD < 10) DD = "0" + DD
+      // if (HH < 10) HH = "0" + HH
+      // if (MM < 10) MM = "0" + MM
+      // if (SS < 10) SS = "0" + SS
+      DD = toTwo(DD)
+      HH = toTwo(HH)
+      MM = toTwo(MM)
+      SS = toTwo(SS)
+
+      /*HH2 = toTwo(HH2)
+      MM2 = toTwo(MM2)
+      SS2 = toTwo(SS2)*/
+
+      // console.log(DD, HH, MM, SS)
+      oWrap.innerHTML = "距离元旦还有 <span>" + DD + "</span> 天 <span>" + HH + "</span> 小时<span>" + MM + "</span> 分 <span>" + SS + "</span>秒"
+	  oBox.innerHTML =   "距离元旦还有 <span>" + HH2 + "</span> 小时<span>" + MM2 + "</span> 分 <span>" + SS2 + "</span>秒";
+
+    }
+
+    function toTwo(num) {
+      // if (num < 10) {
+      //   return "0" + num
+      // } else {
+      //   return "" + num
+      // }
+      return (num < 10 ? "0" : "") + num
+    }
+	let startTime1 = new Date(new Date(new Date().toLocaleDateString()).getTime());
+	console.log(startTime1);
+
+	//2019-09-13 00:00:00
+		/*var now = new Date();
+		now.setDate( now.getDate()+2 );
+		var ts_end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
+		function timer(){
+			var ts = ts_end - (new Date());
+			var dd = parseInt(ts / 1000 / 60 / 60 / 24, 10);
+			var hh = parseInt(ts / 1000 / 60 / 60 % 24, 10);
+			var mm = parseInt(ts / 1000 / 60 % 60, 10);
+			var ss = parseInt(ts / 1000 % 60, 10);
+			dd = checkTime(dd);
+			hh = checkTime(hh);
+			mm = checkTime(mm);
+			ss = checkTime(ss);
+			$('#xsth .h').html(hh);
+			$('#xsth .m').html(mm);
+			$('#xsth .s').html(ss);
+		}
+		*/
+	/*function checkTime(i){  
+			return  i < 10 ? "0" + i : i; 
+		}*/
+  </script>
+</body>
+
+</html>

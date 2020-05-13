@@ -1,0 +1,579 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>please enter your title</title>
+	<meta charset="utf-8">
+	<meta name="Author" content="">
+	<style type='text/css'>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			overflow: hidden;
+		}
+
+		#btn {
+			position: relative;
+			left: 50%;
+			margin-top: 50px;
+		}
+
+		#wrap {
+			position: relative;
+			margin: 0px auto;
+			background: url(img/block.gif);
+		}
+
+		#wrap div {
+			position: absolute;
+			width: 35px;
+			height: 35px;
+			transition: .1s;
+		}
+
+		#wrap div img {
+			position: absolute;
+			bottom: 0;
+		}
+
+		#wrap div.ball img {
+			left: 50%;
+			bottom: 50%;
+			margin-left: -15px;
+			margin-bottom: -15px;
+		}
+
+
+		#wrap div.person img {
+			left: 50%;
+			margin-left: -25px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="btn">
+
+		<input type="button" id="auto" value="哥！救我！" />
+		<input type="button" id="prev" value='上一步' />
+
+		<input type="button" id="nextLevel" value="下一关" />
+		<input type="button" id="prevLevel" value="上一关" />
+	</div>
+	<div id="wrap"></div>
+
+	<script>
+		//获取元素
+		var oWrap = document.getElementById('wrap');
+
+		// 地图大小
+		var size = {
+			x: 16,
+			y: 16
+		}
+
+		// 第几关
+		var level = 0;
+
+		// 关卡数据
+		var mapData = [
+			// 第一关的数据
+			[
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 1, 1, 3, 0, 3, 2, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 2, 0, 3, 4, 1, 1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 1, 1, 1, 3, 1, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			],
+
+			// 第二关
+			[
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 4, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 0, 3, 3, 1, 0, 1, 1, 1, 0, 0, 0,
+				0, 0, 0, 0, 1, 0, 3, 0, 1, 0, 1, 2, 1, 0, 0, 0,
+				0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 2, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+			],
+			// 第三个数据
+			[
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1, 0, 0, 0,
+				0, 0, 0, 0, 1, 1, 0, 0, 3, 2, 2, 2, 1, 0, 0, 0,
+				0, 0, 0, 0, 1, 0, 0, 3, 0, 1, 5, 2, 1, 0, 0, 0,
+				0, 0, 0, 1, 1, 0, 1, 1, 3, 1, 0, 1, 1, 0, 0, 0,
+				0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 3, 0, 1, 0, 0, 0,
+				0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0,
+				0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 4, 0, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+			],
+			// 第四个数据
+			[
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 4, 1, 1, 0, 0, 0,
+				0, 0, 0, 0, 1, 2, 2, 2, 2, 1, 3, 0, 1, 1, 0, 0,
+				0, 0, 0, 0, 1, 2, 2, 2, 2, 1, 0, 3, 0, 1, 0, 0,
+				0, 0, 0, 0, 1, 2, 2, 2, 2, 0, 3, 0, 0, 1, 0, 0,
+				0, 0, 0, 0, 1, 0, 2, 2, 2, 1, 0, 0, 0, 1, 0, 0,
+				1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0,
+				1, 0, 3, 0, 3, 0, 0, 0, 3, 0, 0, 1, 0, 0, 1, 0,
+				1, 0, 0, 0, 0, 3, 3, 0, 0, 0, 3, 0, 3, 0, 1, 0,
+				1, 1, 1, 0, 3, 0, 3, 0, 3, 0, 0, 1, 1, 1, 1, 0,
+				0, 0, 1, 1, 0, 0, 0, 3, 0, 3, 0, 1, 0, 0, 0, 0,
+				0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+				0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+			]
+		]
+
+
+		// 定义一个步骤的次数统计
+		var stepNum = 0;
+
+		// 步骤的存储器
+		var step = {
+			// 保存人物步骤的存储
+			person: [],
+			// 保存箱子的存储
+			box: []
+		}
+
+
+		// 自动过关
+		var auto = [
+			[40, 38, 37, 37, 39, 38, 38, 40, 39, 39],
+			[],
+			[],
+		]
+
+		// 初始化
+		init()
+
+		// 初始化游戏
+		function init() {
+			// console.log(1)
+			// 初始化地图大小(宽高)
+			oWrap.style.cssText = "width:" + size.x * 35 + "px;height:" + size.y * 35 + "px;"
+
+			// 上一步
+			document.getElementById("prev").onclick = prev;
+
+			// 上一关
+			document.getElementById("prevLevel").onclick = function () {
+				if (level <= 0) return;
+				level--;
+				createMap(level);
+			}
+
+			// 下一关
+			document.getElementById("nextLevel").onclick = function () {
+
+				if (level <= mapData.length - 2) {
+					level++
+				} else {
+					alert("恭喜你,你已经全部通关了")
+					level = 0
+				}
+				createMap(level)
+			}
+
+			// 自动过关
+			document.getElementById("auto").onclick = function () {
+				// 创建地图
+				createMap(level);
+
+				// 获取人物
+				var oParent = getBox('person')[0];
+				// 获取人物的图片信息
+				var oP = oParent.children[0];
+
+				// 计数器
+				var kNum = 0;
+
+				// 开启一个定时器
+				var timer = setInterval(function () {
+					var keycode = auto[level][kNum];
+					controlFn(oP, oParent, keycode);
+
+					// 计数器增加
+					kNum++;
+
+					// 判断清楚定时器
+					if (kNum == auto[level].length) {
+						clearInterval(timer)
+					}
+				}, 500)
+			}
+
+			// 创建地图
+			createMap(level)
+		}
+
+		// 创建地图
+		function createMap(lv) {
+			// console.log(lv)
+
+			// 创建使用变量
+			var oPerson, oDiv, oImg;
+
+			// 清空地图信息
+			oWrap.innerHTML = "";
+
+			// 清除所有的步骤信息
+			step.person = [];
+			step.box = [];
+			stepNum = 0;
+
+			// 需要创建16*16个小格子
+			for (var i = 0; i < size.x * size.y; i++) {
+				switch (mapData[lv][i]) {
+					case 1:
+						appDiv(i);
+						oDiv.className = "wall"
+						oImg.src = 'img/wall.png'
+						break;
+					case 2:
+						appDiv(i)
+						oDiv.className = "ball"
+						oImg.src = 'img/ball.png'
+						break;
+					case 3:
+						appDiv(i)
+						oDiv.className = "box"
+						oImg.src = 'img/box.png'
+						break;
+					case 4:
+						appDiv(i)
+						oDiv.className = "person";
+						oImg.src = 'img/down.png';
+						oPerson = oImg;
+						break;
+				}
+			}
+
+
+			// 创建div与div里面img标签
+			function appDiv(i) {
+				// 计算当前创建的div的位置在哪里
+				var x = i % size.x;
+				var y = parseInt(i / size.x);
+				// console.log(x, y)
+
+				oDiv = document.createElement("div");
+
+				// 让div记录自己所在的位置
+				oDiv.x = x;
+				oDiv.y = y;
+				oDiv.style.cssText = "left:" + x * 35 + "px;top:" + y * 35 + "px;z-index:" + (y * size.x) + ";"
+
+				oImg = new Image();
+
+				oDiv.appendChild(oImg);
+				oWrap.appendChild(oDiv)
+			}
+
+
+			// console.log(oPerson)
+
+			controlPerson(oPerson)
+		}
+
+
+		// 定义人物运动的控制器
+		function controlPerson(oP) {
+
+			var oParent = oP.parentNode;
+
+			// 绑定键盘按下事件
+			document.onkeydown = function (ev) {
+				ev = ev || window.event;
+
+				// 获取键码
+				var keycode = ev.keyCode;
+
+				controlFn(oP, oParent, keycode)
+			}
+		}
+
+		// 控制人物运动的函数
+		function controlFn(oP, oParent, keycode) {
+			// 记录人物运动的信息,只要你键盘一按,就理解在记录人物运动的数组中创建一个对象,记录人物信息
+			step.person[stepNum] = {};
+			step.person[stepNum].src = oP.src;
+
+			//  判断按键方向
+			switch (keycode) {
+				// 左方向
+				case 37:
+					oP.src = 'img/left.png';
+					movePerson({ x: -1 }, oParent)
+					break;
+				// 上方向
+				case 38:
+					oP.src = 'img/up.png';
+					movePerson({ y: -1 }, oParent)
+					break;
+				// 右方向
+				case 39:
+					oP.src = 'img/right.png';
+					movePerson({ x: 1 }, oParent)
+					break;
+				// 下方向
+				case 40:
+					oP.src = 'img/down.png';
+					movePerson({ y: 1 }, oParent)
+					break;
+			}
+		}
+
+
+		// 人物运动
+		function movePerson(mJson, oParent) {
+			// console.log(oParent.x, oParent.y)
+			var x = mJson.x || 0;
+			var y = mJson.y || 0;
+
+			// 获取所有的箱子
+			var aBox = getBox('box', oWrap);
+			// console.log(aBox)
+
+			// 判断下一步的位置是不是墙壁,如果不是就运动,如果是,那么就不能运动
+			if (mapData[level][(oParent.x + x) + (oParent.y + y) * size.x] !== 1) {
+				// 记录人物运动前的定位信息
+				step.person[stepNum].x = oParent.x;
+				step.person[stepNum].y = oParent.y;
+
+				// 人物运动
+				oParent.x += x;
+				oParent.y += y;
+				oParent.style.left = oParent.x * 35 + 'px';
+				oParent.style.top = oParent.y * 35 + 'px';
+				oParent.style.zIndex = oParent.x + oParent.y * size.x;
+
+
+				// 人物运动完成以后,步骤加一
+				stepNum++;
+
+				// 判断你的下一步是不是箱子
+				for (var i = 0; i < aBox.length; i++) {
+
+					// 判断人物运动的下一步的位置是箱子
+					if (aBox[i].x == oParent.x && aBox[i].y == oParent.y) {
+
+
+						// 判断箱子的下一步是不是墙壁
+						if (mapData[level][(aBox[i].x + x) + (aBox[i].y + y) * size.x] !== 1) {
+							// 箱子的下一步不是墙壁
+
+
+							// 判断箱子的下一步是不是另外一个箱子
+							if (collision(aBox[i], x, y)) {   // 如果为true说明移动 箱子下一步不是箱子
+
+								// 记录箱子的运动步骤信息
+								step.box[stepNum - 1] = {};
+								step.box[stepNum - 1].x = aBox[i].x;
+								step.box[stepNum - 1].y = aBox[i].y;
+								step.box[stepNum - 1].index = i;
+
+								// 移动的下一步既不是墙壁也不是箱子就应该让箱子也进行移动
+								aBox[i].x += x;
+								aBox[i].y += y;
+								aBox[i].style.left = aBox[i].x * 35 + 'px';
+								aBox[i].style.top = aBox[i].y * 35 + 'px';
+								aBox[i].style.zIndex = aBox[i].x + aBox[i].y * size.x;
+
+								// 检测是否过关
+								// setTimeout(pass, 1000)
+								pass()
+							} else {
+
+								// 如果箱子的下一步是箱子,那么移动的箱子将不进行移动,
+								// 同时已经移动后的人物将退回原位
+								oParent.x -= x;
+								oParent.y -= y;
+								oParent.style.left = oParent.x * 35 + 'px';
+								oParent.style.top = oParent.y * 35 + 'px';
+								oParent.style.zIndex = oParent.x + oParent.y * size.x;
+
+								// 人物回退,减掉步骤信息
+								stepNum--;
+								step.person.pop();
+							}
+
+						} else {
+							// 箱子的下一步是墙壁,那么就不能让人物进行移动
+							oParent.x -= x;
+							oParent.y -= y;
+							oParent.style.left = oParent.x * 35 + 'px';
+							oParent.style.top = oParent.y * 35 + 'px';
+							oParent.style.zIndex = oParent.x + oParent.y * size.x;
+
+							// 人物回退,减掉步骤信息
+							stepNum--;
+							step.person.pop();
+						}
+					}
+				}
+
+			}
+		}
+
+		// 获取所有box箱子的个数
+		function getBox(cName, obj) {
+			obj = obj || document;
+
+			// 判断用户使用浏览器是不是支持class类名获取元素
+			if (obj.getElementsByClassName) {
+				return obj.getElementsByClassName(cName)
+			} else {
+				var arr = [];
+				var arrT = obj.getElementsByTagName('*');
+				for (var i = 0; i < arrT.length; i++) {
+					// 切割获取标签的数组
+					var arrTArr = arrT[i].className.split(' ');
+					for (var j = 0; j < arrTArr.length; j++) {
+						if (arrTArr[j] == cName) {
+							arr.push(arrT[i]);
+							break;
+						}
+					}
+				}
+
+				return arr;
+			}
+		}
+
+
+		// 箱子和箱子是不是碰撞了,说白了就是检测箱子移动下一步是不是箱子
+		// 如果箱子移动后的位置有箱子就返回false, 否则返回true;
+		function collision(obj, x, y) {
+			// 获取所有的箱子
+			var aBox = getBox('box', oWrap);
+
+			// 循环遍历所有的箱子
+			for (var i = 0; i < aBox.length; i++) {
+				if (aBox[i] !== obj) { // 取消要移动的箱子自身
+
+					// 如果obj移动的箱子移动后的位置和遍历的某个箱子的坐标相同,那么说明箱子碰撞了
+					if ((obj.x + x) === aBox[i].x && (obj.y + y) === aBox[i].y) {
+						return false;
+					}
+				}
+			}
+
+			return true;
+		}
+
+
+		// 检查是否过关
+		// 过关的条件是左右小球的位置和所有箱子的位置一一对应
+		function pass() {
+
+			// 获取所有的小球和箱子
+			var aBox = getBox('box', oWrap);
+			var aBall = getBox('ball', oWrap);
+
+			var passNum = 0;
+
+			// 循环遍历所有的小球
+			for (var i = 0; i < aBall.length; i++) {
+				// 循环遍历所有的箱子
+				for (var j = 0; j < aBox.length; j++) {
+					// 判断所有的小球和箱子的位置是不是一样的
+					if (aBall[i].x === aBox[j].x && aBall[i].y === aBox[j].y) {
+						passNum++;
+					}
+				}
+			}
+
+			// 所有的for循环结束后,判断我们用于记录小球和箱子位置一样的计数器的个数和小球的个数是不是一样
+			// 判断是否过关
+			if (passNum == aBall.length) {
+				if (level <= mapData.length - 2) {
+					alert('你过关了');
+					level++;
+				} else {
+					alert("你通全关了");
+					level = 0;
+				}
+				createMap(level)
+			}
+
+		}
+
+
+		// 定义上一步的函数
+		function prev() {
+			// 获取人物
+			var oPerson = getBox('person', oWrap)[0];
+			// 获取所有盒子
+			var aBox = getBox('box', oWrap);
+			// 定义盒子的变量
+			var oBoxNow;
+
+			// 判断你的步骤不为0
+			if (stepNum == 0) return
+			//  通过step.person 来获取人物的上一步的位置
+			oPerson.x = step.person[stepNum - 1].x;
+			oPerson.y = step.person[stepNum - 1].y;
+
+			// 通过人物的位置让人物进行回退
+			oPerson.style.left = oPerson.x * 35 + 'px';
+			oPerson.style.top = oPerson.y * 35 + 'px';
+			oPerson.style.zIndex = oPerson.x + oPerson.y * size.x;
+			oPerson.children[0].src = step.person[stepNum - 1].src;
+
+			// 判断盒子有没有移动
+			if (step.box[stepNum - 1]) {
+				// 通过记录盒子的下标来查询到对应移动的盒子
+				oBoxNow = aBox[step.box[stepNum - 1].index];
+				oBoxNow.x = step.box[stepNum - 1].x;
+				oBoxNow.y = step.box[stepNum - 1].y;
+
+				// 设置盒子的回退
+				oBoxNow.style.left = oBoxNow.x * 35 + 'px';
+				oBoxNow.style.top = oBoxNow.y * 35 + 'px';
+				oBoxNow.style.zIndex = oBoxNow.x + oBoxNow.y * size.x;
+			}
+
+			stepNum--;
+
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 特殊的运算符 + 
+    // 基本的功能是作为数字加法
+    // var a = 10;
+    // var b = 2;
+    // console.log(a + b);
+
+    // 字符串的拼接
+    // var a = "10";
+    // var b = 2;
+    // console.log(typeof (a + b));
+
+    // var a = 10;
+    // var b = 2;
+    // console.log('a' + b);
+
+    // var a = 8;
+    // var b = 2;
+    // var c = 5;
+    // console.log('a' + a + b + 'c')
+    // console.log('a' + (a + b) + 'c')
+
+    // 数据类型转换
+    // alert('dsf')
+    // var num = prompt('请输入你的手机号码');
+    // alert('你的手机号码是' + num)
+    // console.log(typeof num)
+
+
+    //计算器
+    // var a = prompt('请输入第一个数字');
+    // var b = prompt('请输入第二个数字');
+
+    // var sum = Number(a) + Number(b);
+    // alert(sum)
+
+    // 转number类型
+
+    // 1. Number() 
+    // string => number  '123'=> 123 '12px' => NaN ''=>0
+    // boolean => number   true => 1 false => 0
+    // undefined => number   undefined => NaN
+    // null  => number       null =>0 
+    // var a = Number(null);
+    // console.log(a)
+
+    // console.log(typeof '123')
+    // console.log(typeof Number('123'))
+
+
+    // parseInt();
+    // console.log(parseInt('12'))
+    // console.log(parseInt('12.345'))
+    // console.log(parseInt('12年都喜1122欢你'))
+    // console.log(parseInt('12px12'))
+    // console.log(parseInt(12.5))
+    // console.log(parseInt(12.5))
+    // console.log(parseInt('-12.5'))
+    // console.log(parseInt('-12.5'))
+    // console.log(parseInt('12-11'))
+    // console.log(parseInt('020'));
+    // console.log(parseInt(true));
+    // console.log(parseInt(false));
+    // console.log(parseInt(undefined));
+    // console.log(parseInt(null));
+
+
+    //parseFloat()
+    // console.log(parseFloat('123.56.78.88.10'))
+    // console.log(parseFloat('123a.56.78.88.10'))
+    // console.log(parseFloat(123.56))
+    // console.log(parseFloat(true));
+    // console.log(parseFloat('13:14'));
+
+    // 无论parseInt  还是parseFloat 结果是number类型
+
+
+    // + - 正负号
+    // 隐藏先调用了Number  然后在加上+ 或者 -
+    // console.log(-'123.55a');
+    // console.log(-true);
+    // console.log(-false);
+
+    // 以上学的是如何转数字类型
+
+
+    // 判断是不是NaN
+    // isNaN   结果是布尔值
+
+    // 暗含的一步是会先将括号里面的先调用Number
+    // console.log(isNaN(NaN))
+    // console.log(isNaN(12))
+    // console.log(isNaN('12a'))
+    // console.log(isNaN(true))
+    // console.log(isNaN(undefined))
+
+
+    //  转string字符串类型
+    // console.log('' + true)
+    // console.log('' + 123)
+    // console.log('' + undefined)
+    // console.log('' + null)
+
+    // 转boolean 布尔类型
+    // Boolean()
+
+    // 6种特殊情况,结果是false
+    console.log(Boolean(0));
+    console.log(Boolean(NaN));
+    console.log(Boolean(''));
+    console.log(Boolean(undefined));
+    console.log(Boolean(null));
+    console.log(Boolean(false));
+
+    // API 
+    // alert()
+    // prompt()
+    // console.log()
+    // Number()
+    // parseInt()
+    // parsetFloat()
+    // Boolean()
+    // typeof 'a'
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

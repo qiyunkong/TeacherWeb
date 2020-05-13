@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var v = "text";
+    // var reg = new RegExp(v);
+    var reg = /^text/img
+
+    var str = "This is \nText Text"
+    console.log(str.match(reg))
+
+    // if (/text/i.test(str)) {
+    //   console.log(1)
+    // }
+
+
+    /*
+      var str = "你是一个能\n \t \r牛逼的人物"
+      console.log(str)
+
+      // 正则表达式
+        正则并不是一个字符串,而是一种逻辑公式
+
+        公式: js给你提供的一些语法来书写这个东西,将这些语法组合在一起就形成一个公式
+        逻辑: 这些规则可以通过逻辑的不断变化他,从而形成不同的规则
+
+      创建一个正则表达式
+       RegExp   regular expression
+
+        1. 构造函数创建正则
+          var reg = new RegExp();
+          参数
+            第一个参数是匹配的规则,
+            第二参数是修饰符 i  m g
+
+        2. 字面量创建正则
+          var reg = /a/
+          var reg = /text/i
+
+        3.使用正则要注意的点
+          推荐使用字面量的方式,但是有些特殊情况下必须有构造函数的方法
+          比如:变量
+          var v = "text";
+          var reg = new RegExp(v);
+          var reg = /v/   如果是一个变量就不能使用字面量的方法
+
+      正则表达式的方法
+        1. test()
+          此方法表示字符串(参数)是否匹配我们的正则的规则
+
+          使用方式
+          reg.text(str)
+          参数: 需要查询(匹配)的字符串
+         返回值: 布尔值,匹配成功返回true,否则返回false
+
+        2.exec()
+          提取匹配成功的子字符串
+
+          使用方法
+          reg.exec(str)
+          参数:需要查询(匹配)的字符串
+          返回值
+            数组:数组的第一项就是第一次匹配成功的字符串,
+                index 是匹配成功的索引位置
+                input  是匹配的完整字符串
+
+      字符串可以传正则参数的方法
+        1.match()
+          如果正则不全局匹配,结果和exec的结果一样
+          如果正则是全局匹配,返回所有匹配成功的字符串组成的数组
+
+        2. search() 获取字符在字符串中的位置
+        3. split()   将字符串切割为数组
+        4.replace()  字符串替换
+
+      修饰符
+        1. i表示不区分大小写   ignoreCase
+        2. g表示全局匹配      global
+        3. m表示的是换行匹配  multiline
+
+      
+    */
+
+
+  </script>
+</body>
+
+</html>

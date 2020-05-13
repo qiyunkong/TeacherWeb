@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+  封装函数 获取字符串中的数字，并按照数组输出
+
+例如:
+
+输入returnArr('shdkfh1234cxj5665sdkj2121') 返回[1234,5665,2121]
+  */
+
+    function returnArr(str) {
+      var arr = [];
+      var len = str.length;
+      var num = 0, num2 = 0;
+      var a = 0, b = 0;
+
+      wuwei: for (var i = 0; i < len; i++) {
+        num = str.charCodeAt(i);
+        a = i;
+
+        if (48 <= num && num <= 57) {
+
+          for (var j = i; j < len; j++) {
+            num2 = str.charCodeAt(j);
+            if (!(48 <= num2 && num2 <= 57) || j == len - 1) {
+              b = j;
+              // b = j + 1
+
+              b = j == len - 1 ? j + 1 : j;
+              arr.push(str.slice(a, b));
+              i = j;
+              continue wuwei;
+            }
+          }
+        }
+      }
+
+
+
+      return arr;
+
+    }
+    var aa = 'shdkfh1234cxj5665sdkj2121' + 'a'
+    returnArr('shdkfh1234cxj5665sdkj2121')
+  </script>
+
+
+</body>
+
+</html>

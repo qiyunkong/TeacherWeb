@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style class="style">
+    .box {
+      overflow: auto;
+      width: 200px;
+      height: 200px;
+      border: 10px solid #000;
+      background-color: pink;
+    }
+
+    .box .scroll {
+      width: 400px;
+      height: 1000px;
+      background-color: blue;
+    }
+
+    .wrap {
+      height: 2000px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- <div class="wrap"></div> -->
+
+  </div>
+  <script>
+    // var style = document.getElementsByClassName("style")[0]
+    /*
+      新内容
+      一.获取浏览器窗口的尺寸
+          1. IE8 以上的主流浏览器
+            window.innerWidth(包含滚动条)
+            window.innerHeight(包含滚动条)
+
+          2. IE8及一下
+            (1.) 标准模式下使用(包含滚动条)
+                  在标准模式下是用怪异模式获取是不包含滚动条的值
+                document.documentElement.clientWidth
+                document.documentElement.clientHeight
+
+            (2.) 怪异模式下使用(不包含滚动条的宽度)
+                  在怪异模式下 使用标准模式值为0
+                document.body.clientWidth
+                document.body.clientHeight
+
+          3.
+     */
+
+    function getViewportOffset() {
+      if (window.innerWidth) {
+        return {
+          x: window.innerWidth,
+          y: window.innerHeight
+        }
+      } else {
+        if (document.compatMode == "BackCompat") {
+          // 这里面的是怪异模式
+          return {
+            x: document.body.clientWidth,
+            y: document.body.clientHeight
+          }
+        } else {
+          // 这就是标准模式
+          return {
+            x: document.documentElement.clientWidth,
+            y: document.documentElement.clientHeight
+          }
+        }
+      }
+    }
+  </script>
+
+</body>
+
+</html>

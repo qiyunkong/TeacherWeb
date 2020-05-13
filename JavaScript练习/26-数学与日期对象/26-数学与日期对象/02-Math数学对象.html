@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // console.log(Math.PI)
+    /*
+    一.Math 数学对象
+
+      属性
+        圆周率
+        Math.PI
+
+      方法
+        1. 随机数[0,1)   Math.random()
+
+        2. 获取最小值,返回参数的最小值
+          不传参数返回Infinity
+          因为是数学方法,所以需要传入数字类型参数,
+          如果不是数字类型的参数,会将参数转为数字类型
+          如果转不了就是NaN
+          如果你只传一个参数,那么返回值就是这个参数
+          通常都会传入两个以上的参数比较返回最小的
+          Math.min(10,20,5)
+
+        3. 获取最大值
+          不传参数返回-Infinity
+          因为是数学方法,所以需要传入数字类型参数,
+          如果不是数字类型的参数,会将参数转为数字类型
+          如果转不了就是NaN
+          如果你只传一个参数,那么返回值就是这个参数
+          通常都会传入两个以上的参数比较返回最小的
+          Math.max(10,20,30)
+
+        4. 向上取整
+          不传参数返回NaN
+          只接受一个参数,如果有多个参数,除了第一个后面的都会被忽略
+          Math.ceil(2.001)
+
+        5. 向下取整
+          不传参数返回NaN
+          只接受一个参数,如果有多个参数,除了第一个后面的都会被忽略
+          Math.floor(2.999)
+
+        6. 四舍五入
+          不传参数返回NaN
+          只接受一个参数,如果有多个参数,除了第一个后面的都会被忽略
+          Math.round(2.4999)
+
+        7. 绝对值
+          不传参数返回NaN
+          只接受一个参数,如果有多个参数,除了第一个后面的都会被忽略
+          Math.abs(-3.5)
+
+      其他方法
+        1. 正弦值
+        参数为弧度值    弧度制 2*Math.PI = 360deg
+        Math.sin(Math.PI/6)
+
+        2. 余弦值
+        参数为弧度值    弧度制 2*Math.PI = 360deg
+        Math.cos(Math.PI/6)
+
+        3. 正切值
+        参数为弧度值    弧度制 2*Math.PI = 360deg
+        Math.tan(Math.PI/6)
+
+        4. x的y次幂
+        接受两个参数,如果传入多个会被忽略
+        如果值传一个参数,或者不传返回NaN
+        x,y支持负数
+        Math.pow(x,y)  x的y次方
+
+        5.开方
+        接受一个参数,传入多个会忽略
+        不传返回NaN
+        Math.sqrt(x)
+
+    */
+
+    // function unique() {
+    //   var str = "0123456789abcdefghiJklmnpoqrstuvwsyzABCDEFGHjKLMNPQRSTUVWSYZ";
+    //   var newStr = ""
+    //   for (var i = 0; i < 4; i++) {
+    //     var random = str[Math.floor(Math.random() * str.length)]
+    //     if (newStr.indexOf(random) == -1) {
+    //       newStr += random;
+    //     } else {
+    //       i--;
+    //       continue;
+    //     }
+    //   }
+    //   return newStr;
+    // }
+
+  </script>
+</body>
+
+</html>

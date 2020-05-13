@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 数组的常用方法
+    // 一.数组的头尾操作// (都会修改原数组)
+    // push(),pop(),shift(),unshift()
+    // var arr = [1, 2, 3]
+
+    // 1. push() 在数组的后面添加一个或者多个数据
+    // arr.push(value[,value2[,value3...]])
+    // arr 就是要操作的数组
+    // value 要向数组中添加的数据
+
+    // 方法会修改原数组: 在原数组的最后添加内容
+
+    // 方法的返回值: 返回是新数组的length
+    // var arr = ["东", "南", "西", "北"]
+    // // var num = arr.push("中")
+    // var num = arr.push("中", "发", "白")
+
+    // 2.pop()  删除数组最后一个数据
+    // arr.pop() 这个方法没有参数
+
+    // 是否改变原数组: 改变原数组
+
+    // 返回值是什么: 返回的是删掉的那个数据
+    // var arr = ["东", "南", "西", "北"]
+    // var item = arr.pop()
+
+    // 3.unshift() 在数组的前面添加一个或者多个数据
+    // arr.unshift(value[, value2[, value3...]])
+    // 参数是需要添加的数据
+
+    // 是否改变原数组: 会改变原数组
+
+    // 返回值: 返回新数组的length值
+    // var arr = ["东", "南", "西", "北"]
+    // // var num = arr.unshift("中")
+    // var num = arr.unshift("中", "发", "白")
+
+    // 4.shift() 删除数组的第一项数据
+
+    // 是否改变原数组: 会改变原数组
+
+    // 返回值: 返回新数组的被删除的数据
+    // var arr = ["东", "南", "西", "北"]
+    // var item = arr.shift()
+
+    // 二.合并数组的方法 (不修改原数组)
+    // 1.concat()
+    // arr.concat(value, [])
+
+    // 是否修改原数组:不会修改原数组
+
+    // 返回值: 返回的是合并后的新数组
+
+    // var arr1 = ["东", "南", "西", "北"]
+    // var arr2 = ["一条", "两条"]
+
+    // var newArr = arr1.concat(arr2);
+    // var newArr = arr1.concat(arr2, "一万", ["一筒", "二筒"]);
+    // 调用这个方法,首先会将arr1复制一份,让后讲所有的参数的数据添加到这个新的数组中,
+    // 并且返回这个新数组
+
+    // 三.截取方法
+    // 1. slice() 截取数组
+    // arr.slice(start[,end]);
+    // 在原数组上截取一个新的数组
+    // start 是开始截取的下标
+    // end   是结束的下标(不包含end对应的数据)
+    // [start,end)
+
+    // 是否修改原数组:不会修改原数组
+
+    // 返回值: 返回截取的新数组
+
+    // var arr = ["东", "南", "西", "北", "一条", "两条", "一筒", "二筒"];
+    // var arr2 = arr.slice(1, 4);
+    // var arr2 = arr.slice(1);
+
+    // 如果不传第二个参数表示从开始的下标截取到数组最后
+
+    // var arr2 = arr.slice(4, 1);  // 这个截取的是空数组,不会换位置
+    // var arr2 = arr.slice(-2); // 如果是负数,表示下标为length + (参数)
+    // var arr2 = arr.slice(-8, -2);
+
+
+    // 2. splice 多功能方法
+    // 截取(删除)  插入   替换
+
+    // 使用的方式
+    // arr.splice(index,cout[,item,item2])
+    // idnex.是开始操作的数组下标
+    // count 截取的数量
+    // item,item2 是截取完成以后向数组中添加的内容
+
+
+    // 是否修改原数组:会修改原数组
+
+    // 返回值: 返回截取的新数组(如果没有截取,也就是说第二个参数为0是,返回空数组)
+
+    // 2.1 截取
+    // var arr = ["东", "南", "西", "北", "一条", "两条", "一筒", "二筒"];
+    // var arr2 = arr.splice(2, 4)
+
+    // 2.2 插入(插入时的截取数量为0)
+    // var arr = ["东", "南", "西", "北", "一条", "两条", "一筒", "二筒"];
+    // var arr2 = arr.splice(2, 0, "无为", "哈哈")
+
+    // 2.3 替换(保持截取的数量换个插入的数据是一致的)
+    // var arr = ["东", "南", "西", "北", "一条", "两条", "一筒", "二筒"];
+    // var arr2 = arr.splice(2, 2, "无为", "哈哈")
+
+    // splice依据参数的多少和参数是什么才有的多功能的说法
+
+    // 2.4 删除
+    // var arr = ["东", "南", "西", "北", "一条", "两条", "一筒", "二筒"];
+    // arr.pop()
+    // arr.pop()
+    // arr.pop()
+    // arr.pop()
+    // var arr2 = arr.splice(-4)
+
+
+    // 四.数组的排序
+    // 1. 逆序 reverse()  把数组反过来(颠倒顺序)
+    // arr.reverse()  // 不需要传参数
+
+    // 是否修改原数组: 会修改原 数组
+
+    // 返回值: 返回值是修改后的新数组
+
+    // var arr2 = arr.reverse()
+
+
+    // 2. sort()  数组的排序方法
+    // 可以按照一定的规则排序
+    // arr.sort(fn) 参数是函数
+
+    // 是否修改原数组: 会修改原 数组
+
+    // 返回值: 返回值是修改后的新数组
+
+    // 如果不传参数按照字符编码值排序
+    // var arr = ["G", "A", "F", "D", "I", "C", "B", "W", "H"];
+    // var arr2 = arr.sort()
+
+
+    // var arr = [10, 12, 8, 21, 2, 17, 6, 9];
+    // arr.sort()
+    // arr.sort(function (a, b) {
+    //   // 如果return返回值> 0 那么a,b换位置
+    //   // 如果return返回值< 0 那么a,b不换位置
+    //   if (a < b) {
+    //     return -2
+    //   } else if (a > b) {
+    //     return 2
+    //   } else if (a == b) {
+    //     return 0
+    //   }
+
+    // })
+
+    // arr.sort(function (a, b) {
+    //   // 如果return返回值> 0 那么a,b换位置
+    //   // 如果return返回值< 0 那么a,b不换位置
+    //   // return a - b;   //  让数组从小到大排列
+    //   // return b - a  //  让数组从大到小排列
+    //   return Math.random() - 0.5;  // 随机排序
+    // })
+
+
+    //  五.数组拼接为字符串
+    // 1. join() 把数组拼接成字符串
+    // arr.join('')
+    // 参数是拼接字符串的规则
+
+    // 是否改变原数组: 不改变原数组
+
+    // 返回值: 返回的是拼接后的字符串
+
+    // var arr = ["A", "B", "C", "D"]
+    // // var str = arr.join();   //  如果不传参数,默认按,拼接
+    // // var str = arr.join("");   //  如果传的是空字符串,按照空字符串拼接
+    // var str = arr.join("无为");
+
+    // 六,数组的查询位置方法
+    // 1.indexOf  lastIndexOf
+    // 第一个参数是要查询的字符
+    // 第二个参数是从什么位置开始查询
+
+    // 是否改变原数组: 不改变原数组
+
+    // 返回值: 查到的字符串的下标
+    // var arr = ["A", "B", "C", "D", "D", "C", "B", "A"]
+    // var num = arr.indexOf("F", 2)
+    // 查询不到返回-1
+
+    // 七,判断是不是数组
+    // Array.isArray(arr)
+    // 判断arr是不是一个数组
+    // 如果是返回true, 不是返回false
+    // var arr = 3;
+    // var arr2 = []
+    // var num = Array.isArray(arr);    // false
+    // var num2 = Array.isArray(arr2);  // true
+
+
+
+  </script>
+</body>
+
+</html>

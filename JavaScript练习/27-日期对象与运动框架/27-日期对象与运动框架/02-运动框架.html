@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 200px;
+      opacity: 0;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+
+  <script>
+    var oBox = document.getElementById("box");
+
+    function animation(dom, attr, target, speed) {
+      var start = getStyle(dom, attr);
+      console.log(start)
+
+      var timer = setInterval(function () {
+        start = start + speed
+
+        if (attr == "opacity") {
+          dom.style[attr] = start;
+        } else {
+          dom.style[attr] = start + 'px';
+        }
+
+
+
+        if (start >= target) {
+          if (attr == "opacity") {
+            dom.style[attr] = target;
+          } else {
+            dom.style[attr] = target + 'px';
+          }
+          clearInterval(timer)
+        }
+      }, 20)
+
+
+    }
+
+    function getStyle(dom, attr) {
+      return window.getComputedStyle ? parseFloat(getComputedStyle(dom)[attr]) : parseFloat(dom.currentStyle[attr])
+    }
+
+
+    // animation(oBox, "width", 500, 2)
+    animation(oBox, "opacity", 1, 0.01)
+
+  </script>
+</body>
+
+</html>

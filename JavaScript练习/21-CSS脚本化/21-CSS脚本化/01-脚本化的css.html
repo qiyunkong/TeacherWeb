@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      /* width: 200px;
+      height: 200px;
+      padding: 50px; */
+      margin: 30px;
+      border: 10px solid #000;
+      background-color: red;
+    }
+
+    .box1 {
+
+      width: 500px;
+      height: 500px;
+      background-color: red;
+      padding: 50px;
+    }
+
+    .box2 {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      background-color: pink;
+      padding: 50px;
+    }
+
+    .box3 {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      padding: 50px;
+    }
+
+    p {
+      width: 50px;
+      height: 50px;
+      background-color: skyblue;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="box" id="box">dds</div> -->
+  <!-- <button id="btn">点击</button> -->
+
+  <div class="box1" id="box1">
+    <div class="box2" id="box2">
+      <div class="box3" id="box3">
+        <p id="p1"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 我们上节课学到getAttribute 和点操作符获取的都是行内样式
+    // var num = parseInt(getStyle(box, "width"))
+    // // var num = 200;
+    // btn.onclick = function () {
+    //   // box.style.width = "500px";
+    //   // var num = parseInt(window.getComputedStyle(box).width);
+    //   // var num = parseInt(window.getComputedStyle(box).width);
+    //   // var num = parseInt(box.currentStyle.width);
+    //   num += 20
+    //   console.log(num)
+    //   box.style.width = num + "px"
+    // }
+
+    // 我们看浏览器的能力
+    // function getStyle(ele, attr) {
+    //   if (window.getComputedStyle) {  // 判断支不支持getComputedStyle
+    //     // 主流浏览器
+    //     return getComputedStyle(ele)[attr]
+    //   } else {
+    //     // IE 低版本
+    //     return ele.currentStyle[attr]
+    //   }
+    // }
+
+    // function getStyle(ele, attr) {
+    //   if (ele.currentStyle) {   // 判断支不支持currentStyle
+    //     // IE 低版本
+    //     return ele.currentStyle[attr]
+    //   } else {
+    //     // 主流浏览器
+    //     return getComputedStyle(ele)[attr]
+    //   }
+    // }
+
+
+
+    /*
+      一.获取计算样式表
+        主流浏览器
+        1.window.getComputedStyle(ele,null).attr  IE8一下不兼容
+          // 获取的是计算样式表的对象
+          和ele.style  获取是是行内样式的随想
+
+          window.getComputedStyle(ele).width
+
+          ele.style 和getComputedStyle() 获取有连字符的样式, 一定要转成驼峰写法
+
+          window.getComputedStyle(ele,"after")
+
+
+        2.ele.currentStyle   IE 6,7,8 获取计算样式表的属性
+        box.currentStyle.widht
+
+        3.自己分装兼容
+        // function getStyle(ele, attr) {
+        //   if (ele.currentStyle) {   // 判断支不支持currentStyle
+        //     // IE 低版本
+        //     return ele.currentStyle[attr]
+        //   } else {
+        //     // 主流浏览器
+        //     return getComputedStyle(ele)[attr]
+        //   }
+        // }
+
+
+      二.关于位置和尺寸
+          DOM虽然给我们提供获取计算样式的方法,但是有的时候感觉还不是特别方便,
+          DOM又额外的给我们提供了一些API
+
+          1.获取元素的显示尺寸(数字类型)
+
+            1.1 显示宽高
+            ele.offsetWidth   // 元素的显示宽度
+              width + 左右padding + 左右border
+            ele.offsetHeight   // 元素的显示高度
+              height + 上下padding + 上下border
+
+
+            1.2 距离(常用的)
+              获取的是元素ele距离定位父级的左边与上边的距离
+              获取的是一个数字
+              ele.offsetLeft
+              ele.offsetTop
+
+              (1.)IE8,IE9+ Chrome等主流浏览器
+                每一个元素,天生都有一个属性,offsetParent
+                在自己的祖先元素中,找到离自己最近的,已经定位的元素,如果自己的祖先元素中没有定位
+                那么offsetParent  就是body
+
+              (2.)IE6,7
+                情况1. 自己如果没有定位属性,
+                      那么自己的offsetParent对象就是祖先元素
+                      离自己最近的有width或height的元素
+
+                情况2: 自己有定位属性
+                      那么自己offsetParent就是自己祖先元素中离自己最近的定位元素
+
+            1.3 clientWidth和clientHeight
+                clientWidth  获取是 width + 左右padding
+                clientHeight 获取是 heigh + 上下padding
+
+                如果盒子没有宽高和padding
+                主流浏览器:那么获取就是文字撑开的大小,
+                IE6,7 clientHeight就是0
+
+            以上的所学的6个都要铭记于心. offsetLeft offsetTop比较闹心
+
+            1.4 clientTop, clientLeft
+                这两个没什么意义,知道就行,不需要记
+                这两个获取都是左边框和上边框的值
+
+
+          2. 获取元素到文档的距离
+            封装方法
+              function getElePos(dom) {
+                var x = dom.offsetLeft;
+                var y = dom.offsetTop;
+                var parent = dom.offsetParent;
+
+                while (parent != null) {
+                  x += parent.offsetLeft;
+                  y += parent.offsetTop;
+                  parent = parent.offsetParent;
+                }
+
+                return {
+                  x: x,
+                  y: y
+                }
+              }
+
+              getElePos(p1)
+    */
+
+    function getElePos(dom) {
+      var x = dom.offsetLeft;
+      var y = dom.offsetTop;
+      var parent = dom.offsetParent;
+
+      while (parent != null) {
+        x += parent.offsetLeft;
+        y += parent.offsetTop;
+        parent = parent.offsetParent;
+      }
+
+      return {
+        x: x,
+        y: y
+      }
+    }
+
+    getElePos(p1)
+  </script>
+</body>
+
+
+</html>

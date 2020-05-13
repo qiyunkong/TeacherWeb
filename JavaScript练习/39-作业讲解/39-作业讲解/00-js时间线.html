@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      // box.onclick = function () {
+      //   this.style.background = 'skyblue'
+      // }
+      console.log(11)
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      box.onclick = function () {
+        this.style.background = 'skyblue'
+      }
+      console.log(22)
+    }, false)
+
+
+  </script>
+</head>
+
+
+<body>
+  <div id="box"></div>
+  <script>
+    // console.log(document.readyState)
+    // // window.onload = function () {
+    // //   console.log(document.readyState)
+    // // }
+    // document.onreadystatechange = function () {
+    //   console.log(document.readyState)
+    // }
+
+
+    // JS 时间线
+    /*
+      1.创建一个document,解析HTML和文本,把他们变成Element和Text节点,
+        document.readyState = 'loading';
+      2.如果此时遇到了link引入css样式表,浏览器会创建新的线程进行加载,同时继续解
+        析文档
+      3.如果遇到外部的js文件,没有设置async和defer属性,浏览器会加载同步js文件,
+        阻塞进程,等待js文件完成并执行该文件,然后在继续解析文档
+      4.如果遇到外部的js文件,并且设置了async和defer,浏览会创建新的线程去加载js
+        文件,同时继续解析文档,
+        defer会等到所有文档都解析完毕了以后才会执行这个js文件
+        async会在下载完毕以后会理解执行,执行期间会阻塞进程
+      5.如果你遇到了img,iframe 浏览器会在解析dom结构的时候,异步的加载src,同时
+        继续解析文档
+
+      6.当DOM解析完成以后,
+        document.readyState ="interactive"
+      7.文档解析完后以后,所有设置defer属性的脚本会按照顺序执行
+      8.document对象会触发DOMContentLoaded  事件,这也标志着程序从同步脚本执行
+        阶段,转为事件驱动阶段
+
+      9.当所有asyncd 的脚本加载完成并执行后,img等加载完成后,
+        document.readyState = 'complate',widnow对象会触发load事件()
+      10.从此,以异步响应的方式处理用户输入,已经网络事件
+
+    */
+    // 创建document对象
+    // 文档解析完成
+    // 文档加载完成
+
+
+    /*
+      1.defer
+      2.async
+      3.  var script = document.createElement("script");
+        script.src = "index.js";
+
+        script.onload = function () {
+
+        }
+        document.head.appendChild(script)
+
+
+    */
+
+  </script>
+</body>
+
+</html>

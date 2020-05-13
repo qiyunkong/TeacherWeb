@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" id="text">
+  <button id="btn">点击搜索一下</button>
+ <ul id="content"></ul>
+
+   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script>
+    var text = document.getElementById("text")
+    var ul = document.getElementById("content")
+    var btn = document.getElementById("btn")
+
+
+    text.oninput = function(){
+      // var script  = document.createElement("script");
+      // script.src= "?ie=utf-8&prod=pc&wd="+this.value+"&cb=wuwei"
+      // document.body.appendChild(script)
+      $.ajax({
+        url:"https://www.baidu.com/sugrec",
+        data:{
+          prod:'pc',
+          wd: this.value,
+          cb: 'success'
+        },
+        dataType:'jsonp',
+        jsonpCallback: 'success',
+        success: function(json){
+          // console.log(json)
+           var data = json.g || [];
+
+          ul.innerHTML = ""
+          data.forEach((item,index)=>{
+            if(index < 5){
+              ul.innerHTML += `
+              <li>
+              <a href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=2&ch=&tn=baiduhome_pg&bar=&wd=${item.q}&rsv_spt=1&oq=sdfsdf%25E6%25BC%25AB%25E7%2594%25BB&rsv_pq=d29cb249001a965a&rsv_t=a148VVRKfNIZARvPWAz2Fa%2BWpp89BdalWGDpDnWbaSKL%2FMBIdMCx5ra846mLLwJQHF9E&rqlang=cn&rsv_enter=1&rsv_dl=tb&inputT=747">
+              ${item.q}
+              </a>
+              </li>
+            `
+            }
+          })
+        }
+      })
+    }
+   
+
+    // 定义一个获取数据的参数
+    // function wuwei (json){
+      
+      // var data = json.g || [];
+
+      // ul.innerHTML = ""
+      // data.forEach((item,index)=>{
+      //   if(index < 5){
+      //     ul.innerHTML += `
+      //     <li>
+      //     <a href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=2&ch=&tn=baiduhome_pg&bar=&wd=${item.q}&rsv_spt=1&oq=sdfsdf%25E6%25BC%25AB%25E7%2594%25BB&rsv_pq=d29cb249001a965a&rsv_t=a148VVRKfNIZARvPWAz2Fa%2BWpp89BdalWGDpDnWbaSKL%2FMBIdMCx5ra846mLLwJQHF9E&rqlang=cn&rsv_enter=1&rsv_dl=tb&inputT=747">
+      //     ${item.q}
+      //     </a>
+      //     </li>
+      //   `
+      //   }
+      // })
+      
+    // }
+
+    btn.onclick = function(){
+      location.href = 'https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&rsv_idx=2&ch=&tn=baiduhome_pg&bar=&wd='+text.value+'&rsv_spt=1&oq=sdfsdf%25E6%25BC%25AB%25E7%2594%25BB&rsv_pq=d29cb249001a965a&rsv_t=a148VVRKfNIZARvPWAz2Fa%2BWpp89BdalWGDpDnWbaSKL%2FMBIdMCx5ra846mLLwJQHF9E&rqlang=cn&rsv_enter=1&rsv_dl=tb&inputT=747'
+    }
+    
+  </script>  
+  
+  <!-- <script src="./index.js"></script> -->
+</body>
+</html>

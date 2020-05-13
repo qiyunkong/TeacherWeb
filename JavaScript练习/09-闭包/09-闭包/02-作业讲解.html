@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 第一题
+
+    // 阶乘
+    function multiple(num) {
+      var result = 1;
+      // for (var i = 1; i <= num; i++) {
+      //   result *= i;
+      // }
+
+      for (var i = num; i >= 1; i--) {
+        result *= i;
+      }
+      return result;
+    }
+
+
+    // var sum = 0;
+    // for (var i = 1; i <= 10; i++) {
+    //   sum += multiple(i);
+    // }
+    // console.log(sum)
+
+
+    // 第二题
+    // 求一个三位数，该三位数等与其每位数字的阶乘之和等于他自己
+
+    // for (var i = 100; i <= 999; i++) {
+    //   var gewei = i % 10;
+    //   var shiwei = parseInt(i / 10) % 10;
+    //   var baiwei = parseInt(i / 100);
+
+    //   if (multiple(gewei) + multiple(shiwei) + multiple(baiwei) == i) {
+    //     console.log(i)
+    //   }
+    // }
+
+    // 第三题
+    // function rev(num) {
+    //   var result = 0;
+    //   while (num) {
+    //     result = result * 10 + num % 10;
+    //     num = parseInt(num / 10)
+    //   }
+    //   return result;
+    // }
+    // rev(12345)
+
+    // 第四题;
+    // 计算约数和
+    // function yueshuhe(num) {
+    //   var sum = 0;
+    //   for (var i = 1; i < num; i++) {
+    //     if (num % i == 0) sum += i;
+    //   }
+    //   return sum;
+    // }
+
+    // for (var a = 1; a <= 3000; a++) {
+    //   var b = yueshuhe(a);
+    //   if (a == yueshuhe(b) && a != b) {
+    //     console.log(a, b)
+    //   }
+    // }
+
+    // for (var a = 1; a <= 3000; a++) {
+    //   for (var b = 1; b <= 3000; b++) {
+    //     if (yueshuhe(a) == yueshuhe(b) && a != b) {
+    //       console.log(a, b)
+    //     }
+    //   }
+    // }
+
+    // 第六题
+    function reverse() {
+      var num = prompt('请输入数字');
+      console.log(num.length)
+      var str = ''
+      for (var i = num.length - 1; i >= 0; i--) {
+        str += transfer(num.charAt(i));
+      }
+      // console.log(str)
+      return str;
+    }
+    reverse()
+
+    function transfer(num) {
+      switch (num) {
+        case '1':
+          return '壹'
+        case '2':
+          return '贰'
+        case '3':
+          return '叁'
+        case '4':
+          return '肆'
+        case '5':
+          return '伍'
+        case '6':
+          return '陆'
+        case '7':
+          return '柒'
+        case '8':
+          return '捌'
+        case '9':
+          return '玖'
+        case '0':
+          return '零'
+      }
+    }
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

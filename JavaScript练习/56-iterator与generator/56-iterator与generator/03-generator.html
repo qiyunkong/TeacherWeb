@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script>
+  // [1,2,3]
+    // function * show(){
+    //   yield '无为你吃饭了吗';
+    //   yield '还没有,饿着呢';
+    //   yield '可能是下午吃多了'
+    // }
+    // var g1 = show()
+    // g1.next()
+
+    // for(let val of g1){
+    //   console.log(val)
+
+    // }
+
+  // 解构处理
+    // let [a,b,c] = g1
+
+    // 扩展运算符
+    // console.log(...g1)
+
+    // console.log(Array.from(g1))
+    /*
+      Generator 
+        就是ES6提供的一种异步解决方案,语法跟传统的函数完全不同
+
+       1. 区别
+          function  关键字和函数名之间需要有一个*
+          函数体内要使用yield表达式,定义内部不同状态
+          不能跟new操作符一起使用
+
+        2.语法
+        function * show(){
+            yield 语句1;
+            yield 语句2;
+          }
+    */
+
+
+    // 例子
+
+    function * gen(){
+      yield new Promise((resolve,reject) => {
+        $.ajax({
+          url: "https://jsonplaceholder.typicode.com/todos/1",
+          success: resolve,
+          error: reject
+        })
+      });
+      yield new Promise((resolve,reject) => {
+        $.ajax({
+          url: "https://jsonplaceholder.typicode.com/todos/2",
+          success: resolve,
+          error: reject
+        })
+      });
+      yield new Promise((resolve,reject) => {
+        $.ajax({
+          url: "https://jsonplaceholder.typicode.com/todos/3",
+          success: resolve,
+          error: reject
+        })
+      })
+    }
+
+
+    let g1 = gen();
+
+    g1.next().value.then(function (data){
+      console.log(data)
+      return g1.next().value
+    })
+    .then(function(data){
+      console.log(data)
+      return g1.next().value
+    })
+    .then(function(data){
+      console.log(data)
+    })
+
+
+
+
+
+  //  关于异步的解决方案
+  //  1. 回调函数
+  //  2. 事件监听
+  //  3. 订阅/发布
+  //  4. Promsise
+  //  5. Generator
+  //  6. ES 2017  async
+  </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <!-- 这是一个注释 -->
+  <div id="box" class="wuwei" aa='aa' style="color:pink">
+    <p>wuwei</p>
+    <div>wuwei</div>
+    <p>wuwei</p>
+    <span>wuwei</span>
+    <!--  -->
+  </div>
+  <div id="" class="wuwei">
+
+
+  </div>
+  <span> aa</span>
+
+  <script>
+    // ECMAScript
+    // DOM
+    // BOM
+
+    // Document Object Model  文档对象模型
+    // 去取网页中的元素  css样式 事件 运动 元素尺寸 节点
+    // DOM 知识体系是很庞大 
+
+    // 1. DOM 节点的分类
+    // 元素节点 1
+    // 属性节点 2
+    // 文本节点 3
+    // 注释节点 8
+    // document 文档节点 9
+    // DocumentFragment 文档片段节点 11
+
+    // 2. DOM节点属性
+    // 2.1 nodeName  普通节点就是标签名大写(只读属性)
+    // 2.2 nodeValue  文本节点和注释节点的内容(可读可写)
+    // 2.3 nodeType   节点的类型(只读)
+    // 2.4 attributes 获取元素节点的属性集合(可读可写)
+    //  获取的是一个对象 对象存的是属性名的集合
+    //  要先通过属性名那个完整额属性名和值
+    //  然后加上name  获取属性名, value获取属性值
+
+    // 3. 获取元素
+    // 3.1 document  获取文档对象
+    // 3.2 document.documentElement   获取的是html标签
+    // 3.3 document.head   获取head标签
+    // 3.4 document.body    获取body元素
+
+    // 3.5 document.getElementById("id名")  获取单个元素
+    // 3.6 document.getElmentsByName("name名") 
+    //       通过name获取元素怒 表单 表单元素 img iframe
+    //       是这里获取的是一个类数组(获取的是多个值)
+    // 3.7 document.getElementsByClassName("class类名");
+    // 通过标签名class名获取,类数组(IE8及一下)
+    // 3.8 document.getElementsByTagName("标签名")
+    // 通过标签名获取元素,类数组
+
+
+    //  3.9 document.querySelctor("CSS选择器")   "IE 7及一下不兼容"
+    // 获取的是一个元素,在手机端,放心使用
+    //  3.10 document.querySelectorAll("css选择器") 
+    // 获取的是多个 是类数组
+
+    // 可以连续get调用
+
+
+    // 动态获取和静态获取
+    // get系列都是动态获取, 每次使用的时候重新获取
+    // query 系列是静态获取, 也就是存的是快照
+
+    // var box = document.getElementsByClassName("wuwei");
+    // var box = document.querySelectorAll(".wuwei");
+
+    // console.log(box)
+
+    // setTimeout(function () {
+    //   var div = document.createElement("div");
+    //   div.className = "wuwei";
+    //   document.body.appendChild(div)
+    // }, 2000)
+
+    // setTimeout(function () {
+    //   console.log(box)
+    // }, 3000)
+
+
+    // 4. 操作节点
+    // 4.1基于DOM树来操作
+    // parentNode(父节点,最顶端的父节点是#document,document的父节点是null)
+    // childNodes 子节点(获取的是类数组 是多个)
+    // firstChild 第一个子节点
+    // lastChild  最后一个子节点
+    // nextSibling  下一个兄弟节点(不限制节点类型)如果是最后一个null
+    // previousSibling 上一个兄弟节点(不限制节点类型)
+
+    var box = document.getElementById("box");
+    console.log(box.parentNode);  //  获取父节点
+    console.log(box.childNodes)  // 子节点(不相等节点的类型)
+    console.log(box.firstChild)
+    console.log(box.lastChild)
+    console.log(box.nextSibling.nextSibling)
+    console.log(box.previousSibling)
+
+
+  </script>
+</body>
+
+</html>

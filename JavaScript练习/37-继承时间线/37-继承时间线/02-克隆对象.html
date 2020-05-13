@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var obj = {
+    //   name: 'wuwei',
+    //   run: function () { },
+    //   arr: ["wu", "wei"],
+    //   haha: {
+    //     name: "cc",
+    //     age: 18,
+    //   }
+    // }
+
+
+    // // 对象的克隆
+    // function clone(origin, target) {
+    //   target = target || {};
+    //   var toStr = Object.prototype.toString;
+
+    //   for (var key in origin) {
+    //     if (typeof origin[key] !== null && typeof origin[key] === 'object') {
+    //       //判断是不是引用类型的对象或数组
+    //       if (toStr.call(origin[key]) === '[object Array]') {
+    //         target[key] = [];
+    //       } else {
+
+    //         target[key] = {};
+    //       }
+    //       clone(origin[key], target[key]);
+    //     } else {
+    //       target[key] = origin[key]
+    //     }
+
+    //   }
+    //   return target
+    // }
+
+    // var target = {}
+    // target = clone(obj, target)
+
+
+    // 自己封装检测数据类型
+    // function type(data) {
+    //   switch (Object.prototype.toString.call(data)) {
+    //     case '[object Object]':
+    //       return 'object';
+    //     case '[object Array]':
+    //       return 'array';
+    //     case '[object Function]':
+    //       return 'function';
+    //     case '[object RegExp]':
+    //       return 'RegExp';
+    //     case '[object Number]':
+    //       return 'number';
+    //     case '[object String]':
+    //       return 'string';
+    //     case '[object Boolean]':
+    //       return 'boolean';
+    //     case '[object Null]':
+    //       return 'null';
+    //     case '[object Undefined]':
+    //       return 'undefined';
+    //   }
+    // }
+
+    // function type(data) {
+    //   if (typeof data === 'object') {
+    //     switch (Object.prototype.toString.call(data)) {
+    //       case '[object Object]':
+    //         return 'object';
+    //       case '[object Array]':
+    //         return 'array';
+    //       case '[object RegExp]':
+    //         return 'RegExp';
+    //       case '[object Null]':
+    //         return 'null';
+    //     }
+
+    //   } else {
+    //     return typeof data;
+    //   }
+    // }
+
+
+    function type(data) {
+      var toStr = Object.prototype.toString;
+      if (data === null) return 'null'
+      var obj = {
+        '[object Object]': 'Object',
+        '[object Array]': 'Array',
+        '[object RegExp]': 'RegExp',
+        '[object Number]': 'Number',
+        '[object String]': 'String',
+        '[object Boolean]': 'Boolean',
+      }
+      if (typeof data === 'object') {
+        return obj[toStr.call(data)]
+      } else {
+        return typeof data;
+      }
+    }
+
+  </script>
+</body>
+
+</html>

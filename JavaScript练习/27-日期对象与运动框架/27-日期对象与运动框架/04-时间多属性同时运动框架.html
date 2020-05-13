@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 300px;
+      /* opacity: 0; */
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+
+  <script>
+    var oBox = document.getElementById("box");
+
+    function animation(dom, targetJson, time) {
+      var startJson = {};
+      var speedJson = {};
+
+      for (var key in targetJson) {
+        startJson[key] = getStyle(dom, key);
+
+        speedJson[key] = (targetJson[key] - startJson[key]) / (time * 1000);
+      }
+
+      console.log(startJson, speedJson)
+
+
+
+      var startTime = new Date();
+
+      var timer = setInterval(function () {
+        var _time = new Date() - startTime;
+
+        for (var key in targetJson) {
+          if (key == "opacity") {
+            dom.style[key] = startJson[key] + _time * speedJson[key];
+          } else {
+            dom.style[key] = startJson[key] + _time * speedJson[key] + 'px';
+          }
+
+
+
+          if (getStyle(dom, key) >= targetJson[key]) {
+            if (key == "opacity") {
+              dom.style[key] = targetJson[key];
+            } else {
+              dom.style[key] = targetJson[key] + 'px';
+            }
+            clearInterval(timer)
+          }
+        }
+
+
+
+
+
+
+      }, 20)
+
+
+    }
+
+    function getStyle(dom, attr) {
+      return window.getComputedStyle ? parseFloat(getComputedStyle(dom)[attr]) : parseFloat(dom.currentStyle[attr])
+    }
+
+
+    animation(oBox, {
+      "width": 500,
+      "height": 500
+    }, 2)
+    // animation(oBox, "opacity", 1, 0.01)
+
+  </script>
+</body>
+
+</html>

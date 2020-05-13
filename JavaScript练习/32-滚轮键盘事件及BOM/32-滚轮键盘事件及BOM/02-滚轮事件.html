@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    // box.onmousewheel = function (ev) {
+    //   // console.log(ev.wheelDelta)
+    //   if (ev.wheelDelta > 0) {
+    //     console.log("兄弟,你在向上滚")
+    //   } else {
+    //     console.log("兄弟,你在向下滚")
+    //   }
+    // }
+
+    // // 火狐
+    // box.addEventListener("DOMMouseScroll", function (ev) {
+    //   console.log(ev.detail)
+    //   if (ev.detail < 0) {
+    //     console.log("兄弟,你在向上滚")
+    //   } else {
+    //     console.log("兄弟,你在向下滚")
+    //   }
+    // }, false)
+
+    // document.onmousewheel = function (ev) {
+    //   console.log(ev.wheelDelta)
+    //   // if (ev.wheelDelta > 0) {
+    //   //   console.log("兄弟,你在向上滚")
+    //   // } else {
+    //   //   console.log("兄弟,你在向下滚")
+    //   // }
+    // }
+
+    /*
+      滚轮事件
+
+      1.主流
+        onmousewheel
+
+        滚轮的方向值  event.wheelDelta
+          向上滚  120
+          向下滚 -120
+
+          {passive:false}
+
+      2.火狐
+        addEventListener()
+        事件 DOMMouseScroll
+
+        滚轮的方向值  event.detail
+          向上滚  -3
+          向下滚  3
+
+      3.兼容
+    */
+
+
+    box.onmousewheel = fn;
+
+
+
+    function fn(ev) {
+      ev = ev || window.event;
+
+      if (ev.wheelDelta) {  // Chrom IE 
+        var direction = ev.wheelDelta > 0 ? 1 : -1
+      } else if (ev.detail) {
+        var direction = ev.detail > 0 ? -1 : 1
+      }
+
+      this.style.height = this.offsetHeight - (direction * 10) + 'px'
+
+      console.log(direction);
+    }
+
+    // 火狐
+    box.addEventListener("DOMMouseScroll", fn, false)
+  </script>
+</body>
+
+</html>

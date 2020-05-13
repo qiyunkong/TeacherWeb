@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // 父类
+    function Person(name) {
+      this.name = name;
+    }
+
+
+    Person.prototype.sayHello = function () {
+      console.log("你好我是" + this.name)
+    };
+
+    // 子类
+    function Student(name, xuehao) {
+      // 核心语句在这里
+      Person.call(this, name)
+
+      this.xuehao = xuehao
+
+    }
+    // 核心的语句
+
+    function inherit(Person, Student) {
+      function Fn() { }
+      Fn.prototype = Person.prototype
+      Student.prototype = new Fn()
+      Student.prototype.constructor = Student;
+      Student.prototype.parent = Person;
+    }
+    inherit(Person, Student)
+
+
+
+    Student.prototype.study = function () {
+      console.log("好好学习  天天向上")
+    }
+
+    // var obj = new Person("小明");
+
+    var xiaohong = new Student("小红", 100001)
+
+
+
+
+    /*
+     一.继承
+      子类 和父类
+
+     1. 原型链继承
+        // 父类
+            function Person(name) {
+              this.name = name;
+            }
+            Person.prototype.sayHello = function () {
+              console.log("你好我是" + this.name)
+            };
+
+            // 子类
+            function Student(name, xuehao) {
+              this.name = name;
+              this.xuehao = xuehao
+            }
+
+            // 核心的语句
+            Student.prototype = new Person("小明")
+
+
+            Student.prototype.study = function () {
+              console.log("好好学习  天天向上")
+            }
+
+            // var obj = new Person("小明");
+
+            var xiao = new Student("xiaohong", 100001)
+
+
+      2. 构造函数继承
+
+          // 父类
+            function Person(name) {
+              this.name = name;
+            }
+
+
+            Person.prototype.sayHello = function () {
+              console.log("你好我是" + this.name)
+            };
+
+            // 子类
+            function Student(name, xuehao) {
+              // 核心语句在这里
+              Person.call(this, name)
+
+              this.xuehao = xuehao
+
+            }
+
+
+            Student.prototype.study = function () {
+              console.log("好好学习  天天向上")
+            }
+
+            // var obj = new Person("小明");
+
+            var xiaohong = new Student("小红", 100001)
+
+      3. 组合式继承
+
+            // 父类
+                function Person(name) {
+                  this.name = name;
+                }
+
+
+                Person.prototype.sayHello = function () {
+                  console.log("你好我是" + this.name)
+                };
+
+                // 子类
+                function Student(name, xuehao) {
+                  // 核心语句在这里
+                  Person.call(this, name)
+
+                  this.xuehao = xuehao
+
+                }
+                // 核心的语句
+                Student.prototype = new Person("小明")
+
+                Student.prototype.study = function () {
+                  console.log("好好学习  天天向上")
+                }
+
+                // var obj = new Person("小明");
+
+                var xiaohong = new Student("小红", 100001)
+
+      4. 寄生式继承
+             // 父类
+            function Person(name) {
+              this.name = name;
+            }
+
+
+            Person.prototype.sayHello = function () {
+              console.log("你好我是" + this.name)
+            };
+
+            // 子类
+            function Student(name, xuehao) {
+              // 核心语句在这里
+              Person.call(this, name)
+
+              this.xuehao = xuehao
+
+            }
+            // 核心的语句
+            function Fn() { }
+            Fn.prototype = Person.prototype
+            Student.prototype = new Fn()
+
+            Student.prototype.study = function () {
+              console.log("好好学习  天天向上")
+            }
+
+            // var obj = new Person("小明");
+
+            var xiaohong = new Student("小红", 100001)
+
+      圣杯模式
+        function inherit(Person, Student) {
+            function Fn() { }
+            Fn.prototype = Person.prototype
+            Student.prototype = new Fn()
+            Student.prototype.constructor = Student;
+            Student.prototype.parent = Person;
+          }
+          inherit(Person, Student)
+
+
+    */
+
+  </script>
+</body>
+
+</html>

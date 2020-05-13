@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+<body>
+<div class="box"></div>
+  <script src="./jquery.js"></script>
+  <script>
+  $('.box').animate({
+    "width":500,
+    "height":500
+  },2000,function(){
+   $(this).animate({
+     "width":100
+   },3000,function(){
+     $(this).animate({
+       "height":100
+     },1000,function(){
+       $(this).css("background-color","red")
+     })
+   })
+  })
+
+  
+    /*
+      animate 动画方法
+
+      1. animate方法的使用
+        animate({},time[,callback])
+        jQuery动画默认不是匀速的,是easeInOut  慢入慢出
+        参数: 
+          第一个参数: 终点JSON对象
+          第二个参数: 动画的时间
+          第三个参数: 动画运动完成后的回调函数
+            
+        $('.box').animate({
+          "width":500,
+          "height":500
+        },2000)
+
+        $('.box').animate({
+          "width":500,
+          "height":500
+        },2000,function(){
+          $(this).animate({
+            "width":100
+          },3000
+        })
+    */
+
+
+  </script>
+</body>
+</html>

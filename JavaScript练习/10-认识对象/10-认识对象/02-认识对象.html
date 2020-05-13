@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 什么是对象
+    // 对象其实就是由一对或者多对属性和属性值组成的.属性(键名) 数值值(键值)
+
+    // 数据类型
+    // 基本数据类型: Number String Boolean Undefined Null
+
+    // 引用数据类型: function Object
+
+    // 创建对象  
+    // typeof {}   object
+    // 两种方式  1. 字面量   2.new 构造函数 创建对象
+
+    // 1. 字面量
+    // 对象的属性值是一个ASCII码表的先后顺序排列
+    // 获取对象的属性值,使用点操作符,点就像的一样
+
+    // var wuwei = {
+    //   name: 'wuwei',
+    //   age: 18,
+    //   sex: '不详',
+    // }
+
+    // console.log(wuwei.age)  
+
+
+    // 对象的属性
+    // 对象的属性是字符串类型
+    // 对象的属性如果是符合标识符规范的,则可以不加引号,否则必须加引号
+    // var wuwei = {
+    //   name: 'wuwei',
+    //   age: 18,
+    //   sex: '不详',
+    //   $aa: 33,
+    //   '33a': 12
+    // }
+
+    // var obj = {
+    //   '2408sudf09sadu': 'haha',
+    //   'alll name': 123,
+    //   'var': 12,
+    //   'function': 12,
+    //   name: 'wuwei'
+    // }
+
+    // 如果对象的属性不是遵循标识符规范的字符串,我们就采用[]的语法方式
+    // 中括号的操作符里面是变量或字符串(还可以计算)
+
+    // 点操作符后面必须是符合标识符规范的属性(没有什么特殊情况下还是使用点操作符)
+    // var str = 'alll name';
+    // console.log(obj.str)  // 
+    // console.log(obj[str])
+
+
+    // var obj = {
+    //   age: 18,
+    //   name: 'wuwei'
+    // }
+
+    // var a = 'a';
+    // var b = 'ge';
+    // console.log(obj[a + b])
+
+    // var num = 'name';
+    // console.log(obj[num])
+    // var num = 'age';
+    // console.log(obj[num])
+
+
+    // var obj = {};
+    // var a = { key: 'a' };
+    // var b = { key: 'b' };
+
+    // obj[a] = 123;
+    // obj[b] = 456;
+    // console.log(obj[a])
+
+
+    //  new 操作符创建对象
+    // new 构造函数
+    // new Object()
+    // var wuwei = new Object()
+    // wuwei.name = 'wuwei';
+    // wuwei.age = 18
+    // console.log(wuwei)
+
+    // var wuwei = {
+    //   name: 'wuwei',
+    //   age: 18
+    // }
+
+    // 字面量的方式更加直观,简单,而且还有封装的感觉,鼓励大家是用字面量方法
+
+    // 两种创建对象的方法在使用上不要杂糅
+    // 除非扩展对象的属性,否则在最开始定义时不要这样去写
+    // var wuwei = {}
+    // wuwei.name = 'wuwei'
+
+
+    // 对象的属性值
+    // 对象的属性值,可以是任何类型,比如数字,字符串,布尔值,对象,数组,函数,...\
+
+    // var songguo = {
+    //   name: '松果',
+    //   age: 18,
+    //   peiou: {
+    //     name: '母松果',
+    //     age: 16,
+    //   },
+    //   child: {
+    //     name: '小松果',
+    //     age: 2
+    //   }
+    // }
+    // console.log(songguo.child.name)
+
+
+    // 对象的方法
+    // 如果对象的属性值是一个函数,我们就称这个函数是对象的方法
+
+    // var xiaoming = {
+    //   name: '小明',
+    //   age: 16,
+    //   sex: '男',
+    //   sayHello: function () {
+    //     alert('你好,我是' + xiaoming.name);
+    //     alert('我今年' + xiaoming.age + '岁了');
+    //     alert('我是可爱的小' + xiaoming.sex + ' 生');
+    //   }
+    // }
+
+    // 我们学习对象的方法,无非就是学历了一种函数调用的方式而已,
+    // 这个函数中this值的就是这个对象
+
+    // var xiaoming = {
+    //   name: '小明',
+    //   age: 16,
+    //   sex: '男',
+    //   sayHello: function () {
+    //     alert('你好,我是' + this.name);
+    //     alert('我今年' + this.age + '岁了');
+    //     alert('我是可爱的小' + this.sex + ' 生');
+    //   }
+    // }
+    // xiaoming.sayHello()
+
+    // 对象的特点
+    // 属性是字符串类型,如果不是会隐式的转化成字符串类型
+    // 属性的值可以是任意数据类型,也可以是变量
+    // 属性名也可以是变量
+    // var a = 'name';
+    // var b = 'wuwei';
+
+    // var obj = {
+    //   [a]: b
+    // }
+    // console.log(obj)
+
+    // 对象的操作
+    // .操作符
+    // obj.name
+
+    // []操作
+    // obj['name']    //此时的name是一个字符串
+    // obj[name]    // 此时的name是一个变量
+
+    // 对象的遍历
+    // for... in
+
+    var xiaoming = {
+      name: '小明',
+      age: 16,
+      sex: '男'
+    }
+
+    for (var key in xiaoming) {
+      // console.log(key)
+      console.log(xiaoming[key])
+    }
+  </script>
+</body>
+
+</html>

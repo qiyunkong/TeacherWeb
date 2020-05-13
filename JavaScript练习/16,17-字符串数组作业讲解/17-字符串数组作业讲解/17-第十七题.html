@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+  封装函数 实现字符串去重
+
+  例如:
+
+  输入deweightStr("wuweiwu"); 返回'wuei'
+
+
+*/
+    // 字符串的方法一
+    function deweightStr(str) {
+      var len = str.length;
+      for (var i = 0; i < len; i++) {
+        var char = str[i]
+        if (str.indexOf(char) !== str.lastIndexOf(char)) {
+          str = str.replace(char, "")
+          i--;
+        }
+      }
+      return str
+    }
+    // deweightStr("wuweiwu")
+
+    // 字符串方法二
+    // function deweightStr(str) {
+    //   var newStr = "";
+    //   var len = str.length;
+    //   for (var i = 0; i < len; i++) {
+    //     if (newStr.indexOf(str[i]) === -1) {
+    //       newStr += str[i];
+    //     }
+    //   }
+    //   return newStr
+    // }
+    // deweightStr("wuweiwu")
+
+
+    // 数组的方法
+    // function deweightStr(str) {
+    //   var arr = str.split("")
+    //   var len = arr.length;
+    //   for (var i = 0; i < len; i++) {
+    //     var char = arr[i]
+    //     if (arr.indexOf(char) !== arr.lastIndexOf(char)) {
+    //       arr.splice(i, 1)
+    //       i--;
+    //     }
+    //   }
+    //   return arr.join('')
+    // }
+    // deweightStr("wuweiwu")
+
+
+    // 对象方法
+    function deweightStr(str) {
+      var obj = {};
+      var len = str.length;
+      for (var i = 0; i < len; i++) {
+        obj[str[i]] = str[i]
+      }
+      var newStr = "";
+      for (var key in obj) {
+        newStr += key
+      }
+      console.log(newStr)
+      return newStr
+    }
+    deweightStr("wuweiwu")
+  </script>
+
+
+</body>
+
+</html>

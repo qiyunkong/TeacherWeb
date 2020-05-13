@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Author" content="Fly">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Microsoft yahei, serif;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    #box ul li {
+      height: 50px;
+      padding-left: 50px;
+      line-height: 50px;
+      font-size: 12px;
+      border-bottom: 1px solid red;
+    }
+
+    #box ul li span {
+      float: left;
+    }
+
+    #box ul li input {
+      display: none;
+      float: left;
+      margin-top: 14px;
+      color: #999;
+    }
+
+    #box ul li p {
+      float: left;
+      width: 50px;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+      margin-top: 12px;
+      margin-left: 10px;
+      background: #000;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <ul>
+      <li>
+        <span>点击修改</span>
+        <input type="text" value="点击修改">
+        <p>修改</p>
+      </li>
+      <li>
+        <span>点击修改</span>
+        <input type="text" value="点击修改">
+        <p>修改</p>
+      </li>
+      <li>
+        <span>点击修改</span>
+        <input type="text" value="点击修改">
+        <p>修改</p>
+      </li>
+      <li>
+        <span>点击修改</span>
+        <input type="text" value="点击修改">
+        <p>修改</p>
+      </li>
+    </ul>
+  </div>
+  <script>
+    var oBox = document.getElementById("box");
+    var aSpan = oBox.querySelectorAll("ul li span");
+    var aInput = oBox.querySelectorAll("ul li input");
+    var aP = oBox.querySelectorAll("ul li p");
+
+    var len = aP.length;
+
+
+    // for (var i = 0; i < len; i++) {
+    //   aP[i].index = i;
+    //   aP[i].onclick = function () {
+    //     var num = this.index;
+    //     if (this.innerHTML == "修改") {
+    //       console.log(1);
+    //       aInput[num].value = aSpan[num].innerHTML;
+    //       aSpan[num].style.display = "none";
+    //       aInput[num].style.display = "block";
+    //       this.innerHTML = "确定"
+    //     } else {
+    //       console.log(2);
+    //       aSpan[num].innerHTML = aInput[num].value;
+    //       aSpan[num].style.display = "block";
+    //       aInput[num].style.display = "none";
+    //       this.innerHTML = "修改"
+    //     }
+    //   }
+    // }
+
+
+    // 优化
+    for (var i = 0; i < len; i++) {
+      aP[i].index = i;
+      aP[i].onclick = function () {
+        var num = this.index;
+
+        var bol = this.innerHTML == "修改";
+        bol ? aInput[num].value = aSpan[num].innerHTML : aSpan[num].innerHTML = aInput[num].value;
+        aSpan[num].style.display = bol ? "none" : "block";
+        aInput[num].style.display = bol ? "block" : "none";
+        this.innerHTML = bol ? "确定" : "修改";
+      }
+    }
+  </script>
+</body>
+
+</html>

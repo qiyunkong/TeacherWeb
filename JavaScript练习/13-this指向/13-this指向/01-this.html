@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // this绑定的规则
+    // 1. 默认绑定
+    // var a = 10;
+    // function fn() {
+    //   console.log(this.a)
+    // }
+    // fn()  // 默认就是指向的为window
+
+    // 2. 隐式绑定
+    // 考虑函数在调用的时候是否有上下文对象,或者说是否被某个对象拥有或者包含
+    // var a = 10;
+    // function fn() {
+    //   // this的指向是动态,根据函数调用的方式的不同,this指向不同对象
+    //   console.log(this.a)
+    // }
+    // var obj = {
+    //   a: 30,
+    //   fn: fn
+    // }
+    // fn()   // 10
+    // obj.fn(); //obj 30
+
+    // function foo() {
+    //   console.log(this.a)
+    // }
+    // var obj = {
+    //   a: 42,
+    //   foo: foo
+    // }
+    // var obj2 = {
+    //   a: 22,
+    //   obj: obj
+    // }
+
+    // console.log(obj2.obj.foo());
+    // 如果是多个对象通过引用链来找到这个函数执行, 那么只有函数的上一层对象
+    // 或者说是最后在调用函数的对象起作用
+
+    // 隐式绑定的函数会丢失绑定的this
+    // function foo() {
+    //   console.log(this.a)
+    // }
+    // var obj = {
+    //   a: 42,
+    //   foo: foo
+    // }
+
+    // var a = 32;
+    // var bar = obj.foo
+    // bar();   // 默认绑定
+
+    // var name = 'wuwei';
+    // function showName() {
+    //   console.log(this.name);
+    // }
+    // var person1 = {
+    //   name: 'old',
+    //   sayName: showName
+    // }
+    // var person2 = {
+    //   name: 'xiaoming',
+    //   sayName: function () {
+    //     var fun = person1.sayName;
+    //     fun()
+    //   }
+    // }
+
+    // person1.sayName();  // old     old
+    // person2.sayName();  // xiaoming wuwei
+
+
+    // 显示绑定
+    // call(), apply()// 显示的绑定this的只想
+    // 作用,在函数执行的时候,修改this指向
+    // 有两层意思
+    // 1.函数执行
+    // 2.函数修改了this的指向
+
+    // 这个两个方法是存在于函数的原型上,至于什么是原型,咱们以后会学,
+    // 我们只要知道每个函数都可以调用这个连个方法就可以了
+    // var a = 10;
+    // function foo() {
+    //   console.log(this.a)
+    // }
+    // var obj = {
+    //   a: 20
+    // }
+    // // foo.call(obj)
+    // foo.apply(obj)
+
+    // 把函数foo中的this现实的 绑定到了obj上
+
+    // var a = 10;
+    // function foo() {
+    //   console.log(this.a)
+    // }
+    // var obj = {
+    //   a: 20
+    // }
+
+    // foo.call(null)
+    // // foo.apply(obj)
+
+    // 如果传入数字,布尔值,字符串,会被转为包装类
+    // 如果undefined或null,没有修改this指向,默认是window
+
+
+    // 传参数
+    // var a = 10;
+    // function foo(a, b, c) {
+    //   console.log(a, b, c)
+    //   console.log(this.a)
+    // }
+    // var obj = {
+    //   a: 20
+    // }
+    // foo(1, 2, 3)
+    // foo.call(null, 1, 2, 3)
+    // foo.apply(obj, [1, 2, 3])
+
+    // call 和apply的方法区别在于传参数
+    // call传的参数是散列的值
+    // apply传的参数是一个数组
+
+    // var arr = [1, 2, 3]
+    // foo(arr[0], arr[1], arr[2])
+
+    // foo.apply(null, arr)
+
+    // 硬绑定
+    // bind()
+    // var a = 10;
+    // function foo() {
+    //   console.log(this.a)
+    // }
+    // var obj = {
+    //   a: 35
+    // }
+    // var bar = function () {
+    //   foo.call(obj)
+    // };
+
+    // bind()跟call 和apply区别在于不会让函数执行
+
+    // var bar = foo.bind(obj)
+    // bar()
+
+    //  new 操作符
+    // function Person() {
+    //   console.log(this.a)
+    // }
+
+    // var obj = new Person();
+
+    // 优先级的问题
+    // 1.默认的优先级最低
+    // 2.显示绑定的优先级高于隐式绑定
+    // 3. new 操作符的优先级高于隐式绑定
+    // 4. new 操作符的优先级高于显示绑定
+    // new操作符 > 显示绑定 > 隐式绑定 > 默认绑定
+
+
+    // 显示和隐式的this绑定的优先级
+
+    // function foo() {
+    //   console.log(this.a)
+    // }
+    // var obj1 = {
+    //   a: 10,
+    //   foo: foo
+    // }
+
+    // var obj2 = {
+    //   a: 20,
+    //   foo: foo
+    // }
+
+    // obj1.foo();  // 10
+    // obj2.foo();  // 20
+
+    // obj1.foo.call(obj2)  //20
+    // obj2.foo.call(obj1)  //10
+
+    // new 操作符和隐式绑定
+
+    // function foo(aa) {
+    //   this.a = aa
+    // }
+    // var obj = {
+    //   foo: foo
+    // }
+    // obj.foo(2);
+    // console.log(obj.a)  // 2
+
+    // var bar = new obj.foo(4);
+    // console.log(obj.a);  //2
+    // console.log(bar.a)   // 4
+
+    // 显示绑定和new操作符的优先级
+    // function foo(aa) {
+    //   this.a = aa;
+    // }
+    // var obj = {}
+    // var bar = foo.bind(obj)
+
+    // bar(20)
+    // console.log(obj.a);   // 20
+
+    // var baz = new bar(30)
+    // console.log(obj.a);  // 20
+    // console.log(baz.a);  // 30
+
+    // 总结:
+    // 1. 函数是否使用new操作符调用, 如果有, 那么this将绑定到创建对象
+    // 2. 函数是否使用call, applay或者bind, 如果有那么this指向显示绑定的对象;
+    // 3. 函数是否在默认上下文对象中调用, 有this指向这个对象(隐式绑定)
+    // 4. 如果以上都不是, 那就默认绑定
+
+    // 需要忽略this绑定的可以使用applay ,或call,绑定null 就可以了
+
+    var a = 10;
+    function aa() {
+
+      console.log(a);  //undefined
+      a = 0;
+      console.log(this.a); // 10
+      var a;
+      console.log(a)  //0
+    }
+    aa();
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="keywords" content="关键词">
+  <meta name="description" content="描述">
+  <meta name="author" content="">
+  <style>
+    body {
+      font-family: "Microsoft YaHei", serif;
+    }
+
+    body,
+    dl,
+    dd,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+
+    ol,
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    img {
+      border: none;
+    }
+
+    #wrap {
+      width: 750px;
+    }
+
+    #wrap span {
+      display: inline-block;
+      width: 65px;
+      height: 35px;
+      border: 1px solid blue;
+      margin: 2px;
+      line-height: 35px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+
+    <!-- <span>1*8=8</span>
+
+    <br> -->
+
+    <!-- <span>1*8=8</span>
+    <span>1*8=8</span> -->
+
+  </div>
+
+  <script>
+    // 获取元素
+    var oWrap = document.getElementById("wrap");
+
+    var str = ""
+    var html = ""
+    for (var i = 1; i <= 9; i++) {
+      for (var j = 1; j <= i; j++) {
+        console.log(i + "*" + j + "=" + (i * j));
+        html += "<span>" + i + " * " + j + "=" + (i * j) + "</span>"
+      }
+      html += "</br>"
+    }
+    str += html;
+    str += "<hr/>"
+
+
+    html = ""
+    for (var i = 1; i <= 9; i++) {
+      for (var j = i; j <= 9; j++) {
+        console.log(i + "*" + j + "=" + (i * j));
+        html += "<span>" + i + " * " + j + "=" + (i * j) + "</span>"
+      }
+      html += "</br>"
+    }
+    str += html;
+    str += "<hr/>"
+
+    html = "";
+    for (var i = 9; i >= 1; i--) {
+      for (var j = 1; j <= i; j++) {
+        console.log(i + "*" + j + "=" + (i * j));
+        html += "<span>" + i + " * " + j + "=" + (i * j) + "</span>"
+      }
+      html += "</br>"
+    }
+    str += html;
+    str += "<hr/>"
+
+    
+    oWrap.innerHTML = str
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    封装函数 用来反转数字
+    例如:
+    输入reverseNumber(123456);返回654321
+    */
+
+    // 方法一
+
+    // function reverseNumber(num) {
+    //   var newNum = 0;
+    //   var len = ("" + num).length;
+    //   for (var i = 0; i < len; i++) {
+    //     newNum = newNum * 10 + num % 10;
+    //     num = parseInt(num / 10)
+    //   }
+    //   // console.log(newNum)
+    //   return newNum
+    // }
+    // reverseNumber(123456)
+
+    // 方法二
+    // 数字转字符串
+    // 字符串转数组
+    // 数组反向
+    // 数组转字符串
+    // 字符串转为数字类型
+
+
+    // function reverseNumber(num) {
+    //   return +(("" + num).split("").reverse().join(""))
+    // }
+    // reverseNumber(123456)
+
+    // 方法三
+    // 转字符串
+    // 从后往前循环字符串
+    // 重新拼接这个字符串
+    // 转成数字
+
+    function reverseNumber(num) {
+      var str = "" + num;
+      var len = str.length;
+      var newStr = "";
+      for (var i = len - 1; i >= 0; i--) {
+        newStr += str[i]
+      }
+      return +newStr
+    }
+    reverseNumber(123456)
+  </script>
+
+
+</body>
+
+</html>

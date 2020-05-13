@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // let arr = [1,2,3]
+    // for(let val of arr ){
+    //   console.log(val)
+    // }
+    // let iter = arr[Symbol.iterator]()
+    // console.log(iter)
+
+    function myIter(){
+      let This = this;
+      let i = 0
+      return {
+        next(){
+            let done = (i >= obj.length);
+            let value = !done ? This[i++]: undefined
+          return {
+            value,
+            done
+          }
+        }
+      }
+    }
+
+    let obj = {
+      0:'a',
+      1:'b',
+      2:'c',
+      length: 3,
+      [Symbol.iterator]: myIter
+    }
+    // for(let val of obj){
+    //   console.log(val)
+    // }
+    
+
+
+    /*
+      Iterator 迭代器
+        主要给for...of循环
+
+        Array  String  arguments对象  NodeList对象 Map  Set
+
+
+    */
+  
+  </script>
+</body>
+</html>

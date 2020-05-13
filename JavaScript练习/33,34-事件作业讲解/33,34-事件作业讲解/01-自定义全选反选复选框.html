@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="keywords" content="关键词">
+  <meta name="description" content="描述">
+  <meta name="author" content="">
+  <style>
+    body {
+      font-family: "Microsoft YaHei", serif;
+    }
+
+    body,
+    dl,
+    dd,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+
+    ol,
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    img {
+      border: none;
+    }
+
+    #wrap {
+      width: 300px;
+      padding-top: 20px;
+      margin: 50px auto;
+      border: 1px solid #bbb;
+      border-radius: 15px;
+      user-select: none;
+    }
+
+    #wrap ul.list li {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      font-size: 14px;
+      background: url("img/ckbg1.jpg") no-repeat 20px center;
+      text-indent: 70px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    #wrap ul.list li.click {
+      background-image: url("img/ckbg2.jpg");
+      text-indent: 50px;
+    }
+
+    #wrap .btn {
+      overflow: hidden;
+      width: 100%;
+      height: 50px;
+    }
+
+    #wrap .btn p {
+      float: left;
+      line-height: 50px;
+      margin-left: 50px;
+      background: url("img/ckbg1.jpg") no-repeat 0 center;
+      text-indent: 23px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    #wrap .btn p.click {
+      background-image: url("img/ckbg2.jpg");
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <ul class="list">
+      <!-- <!-- <li>项目一</li> -->
+      <!-- <li>项目二</li> -->
+    </ul>
+    <div class="btn">
+      <p class="all">全选</p>
+      <p class="fan" style="background-image: none">反选</p>
+    </div>
+
+  </div>
+
+  <script>
+    // 模拟后台请求的数据
+    // var data = [
+    //   {
+    //     txt: "朱雀"
+    //   },
+    //   {
+    //     txt: "心艾"
+    //   },
+    //   {
+    //     txt: "发发"
+    //   },
+    //   {
+    //     txt: "七七"
+    //   },
+    //   {
+    //     txt: "丫丫"
+    //   },
+    //   {
+    //     txt: "阿飞"
+    //   },
+    //   {
+    //     txt: "风屿"
+    //   },
+    //   {
+    //     txt: "云空"
+    //   },
+    // ];
+
+    (function (data) {
+
+      // 获取元素
+      var oUl = document.querySelector("#wrap .list");
+      var aLi = oUl.getElementsByTagName("li");
+      var oAll = document.querySelector("#wrap .btn .all")
+      var oFan = document.querySelector("#wrap .btn .fan")
+
+      var len = data.length;
+      var num = 0;
+
+      // 定义num发生变化后的函数
+      function ifFullNum() {
+        oAll.classList[num == len ? "add" : "remove"]("click")
+      }
+
+      // 循环添加数据
+      (function () {
+        var html = "";
+        var color = ["#222", "#555", "#888", "#bbb"]
+        var colorLen = color.length;
+        for (var i = 0; i < len; i++) {
+          html += '<li style="background-color:' + color[i % colorLen] + '">' + data[i].txt + '</li>'
+
+        }
+        oUl.innerHTML = html;
+      })()
+
+      // 给li添加点击事件
+      for (var i = 0; i < len; i++) {
+        aLi[i].onclick = function () {
+          // 切换选中状态
+          this.classList.toggle("click");
+
+          // 判断是否是选中状态,就是是否具有click类名
+          // if (this.classList.contains("click")) {
+          //   num++
+          // } else {
+          //   num--
+          // }
+          this.classList.contains("click") ? num++ : num--;
+
+          // num 只要一变化就执行
+          ifFullNum()
+
+        }
+      }
+
+      // 定义全选或反选
+      oAll.onclick = function () {
+        this.classList.toggle("click");
+
+        var bol = this.classList.contains("click");
+        var attr = bol ? "add" : "remove";
+
+
+        for (var i = 0; i < len; i++) {
+          aLi[i].classList[attr]("click")
+        }
+        num = bol ? len : 0;
+
+        // ifFullNum();
+      }
+
+      // 反选
+      oFan.onclick = function () {
+        for (var i = 0; i < len; i++) {
+          aLi[i].classList.toggle("click");
+        }
+        num = len - num;
+
+        // ifFullNum();
+      }
+
+    })([
+      {
+        txt: "朱雀"
+      },
+      {
+        txt: "心艾"
+      },
+      {
+        txt: "发发"
+      },
+      {
+        txt: "七七"
+      },
+      {
+        txt: "丫丫"
+      },
+      {
+        txt: "阿飞"
+      },
+      {
+        txt: "风屿"
+      },
+      {
+        txt: "云空"
+      },
+    ])
+
+  </script>
+</body>
+
+</html>

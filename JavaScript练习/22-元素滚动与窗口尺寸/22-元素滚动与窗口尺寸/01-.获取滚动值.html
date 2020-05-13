@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style class="style">
+    .box {
+      overflow: auto;
+      width: 200px;
+      height: 200px;
+      border: 10px solid #000;
+      background-color: pink;
+    }
+
+    .box .scroll {
+      width: 400px;
+      height: 1000px;
+      background-color: blue;
+    }
+
+    .wrap {
+      height: 2000px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box" class="box">
+    <div class="scroll" id="scroll2">
+      <p>1</p>
+      <p>2</p>
+      <p>3</p>
+      <p>4</p>
+      <p>5</p>
+      <p>6</p>
+      <p>7</p>
+      <p>8</p>
+      <p>9</p>
+      <p>10</p>
+      <p>11</p>
+      <p>12</p>
+      <p>13</p>
+      <p>14</p>
+      <p>15</p>
+      <p>16</p>
+      <p>17</p>
+      <p>18</p>
+      <p>19</p>
+      <p>20</p>
+    </div>
+
+    <!-- <div class="wrap"></div> -->
+
+  </div>
+  <script>
+    // var style = document.getElementsByClassName("style")[0]
+    /*
+      新内容
+      一.获取元素的滚动值
+          1.获取滚动元素的宽高
+            这是滚动的元素
+            ele.scrollWidth   => 实际内容的width
+            ele.scrollHeight   => 实际内容的height
+
+          2.获取元素的滚动距离
+            这个是滚动元素的盒子
+            ele.scrollTop      就是元素卷起来的高度
+            ele.scrollLeft
+
+      二.获取页面滚动的距离
+          1. IE8 以上的主流浏览器
+            window.pageXOffset
+            window.pageYOffset
+
+          2. IE8及一下
+            (1.) 标准模式下使用
+                document.documentElement.scrollTop
+                document.documentElement.scrollLeft
+
+            (2.) 怪异模式下使用
+                document.body.scrollTop
+                document.body.scrollLeft
+
+          3.判断浏览器的模式
+            document.compatMode === "backCompat" 这就是怪异模式
+
+          4.封装兼容
+            function getScrollOffset() {
+              if (window.pageYOffset) {
+                return {
+                  x: window.pageXOffset,
+                  y: window.pageYOffset
+                }
+              } else {
+                return {
+                  x: document.documentElement.scrollLeft + document.body.scrollLeft,
+                  y: document.documentElement.scrollTop + document.body.scrollTop
+                }
+              }
+            }
+
+        三.关于设置滚动
+            1.滚动到什么位置
+              ele.scrollTo(x,y)  让元素滚动到指定位置
+              window.scrollTo(x,y)
+
+            2.让滚动条滚动多大的值(在原有的基础上增加)
+               ele.scrollBy(x,y)  让元素滚动到位置
+              window.scrollBy(x,y)
+     */
+
+
+
+    /*
+    复习
+    一.获取计算样式表
+      1. 主流浏览器
+        window.getComputedStyle(ele).att
+        window.getComputedStyle(ele,null).att
+
+      2.IE8及其以下
+        ele.currentStyle.attr
+
+      3.封装兼容
+        function getStyle(ele,attr){
+          if(window.getComputed){
+            return window.getComputedStyle(ele,null)[att]
+          }else{
+            return ele.currentStyle[attr];
+          }
+        }
+
+      4. 总结
+        点操作符   getAttribute  getComputedStyle() currentStyle
+        这四种方式都是获取样式的(前两者也可以获取标签属性)
+        获取的都是独立的样式值,而且这些值都是有单位的字符串
+        获取的都是字符串
+
+    二.快捷获取元素的位置和尺寸
+        获取的是数字类型
+        1.ele.offsetWidth   width + 左右padding + 左右border
+          ele.offsetHeight
+
+        2.ele.offsetLeft   到定位父级offsetParent 的上和左侧的距离
+          ele.offsetTop
+
+        3.ele.clientWidth  能够显示内容的宽度 width + 左右padding
+          ele.clientHeight
+
+        4.ele.clientTop  上边框线的宽度
+          ele.clientLeft  左边框线宽度
+
+
+
+    */
+
+
+
+
+  </script>
+
+</body>
+
+</html>

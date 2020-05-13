@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var a = { n: 1 };
+    // var b = a;
+    // a.n = a = { m: 1 }
+    // console.log(a); // { m: 1 }
+    // console.log(b)  //{n:{ m: 1 } }
+
+
+    // var myObject = {
+    //   foo: "bar",
+    //   fun: function () {
+
+    //     var self = this;
+    //     console.log("outer fun: this.foo = " + this.foo); //bar
+    //     console.log("outer fun: self.foo = " + self.foo); //bar
+
+    //     (function () {
+    //       console.log("inner fun : this.foo = " + this.foo); // undefined
+    //       console.log("outer fun: self.foo = " + self.foo); //bar
+    //     })();
+    //   }
+    // }
+    // myObject.fun();
+
+
+
+    // var hero = {
+    //   _name: "wuwei",
+    //   getName: function () {
+
+    //     return this._name;
+    //   }
+    // }
+    // var stoleName = hero.getName;
+
+    // console.log(stoleName()); //undefined
+    // console.log(hero.getName()); //"wuwei"
+
+
+    // var length = 10;
+    // function fn() {
+    //   console.log(this.length);
+    // }
+
+    // var obj = {
+    //   length: 5,
+    //   method: function (fn) {
+
+    //     // AO{ this: obj }
+    //     fn();              //10
+    //     arguments[0]();   // 2
+    //   }
+    // }
+    // obj.method(fn, 1);
+
+
+    // function a() {
+
+    //   y = function () {
+    //     x = 2;
+    //   };
+    //   return function () {
+    //     var x = 3;
+    //     y();
+    //     console.log(this.x);
+    //   }.bind(this)
+    // }
+
+    // a()();
+
+
+    var n = 10;
+
+    var obj = {
+      n: 5,
+      c: a()
+    };
+
+    function a() {
+      var n = 7;
+      var c = function () {
+        var n = 3;
+        console.log(this.n);
+      }
+      return c;
+    }
+    obj.c(); // 5
+
+  </script>
+</body>
+
+</html>

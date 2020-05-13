@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // console.log(typeof a);
+    // console.log(typeof undefined);
+    // console.log(typeof NaN)
+    // console.log(typeof null)
+
+    // var a = '123abc';
+    // console.log(typeof +a);
+    // console.log(typeof !!a);
+    // console.log(typeof !!a + '');
+    // console.log(1 == '1');
+    // console.log(NaN == NaN);
+    // console.log(NaN == undefined);
+
+
+    // 函数 (声明)
+
+    // function fun() {  // 定义了一个函数
+    //   console.log('a');
+    //   console.log('b');
+    //   console.log('c');
+    // }
+
+    // if (1 > 0) {
+    //   fun();   // 函数的调用
+    // }
+
+    // if (2 > 1) {
+    //   fun();
+    // }
+
+
+    // if (3 > 2) {
+    //   fun();
+    // }
+
+    // console.log(typeof fun)
+
+
+    // 函数的参数
+    // function fun(a) {  // 形参  形式参数
+    //   console.log('第' + a + '次说爱你们');
+    // }
+    // fun(5); // 实参  实际参数
+
+    // 参数个数
+    // js的参数是无数个,可以用逗号隔开
+    // 形参本身是没有数据类型的,类型是有实参决定
+    // function fun(b, a) {
+    //   console.log(typeof a, typeof b)
+    //   console.log(a + b)
+    // }
+    // fun(5, '10')
+
+    // function fun(a, b) {
+    //   if (a > 10) {
+    //     console.log(a - b)
+    //   } else if (a < 10) {
+    //     console.log(a + b)
+    //   } else {
+    //     console.log(10)
+    //   }
+    // }
+
+
+    // 不定参
+    // 如果实参的个数小于形参,以为值会有一部分形参没有被赋值,值为undefined
+    // 如果实参的个数大于形参,会有一部分实参被忽略掉
+    // function fn(a, b) {
+    //   console.log(a, b)
+    // }
+    // fn(10, 30, 40, 50, 30);
+
+    // arguments
+    // function fn(a, b) {
+    //   console.log(arguments)
+    //   arguments[0] = 'wuwei';
+    //   b = 'tianna'
+    //   console.log(arguments[0]) //  arguments[0] 和a之间是有映射规则的,你变我也变
+    //   console.log(arguments[1])
+    //   console.log(a, b)
+    // }
+    // fn(10, 30, 40, 50, 30);
+
+
+    // function fun(a, b) {
+    //   // console.log(arguments)
+
+    //   switch (arguments.length) {
+    //     case 1:
+    //       console.log(++a);
+    //       break;
+    //     case 2:
+    //       console.log(a + b);
+    //       break;
+    //   }
+    // }
+
+
+    // function sum() {
+    //   var result = 0;
+    //   for(var i = 0; i < arguments.length; i++){
+    //     result += arguments[i]
+    //   }
+    //   console.log(result)
+    // }
+    // sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    // function sum(a) {
+    //   var result = 0;
+    //   for (var i = 0; i <= a; i++) {
+    //     result += i
+    //   }
+    //   console.log(result)
+    // }
+    // sum(100)
+
+    // 返回值
+    // return  函数的返回值,默认的返回值是undefined
+    // 碰到return 函数就结束了
+    // function fn(a, b) {
+    //   // console.log(a + b);
+    //   return (a + b);
+    // }
+    // var c = fn(10, 20)
+    // console.log(c)
+
+
+    // function fn() {
+    //   console.log(1);
+    //   console.log(2);
+    //   return
+    //   console.log(3);
+    // }
+
+    // fn()
+
+    // function fn(a) {
+    //   if (a < 10) return
+    //   console.log(1);
+    //   console.log(2);
+    //   console.log(3);
+    //   console.log(1);
+    //   console.log(2);
+    //   console.log(3);
+    //   console.log(1);
+    //   console.log(2);
+    //   console.log(3);
+
+    // }
+
+    // fn(12)
+
+    // 函数本身可以作为参数使用
+    // 因为函数有return 返回值,所以函数执行后本身也是一个值,所以也可以作为参数执行
+    // function sum(a, b) {
+    //   return a + b;
+    // }
+
+    // sum(50, sum(10, 20))
+
+
+    // 函数的另外一种定义方式
+    // 函数表达式
+    // (有名函数表达式)(尽量不要用这种)
+    // var fun = function fn(a, b) {
+
+    //   return a + b;
+    // }
+
+    // console.log(fun())
+
+
+    // 匿名函数表达式(尽量用这种)
+    // var fun = function (a, b) {
+    //   return a + b;
+    // }
+
+    // console.log(fun())
+
+
+    // 函数声明会被提升(预解析)
+
+    // 先调用
+
+    // fun()
+
+    // 后定义
+    // function fun() {
+    //   console.log('我是函数,我被执行了')
+    // }
+
+    // 函数表示是不会提升的,注意是函数不会提升,前面的变量声明是会被提升
+
+    // var fun = function () {
+    //   console.log('我是函数,我被执行了')
+    // }
+    // console.log(fun)
+    // fun()
+
+
+    // 函数优先
+    // 如果变量和函数重名,以函数为优先
+
+    // aa();
+
+
+    // function aa() {
+    //   console.log('我是一个函数')
+    // }
+    // var aa = 20;
+
+    // console.log(aa)
+
+    // foo()   // 1
+    // var foo;
+    // function foo() {
+    //   console.log(1)
+    // }
+    // foo = function () {
+    //   console.log(2)
+    // }
+
+    // function fun() {
+
+    // }
+    // fun()
+
+    // immediately-invoked function expression  // 即时调用函数表达式
+    // IIFE  自执行函数函数
+
+
+    // function fun() {
+    //   console.log(1)
+    // } ()
+
+    // 以为值我们要把函数声明降级 ,降为一个函数表达式
+
+    // (function fun(a) {
+    //   console.log(a)
+    // })(10);
+
+
+
+    sum(4, 2, 3);   // 7
+    sum(2, 3, 5);   //8
+
+    function sum(a, b, c) {
+
+      return (function (a, b) {
+        return a > b ? a : b
+      })(a,b) + c;
+    }
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "./index.js";
+
+    // 主流
+    script.onload = function () {
+      text()
+    }
+
+
+    // IE
+    script.onreadystatechange = function () {
+      if (script.readyState == 'loading' || script.readyState == 'complete') {
+        text()
+      }
+    }
+
+    document.head.appendChild(script)
+
+  </script>
+</head>
+
+<body>
+  <div id="box">
+
+
+  </div>
+  <script>
+    /*
+      浏览器在渲染页面
+        1.解析DOM  生成DOM树
+        2.解析css  生成css树
+        3.将DOM树和CSS树合并生成渲染树
+        4.浏览器根据渲染树开始绘制页面
+
+      DOM树原则 : 深度优先
+
+      script标签是同步加载
+
+      异步加载js
+        1.defer  IE 9 以及下才能用   ＩＥ
+        2.async  IE 9 以上都能有,一下不能用　　　非ＩＥ
+        3.创建标签动态加载
+
+
+    */
+
+
+  </script>
+</body>
+
+</html>

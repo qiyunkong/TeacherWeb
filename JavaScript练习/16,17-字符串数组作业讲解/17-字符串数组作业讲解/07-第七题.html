@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+  写一个函数找出传入的字符串中最长的单词
+
+例如:
+
+输入findLongest('Web Development Tutorial'); 返回 Development
+    */
+
+    function findLongest(str) {
+      var arr = str.split(" ");
+      var len = arr.length;
+      var maxStr = ""
+      for (var i = 0; i < len; i++) {
+        if (maxStr.length < arr[i].length) {
+          maxStr = arr[i];
+        }
+      }
+      // console.log(maxStr);
+      return maxStr;
+    }
+
+    findLongest('Web Development Tutorial');
+  </script>
+
+
+</body>
+
+</html>

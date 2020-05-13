@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+封装函数 实现数组sort的方法（参考冒泡排序）
+
+例如:
+
+输入mySort([2,33,41,10,5]); 返回 [2,5,10,33,41]
+    */
+
+    // 这就是一个冒泡排序
+    function mySort(arr) {
+      var len = arr.length;
+      // 第一层循环循环次数
+      for (var i = 0; i < len; i++) {
+        for (var j = 0; j < len - i - 1; j++) {
+          if (arr[j] < arr[j + 1]) {
+            var temp = arr[j];
+            arr[j] = arr[j + 1]
+            arr[j + 1] = temp;
+          }
+        }
+      }
+      console.log(arr);
+      return arr;
+    }
+
+    mySort([2, 33, 41, 10, 5])
+
+  </script>
+
+
+</body>
+
+</html>

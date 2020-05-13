@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+  封装函数 实现数组去重
+
+例如:
+
+输入deweightArr([1,4,6,3,4,6,2]); 返回[1,4,6,3,2]
+
+
+*/
+
+
+    // 数组的方法
+    // function deweightArr(arr) {
+    //   for (var i = 0; i < arr.length; i++) {
+    //     var char = arr[i]
+    //     if (arr.indexOf(char) !== arr.lastIndexOf(char)) {
+    //       arr.splice(i, 1)
+    //       i--;
+    //     }
+    //   }
+    //   console.log(arr);
+    //   return arr
+    // }
+    // deweightArr([1, 4, 6, 3, 4, 6, 2])
+
+
+    // 对象方法
+    function deweightStr(arr) {
+      var obj = {};
+      var len = arr.length;
+      for (var i = 0; i < len; i++) {
+        obj[arr[i]] = arr[i]
+      }
+      var newArr = [];
+      for (var key in obj) {
+        newArr.push(obj[key])
+      }
+      console.log(newArr)
+      return newArr
+    }
+    deweightStr([1, 4, 6, 3, 4, 6, 2])
+  </script>
+
+
+</body>
+
+</html>

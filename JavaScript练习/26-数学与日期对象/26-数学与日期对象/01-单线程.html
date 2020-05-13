@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+
+    #btn {
+      margin-top: 120px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box"></div>
+  <button id="btn">点击运动</button>
+  <button id="btn2">停止</button>
+  <script>
+    // 延迟定时器
+    // var timer = setTimeout(function () {
+
+    // }, 1000)
+
+    // // 循环定时器  间隔器
+    // var timer2 = setInterval(function () {
+
+    // }, 1000)
+
+    // // 清除定时器
+    // clearTimeout(timer)
+    // clearInterval(timer)
+
+
+
+    // for (var i = 0; i < 10000; i++) {
+    //   console.log(2)
+    // }
+
+    // box.onclick = function () {
+    //   console.log(1)
+    // }
+    // console.log(2)
+
+    // console.log(1)
+    // console.log(2)
+    // console.log(3)
+    // for (var i = 0; i < 50000; i++) {
+    //   setTimeout(function () {
+    //     console.log(i)
+    //   }, 10)
+    // }
+    // console.log(4)
+
+    // function aa() {
+
+    // }
+    // function bb(callback) {
+
+    // }
+    // bb(aa)
+
+    // setTimeout(function () {
+    //   console.log(1)
+    // }, 0)
+
+    // for (var i = 0; i < 10000; i++) {
+    //   console.log(2)
+    // }
+
+
+    var left = 0;
+    var timer = 3;
+    btn.onclick = function () {
+      // 设表先关
+      clearInterval(timer);
+
+      // 开启定时器
+      timer = setInterval(function () {
+        left++;
+        box.style.left = left + 'px'
+      }, 20)
+
+    }
+    btn2.onclick = function () {
+      clearInterval(timer);
+      
+    }
+
+
+    /*
+    一.单线程
+      意味着js同时只能干一件事情,如果后面有任务也必须等待前面的活干完
+
+    二.线程阻塞
+      前面的任务如果是一个非常耗时间的认为,后面的代码也不会执行,这种情况叫线程阻塞
+
+    三.异步
+      事件,定时器 ajax 异步程序
+      // 浏览器会立即开辟一个新的线程来处理异步程序
+
+      // 浏览器有几个常驻的线程, js引擎线程,界面渲染线程,还有一些浏览器自己的事件
+
+
+    四.异步任务和同步任务
+      js的任务队列分成两种,同步任务,异步任务
+        同步任务: 在js主线程中排队执行  => 形成执行栈
+        异步任务: 不进人js主线程  => 形成任务队列
+
+    五.js代码的执行顺序
+      1. 所有同步任务都在主线程中排队执行
+      2. 如果碰到了异步,会将异步交给任务队列,
+      3. 如果任务队列中 任务满足条件,就会将异步的回调函数发往回调函数队列中,等待js主线程调用
+      4. 如果js主线程的执行栈中所有任务都执行完毕了,会从回调队列中取回回调函数执行,
+      5. 再次检查是否有同步任务,加到主线程的执行栈中,循环第一步
+    */
+
+  </script>
+</body>
+
+</html>

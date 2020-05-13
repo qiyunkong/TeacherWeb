@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>两个独立盒子之间的操作</title>
+  <meta name="keywords" content="关键词">
+  <meta name="description" content="描述">
+  <meta name="author" content="">
+  <style>
+    body {
+      font-family: "Microsoft YaHei", serif;
+    }
+
+    body,
+    dl,
+    dd,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0;
+    }
+
+    ol,
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    img {
+      border: none;
+    }
+
+    #box1,
+    #box2 {
+      width: 200px;
+      height: 50px;
+      background: #999;
+      margin: 50px auto;
+      line-height: 50px;
+      font-weight: bolder;
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box1"></div>
+
+  <div id="box2"></div>
+
+  <script>
+    // 获取元素
+    var oBox1 = document.getElementById("box1");
+    var oBox2 = document.getElementById("box2");
+
+    // 设置鼠标移入事件
+    oBox1.onmouseenter = function () {
+      // console.log(1)
+      oBox2.innerHTML = "box1被移入了"
+      this.style.backgroundColor = "green";
+      this.innerHTML = '我被移入了'
+      this.style.color = "red"
+    }
+
+    oBox2.onmouseenter = function () {
+      oBox1.innerHTML = "box2被移入了"
+    }
+
+    // 移出事件
+    oBox1.onmouseleave = function () {
+      oBox2.innerHTML = "";
+      this.style.backgroundColor = "red";
+      this.innerHTML = ''
+    }
+    oBox2.onmouseleave = function () {
+      oBox1.innerHTML = ""
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>

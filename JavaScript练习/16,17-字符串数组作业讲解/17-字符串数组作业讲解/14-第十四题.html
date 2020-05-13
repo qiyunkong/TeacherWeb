@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    封装函数 实现push方法
+  */
+
+    // push一个
+    // function myPush(arr, target) {
+    //   arr[arr.length] = target
+    //   return arr;
+    // }
+    // var arr = [1, 2, 3]
+    // myPush(arr, "wuwei")
+
+    // push多个
+
+    // function myPush() {
+    //   console.log(arguments)
+    //   // 获取arguments的长度
+    //   var len = arguments.length;
+    //   // 循环给添加值
+    //   for (var i = 1; i < len; i++) {
+    //     arguments[0][arguments[0].length] = arguments[i]
+    //   }
+    //   // 返回修改后的数组
+    //   return arr;
+    // }
+    // var arr = [1, 2, 3]
+    // myPush(arr, "wuwei", "aa")
+
+    // 修改一下,是有this添加
+
+    function myPush() {
+      console.log(arguments)
+      // 获取arguments的长度
+      var len = arguments.length;
+      // 循环给添加值
+      for (var i = 0; i < len; i++) {
+        this[this.length] = arguments[i]
+      }
+      // 返回修改后的数组
+      return arr;
+    }
+    var arr = [1, 2, 3]
+    myPush.call(arr, "wuwei", "aa")
+
+  </script>
+
+
+</body>
+
+</html>

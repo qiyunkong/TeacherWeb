@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      position: relative;
+      left: 0px;
+      top: 0px;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <input type="text" id="box">
+  <ul id="list">
+    <li>dd</li>
+  </ul> -->
+
+
+  <div id="box"></div>
+  <script>
+    // box.onkeydown = function(ev){
+    //   console.log(ev.keyCode)
+    // }
+    // box.onkeyup = function(ev){
+    //   ev = ev||window.event;
+
+    //   if(this.value == "")return
+    //   console.log(ev.keyCode)
+    //   if(ev.keyCode ==13){
+    //     list.innerHTML += "<li>"+this.value+"</li>";
+    //     this.value = "";
+    //   }
+
+    // }
+
+    // box.onkeypress = function(ev){
+    //   console.log(ev)
+    // }
+    /*
+     键盘事件
+      1.onkeydown  键盘按下触发
+      2.onkeyup    键盘抬起触发
+      3.onkeypress 键盘按下触发(部分按键,功能键按下没效果)
+    
+    常用的功能键
+      ctrlKey(17)  shiftKey(16)  altKey(19) 
+      Enter(13)
+      方向: 左上右下(37,38,39,40)
+  
+    */
+
+
+    document.onkeyup = function (ev) {
+      ev = ev || window.event;
+
+      console.log(ev.keyCode);
+
+      // if (ev.keyCode == 37) {
+      //   box.style.left = box.offsetLeft - 10 + 'px';
+      // } else if (ev.keyCode == 38) {
+      //   box.style.top = box.offsetTop - 10 + 'px';
+      // } else if (ev.keyCode == 39) {
+      //   box.style.left = box.offsetLeft + 10 + 'px';
+      // } else if (ev.keyCode == 40) {
+      //   box.style.top = box.offsetTop + 10 + 'px';
+      // }
+
+      switch (ev.keyCode) {
+        case 37:
+          box.style.left = box.offsetLeft - 10 + 'px';
+          break;
+        case 38:
+          box.style.top = box.offsetTop - 10 + 'px';
+          break;
+        case 39:
+          box.style.left = box.offsetLeft + 10 + 'px';
+          break;
+        case 40:
+          box.style.top = box.offsetTop + 10 + 'px';
+          break;
+      }
+    }
+  </script>
+</body>
+
+</html>

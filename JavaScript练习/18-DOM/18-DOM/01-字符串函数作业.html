@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 第十九题
+    /*
+    封装函数 输出指定字符串的长度：
+
+提示:
+
+1. 一个中文占2个字节，一个英文占一个字节
+
+
+2.如果Unicode编码值小于等于255是英文，如果unicode编码值大于255是中文
+    */
+
+    // function byteLen(str) {
+    //   // console.log(str.length)
+    //   var num = 0;
+    //   var len = str.length;
+    //   for (var i = 0; i < len; i++) {
+    //     // if (str.charCodeAt(i) <= 255) {
+    //     //   num++;
+    //     // } else {
+    //     //   num += 2
+    //     // }
+
+
+    //   }
+    //   console.log(num)
+    //   return num;
+    // }
+
+
+    // function byteLen(str) {
+    //   // console.log(str.length)
+
+    //   var len = str.length;
+    //   var num = len;
+    //   for (var i = 0; i < len; i++) {
+    //     if (str.charCodeAt(i) > 255) {
+    //       num++;
+    //     }
+
+    //   }
+    //   console.log(num)
+    //   return num;
+    // }
+    // byteLen("为无aaa123")
+
+
+    // 二十题
+    /*
+    封装函数 获取浏览器url中的数据 要求：函数返回值是一个对象
+
+    示例地址：
+
+          https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=1&tn=baidu&wd=wuwwei
+          &rsv_pq=becd1331000082fd&rsv_t=0f84&rqlang=cn&rsv_enter=1&rsv_sug3=14&rsv_sug1=12&rsv_sug7=100&rsv_sug2=0&rsp=0&inputT=9344&rsv_sug4=3518432
+
+    例如:
+
+    输入getUrl(url)['wd']; 返回"wuwei"
+    */
+
+    // function getUrl(url) {
+    //   var obj = {}
+    //   var str = url.split("?")[1];
+    //   // console.log(str);
+    //   var arr = [];
+    //   var newArr = []
+
+    //   if (str) {
+    //     arr = str.split("&");
+    //     // console.log(arr);
+    //     for (var i = 0; i < arr.length; i++) {
+    //       // console.log(arr[i])
+    //       newArr = arr[i].split("=");
+    //       // console.log(newArr);
+    //       obj[newArr[0]] = newArr[1]
+    //       // console.log(obj)
+    //     }
+    //   }
+
+    //   return obj;
+    // }
+
+
+    function getUrl(url) {
+      var obj = {}
+      var str = url.split("?")[1];
+      // console.log(str);
+      var arr = str ? str.split("&") : []
+      var newArr = []
+
+      for (var i = 0; i < arr.length; i++) {
+        newArr = arr[i].split("=");
+        obj[newArr[0]] = newArr[1]
+
+      }
+      return obj;
+    }
+    var url = 'https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=1&tn=baidu&wd=wuwwei&rsv_pq=becd1331000082fd&rsv_t=0f84&rqlang=cn&rsv_enter=1&rsv_sug3=14&rsv_sug1=12&rsv_sug7=100&rsv_sug2=0&rsp=0&inputT=9344&rsv_sug4=3518432'
+    getUrl(url)
+  </script>
+</body>
+
+</html>

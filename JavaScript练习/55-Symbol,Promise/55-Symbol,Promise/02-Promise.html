@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+  <script>
+    // var user = ""
+    
+    
+    // new Promise( (resolve,reject) => {
+    //     $.get("https://api.github.com/users",function(res){
+    //       console.log("user info")
+    //       resolve(res[0].login)
+    //   })
+    // })
+    // .then( (user) =>{
+    //   console.log(user)
+     
+    //   return new Promise( (resolve,reject) => {
+    //      $.get(`https://api.github.com/users/${user}/repos`,function(res){
+    //       console.log("mojombo info")
+    //       // console.log(res)
+    //       resolve(res)
+    //     })
+    //   })
+    // })
+    // .then((res)=>{
+    //   console.log(res)
+
+    // })
+
+
+  
+
+    let a = 10;
+    let promise = new Promise((resolve,reject) => {
+      // resolve 成功后要调用的函数
+      // reject 失败后要调用的函数
+      // console.log(resolve,reject)
+
+      if(a == 11){
+        resolve("成功")
+      }else{
+        reject("失败")
+      }
+    })
+
+    promise.then((data) => {
+      console.log(data)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+
+    new Promise( (resolve,reject) => {
+      $.ajax({
+        url:"",
+        success:resolve,
+        error:reject
+      })
+
+    })
+    .then(
+      function(data){
+
+      },
+      function(err){
+        
+      }
+    )
+
+
+
+    
+
+
+    /*
+
+    Promise 
+      Promise  是异步编程的一种解决方案,比传统的回调函数和事假的方式更加合理和更加强大
+
+    1. 有三种状态  
+      pending  (等待中)  resolve(成功状态)   reject(失败状态)
+
+      状态一但被改变,其他操作将无法在改变状态
+
+    2. 使用Promise
+      语法
+        let promiseObj = new Promise(callback)
+        通过new 操作符生成promise对象
+        参数是一个回调函数,且参数必须传递,如果不传参数将会报错
+        回调函数有两个参数,一个是成功后的回调,一个是失败后的回到
+
+
+
+    3.then() 方法
+      可以两个回调函数参数,第一个表示成功后执行,第二个表示失败后执行
+      promise 对象身上有一个then,表示党promise状态发生变化后需要调用的函数
+
+    4.catch() 捕获错误的
+
+    
+    */
+
+
+
+    
+  
+  </script>
+</body>
+</html>

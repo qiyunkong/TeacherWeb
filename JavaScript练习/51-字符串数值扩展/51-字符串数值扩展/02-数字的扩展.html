@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+
+  /*
+    数字的扩展
+      1. 定义二进制的字面量
+        Binary  二级制  b
+        0b
+        var num = 0b1010
+        如果写的不规范就报错
+      
+      2. 新增的方法
+        parseInt() parseFloat();
+        2.1 将parseInt() 和parseFload()方法移植到了Number身上
+          目的: 逐步减少全局性的方法,是语言更具有模块化
+
+          Number.parseInt === window.parseInt 是同一方法
+
+        2.2 Number.isFinite() Number.isNaN()
+          isFinite()  方法是用来判断一个数字是不是有限的
+          返回布尔值,有限的返回true,不是有限的返回false
+
+          只有参数是一个有限的数字时才会返回true,否则全部返回false
+          参数如果不是数字类型,不会进行隐式类型转换,全部返回false
+
+          Number.isNaN()  用来检测一个数字是不是NaN
+          和全局方法的不同,该方法不会强制转为数字,只有参数是真正的数字类型,切值为NaN 才返回true ,否则返回false
+          不会进行隐式类型转换
+
+        3. Number.isInteger()
+          用来判断一个数是不是整数,需要注意的是,在JavaScript内部,整数和浮点数是同样的存储方式,,所以3和3.0 是同一个值
+
+          不会进行隐式类型转换,如果不是数字类型直接返回false
+          数字类型如果是整数返回true,否则返回false
+
+        
+
+  */
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+			width: 79px;
+			height: 108px;
+			background: url(images/girl.png) no-repeat;
+			background-position: 0px -216px;
+			position: absolute;
+			top: 100px;
+			left: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<script type="text/javascript">
+
+		// 创建一个用来生成对象的构造函数
+		function Girl(top, left, bol) {
+			this.top = top;
+			this.left = left
+			this.buzi = 0;
+
+			// 调用初始化和行走的函数
+			this.init();
+			this.xingzou();
+
+
+		}
+		// 初始化对象
+		Girl.prototype.init = function () {
+			// 创建一个标签
+			this.dom = document.createElement("div");
+			// 给标签加定位样式
+			this.dom.style.top = this.top + 'px';
+			this.dom.style.left = this.left + 'px';
+			// 把生成的div添加到网页中
+			document.body.appendChild(this.dom);
+		}
+
+		//  让人物移动的函数
+		Girl.prototype.xingzou = function () {
+			this.timer = setInterval(function (This) {
+				// console.log(This)
+				// 改变 人物的水平left值
+				This.left++;
+				// 改变人物步子背景定
+				This.buzi++;
+				This.buzi %= 8;
+				// if (This.buzi > 7) {
+				// 	This.buzi = 0;
+				// }
+				// if (This.left > 1000) {
+				// 	This.die();
+				// }
+				// 判断如果对象做到一定位置就自杀
+				(This.left > 1000) && This.die()
+
+				// 实时改变元素的位置以及背景定位
+				This.dom.style.left = This.left + 'px';
+				This.dom.style.backgroundPosition = -79 * This.buzi + "px -216px";
+			}, 5, this)
+
+		}
+
+
+
+
+		// 移出超出可是区域的元素
+		Girl.prototype.die = function () {
+			// 关闭定时器
+			clearInterval(this.timer);
+			// 移出元素
+			document.body.removeChild(this.dom);
+		}
+
+		// var aa = new Girl(Math.random() * 500, 100);
+		// var bb = new Girl(Math.random() * 500, 100);
+
+		setInterval(function () {
+			new Girl(Math.random() * 500, 100);
+		}, 1000)
+
+	</script>
+</body>
+
+</html>

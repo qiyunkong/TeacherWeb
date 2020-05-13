@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    function Person(name, age) {
+      // this.name = name;
+      // this.age = age
+    }
+    Person.prototype = {
+      name: "xiaoming",
+      age: 18
+    };
+    var xiaoming = new Person('xiaoming', 10)
+    var xiaobai = new Person('xiaobai', 11)
+    var yunkong = new Person('yunkong', 9)
+    var xiaohong = new Person('xiaohong', 10)
+
+    /*
+      1.原型 prototype
+        原型是构造函数创建对象的原始模型
+
+      2.原型的特点
+        原型就是一个对象,原型对象上有一个属性constructor, 这一个属性就是构造函数,也就是创建的实例对象会继承原型的属性和方法
+
+    */
+
+
+
+  </script>
+</body>
+
+</html>

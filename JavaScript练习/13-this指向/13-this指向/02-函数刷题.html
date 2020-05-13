@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // GO{
+    //   a: 1
+    //   b: 0
+    //   add: function add(n) {
+    //     return n = n + 3;
+    //   }
+    //   c: 0
+    //   y: 4
+    //   z: 3
+    // }
+
+    // var a = 1,
+    //   b = c = 0;
+    // function add(n) {
+    //   return n = n + 3;
+    // }
+    // y = add(a);
+    // function add(n) {
+    //   return n = n + 3;
+    // }
+    // z = add(c);
+    // console.log(y);  // 4
+    // console.log(z)   // 3
+
+
+    // var x = 1; y = z = 0;
+    // function add(n) {
+    //   return n = n + 1;
+    // }
+    // y = add(x); // 4
+    // function add(n) {
+    //   return n = n + 3;
+    // }
+    // z = add(x);  //4
+    // console.log(x, y, z);   
+
+
+
+    // var a = 2;
+    // function auto(a) {
+
+    //   if (typeof a) {
+    //     console.log("wuwei")
+    //   } else {
+    //     console.log("无为")
+    //   }
+    //   var a;
+    // }
+    // auto();
+
+
+    // var a = 2;
+    // var fn = function auto(a) {
+    //   if (typeof a) {
+    //     console.log("wuwei")
+    //   } else {
+    //     console.log("无为")
+    //   }
+    //   var a;
+    // }
+    // auto();
+
+
+    // var a = 2;
+    // var fn = function auto(a) {
+    //   if (a) {
+    //     console.log("wuwei")
+    //   } else {
+    //     console.log("无为")
+    //   }
+    //   var a;
+    // }
+    // auto('undefined');
+
+
+    // var a = 2;
+    // function auto(a) {
+    //   if (a) {
+    //     console.log("wuwei")
+    //   } else {
+    //     console.log("无为")
+    //   }
+    //   var a;
+    // }
+    // auto('undefined');
+
+
+    // function auto(a) {
+    //   console.log(a);  //function a() { }
+    //   function a() { }
+    //   var a = 2;
+    //   console.log(a);  // 2
+    // }
+    // auto('undefined');
+
+    // function auto(a) {
+    //   console.log(a);
+    //   function a() { }
+    //   var a = 2;
+    //   var a = function a() {
+    //     console.log(1);
+    //   }
+    //   console.log(a);
+    // }
+    // auto('undefined');
+
+    // 0 NaN '' false undefined null
+    // var x = 1;
+    // if (function fn() { }) {
+
+    //   x += typeof fn; 
+    // }
+    // console.log(x);
+
+    // var f = (
+    //   function f() {
+    //     return "wuwei";
+    //   },
+    //   function g() {
+    //     return 2
+    //   }
+    // )()
+
+    // console.log(typeof f);
+
+
+
+    var scare = function () {
+      console.log("Boo");
+      scare = function () {
+        console.log("Double boo")
+      }
+    }
+    scare();
+    scare();
+  </script>
+</body>
+
+</html>

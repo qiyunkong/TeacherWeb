@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 运算符的分类
+    // 1. 数学 运算符
+    // 2. 比较 运算符
+    // 3. 逻辑 运算符
+    // 4. 赋值 运算符
+    // 5. 按位 运算符\
+    // 6. 条件(三目)  运算符
+
+    // 数据类型
+    // 基本数据类型 number string boolean undefined null
+    // 引用数据类型
+
+    //  数据类型转换(显示数据类型转换)
+    // number   Number()  parseInt() parseFloat() +-
+    // string   '' + 
+    // boolean  Boolean() 
+
+    // 1.数学运算符
+    // 正统的运用,就是两个数字的运算,结果也是数字
+    // 加+ 减- 乘* 除/ 摸%(取余数) ()
+    // console.log(2 + 3);
+    // console.log(2 % 3);
+
+    // 隐式数据类型转换
+    // 数学运算中出现了其他数据类型的值,所以会隐式的转化,
+    // 转成数字类型
+    // 如果这个类型是字符串,会转成数字类型
+    // console.log('2' * 3);
+    // console.log('48' / 3);
+    // console.log('48' % 5);
+    // console.log('48' - 5);
+
+    // 加好在处理字符串的时候比较特殊
+    // console.log('48' + 5)
+
+    // 其他数据类型
+    // console.log(5 + true); // true 转成数字是被转成1
+    // console.log(5 + false); //false 转成数字类型是0
+    // console.log(5 + undefined);  // undefined转成数字是NaN
+    // console.log(5 + null);   //null 转成数字类型是0
+
+    // NaN和任何数字运算都是NaN
+
+    // 数学元素是希望去运算数字得到结果也是数字
+    // 所以如果有不是数字类型的值参与运算会将其隐式的转化为数字类型
+    // 但是加号除非, 因为加号有字符串拼接功能
+
+    // 只要有undefined 参与的运算结果为NaN
+
+    // 特殊值的运算
+    // console.log(Infinity + 1000);;
+    // console.log(Infinity - 1000)
+    // console.log(Infinity * 1000)
+    // console.log(Infinity / 1000)
+    // console.log(Infinity % 1000)
+    // console.log(Infinity + -Infinity)
+    // console.log(0 / 0);
+    // console.log(6 / 0);
+    // console.log(NaN / 8)
+
+
+    // 2. 比较运算符
+    // > 大于号
+    // < 小于号
+    // >= 大于等于
+    // <=  小于等于
+    // ==  等于
+    // !=  不等于
+    // ===  全等于
+    // !== 不全等
+
+    // 正统的的运算符是数字和数字之间比较,结果是一布尔值
+    // console.log(2 > 8);
+    // console.log(8 > 8);
+    // console.log(8 >= 8);
+    // console.log(8 <= 8);
+    // console.log(8 == 8);
+    // console.log(8 != 8);
+    // console.log(8 === 8);
+    // console.log(8 !== 8);
+
+
+    // console.log('8' == 8);
+    // console.log('8' != 8);
+
+    // console.log('8' === 8);
+    // console.log('8' !== 8);
+
+    // 2.1 string 和string
+    // 比较的是Ascll 的编码值的顺序
+    // console.log('wuaei' > 'wuanger')
+
+
+    // 2.2. 其他的数据类型比较
+    // console.log(true == 1);
+    // console.log(false == 0);
+    // console.log(undefined == 0);
+    // console.log('a' > 0);
+    // console.log('3' > '23');
+    // console.log(null < 0.000001);
+    // console.log(null > -0.000001);
+    // console.log(null == 0);
+    // console.log(null == undefined);
+
+    // console.log(typeof null);
+
+    // console.log(NaN == NaN)
+    // console.log(NaN === NaN)
+    // NaN //连自己都不等
+    // console.log(NaN != NaN)
+    // console.log(NaN !== NaN)
+    // console.log(NaN == Infinity)
+
+    // console.log(3 > 2 > 1);
+    // 千万不要这么去比较
+
+    // 总结
+    // 比较运算符是比较两个数值,如果不是会发生隐式类型转换
+    // 如果比较的是两个字符串,那么比较的是字符编码值
+
+
+
+    // 3.逻辑运算符
+    // 且 或 非
+    // &&与 ||或 !非
+
+    // 正统运算符 ; Boolean 和 Boolean 结果也是Boolean
+    // && 逻辑与
+    // a && b
+    // a       b        结果
+    // 真     真         真
+    // 真     假         假
+    // 假     真         假
+    // 假     假         假
+
+    // console.log(true && true)
+    // console.log(true && false)
+    // console.log(false && true)
+    // console.log(false && false)
+
+    // || 逻辑或
+    // a || b
+    // a       b        结果
+    // 真     真         真
+    // 真     假         真
+    // 假     真         真
+    // 假     假         假
+    // console.log(true || true)
+    // console.log(true || false)
+    // console.log(false || true)
+    // console.log(false || false)
+
+    // !逻辑非
+    // 取反  !真 => 假   !假 => 真
+    // console.log(!true)
+    // console.log(!!!!!false)
+
+    // 运算的顺序
+    // 非  与  或
+    // console.log(true || false && !true || false)
+
+    // 短路算法
+    // a && b;
+    // 先看a的布尔值是什么,如果a为true,那么直接运行b就好了,如果a为false,直接运行a
+    // a || b
+    // 先看a的布尔值是什么,如果a是true,那么直接运行a,如果a为false,直接运行b
+
+    // console.log((3 - 3) && (5 + 3));
+    // console.log(12 || 33);
+
+    // console.log(undefined && 哈哈)
+    // console.log(哈哈 && undefined)
+
+    // NaN 0 '' undefined null false
+
+
+    // 4. 赋值运算符
+    // =  赋值
+    // += 加等于
+    // -= 减等于
+    // *= 乘等于
+    // /= 除等于
+    // %= 模等于
+    // ++ 自增
+    // -- 自减
+
+    // var a = 5;
+    // console.log(a)
+    // var a = 5;
+    // a += 10;  // 等价于   a= a + 10;
+    // console.log(a)
+    // var a = 5;
+    // a %= 2;
+    // console.log(a)
+
+    // var a = 5;
+    // a++;      // 等同于 a += 1  等同于 a = a + 1
+    // // a--    // 等同于 a -= 1  等同于 a = a - 1
+    // console.log(a)
+
+    // var a = 5;
+    // ++a;      // 等同于 a += 1  等同于 a = a + 1
+    // console.log(a);
+
+    // 如果 a++  ++a不参与其他运算两个本质上没有任何区别
+
+    // var a = 5;
+    // console.log(a++);
+    // console.log(a)
+    // console.log(++a);
+    // 如果参与到其他运算,a++是先把a的值参与其他运算,然后a自己在++
+    // 如果参与到其他运算,++a是先把a的值先++运算,然后a自己的值在参与其他运算
+    // var a = 5;
+    // var b;
+    // // b = 4 + ++a;
+    // b = 4 + a++;
+    // console.log(a)
+
+    // var a = 10;
+    // var b = ++a - 1 + a++;
+    // console.log(b);
+
+
+
+
+    // 5.以上所学运算符的顺序
+    // 贴身的(++ -- !) => 数学运算符 => 比较运算符 => 逻辑运算符 => 赋值运算符
+
+
+    // 一元运算符  a++
+    // 二元运算符  a + b  a > b
+    // 三元运算符 a ? b : c
+
+
+    // var a = 3 < 8 && 8 < 14;
+    // //a = true && true;
+    // //a = true
+    // console.log(a);
+
+
+    var a = 1 + 2 < 3 + 3 && 3 + 4 < 2 * 6;
+    console.log(a);
+
+
+
+
+  </script>
+</body>
+
+</html>

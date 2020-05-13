@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div{
+      width: 200px;
+      height: 30px;
+      border:1px solid #369;
+      margin-top:10px;
+      text-align:center;
+    }
+  </style>
+  <script src="./jquery.js"></script>
+  <script>
+  // 文档加载完毕之后执行
+  //  $(document).ready(function(){
+  //    console.log($('.box'))
+  //  })
+
+   // 简写的方式
+  //  $(function(){
+
+  //  })
+    
+  </script>
+</head>
+
+<body>
+  <div class="box">this is box1</div>
+  <div class="box ta">this is box2</div>
+  <div class="box ta">this is box3</div>
+  <div class="box">this is box4</div>
+  <div class="box">this is box5</div>
+  
+  <script src="./jquery.js"></script>
+  <script>
+    // function $(select){
+    // $('.box').click(function(){
+    //   console.log($(this))
+    // })
+    // var aBox= document.getElementsByClassName('box')
+    // console.log($(aBox))
+
+    var num = 2;
+
+    $('.box').click(function(){
+      console.log($(this).is('.ta'))
+    })
+    // $('.box:eq('+num+')').css("background-color","red")
+  /*
+    一.选择器 $()
+      $ 就是jQuery的核心,query就是选择的意思
+      选择器支持所有的CSS2.1的选择器,也部分支持CSS3的选择
+      
+      1. $('')选择器
+        语法 $('选择器')
+        哪怕你传入的是单个元素的选择器,返回的也是一个类数组
+
+        既然是类数组,就不能使用原生js的语法
+        $('.box').style.background = 'red';
+        以上写法会报错
+
+        要把jQuery的DOM对象转为原生的DOM对象,通过[0]就可以转
+        $('.box')[0].style.background = 'red';
+
+      2.使用方法
+        $("")必须加引号
+        只有三个不需要加引号, this,document,window
+
+        把jQuery的DOM对象转成原生jsDOM对象
+        var box = $('.box')[0]
+        把原生的DOM对象转为jQuery的DOM对象
+        var aBox= document.getElementsByClassName('box')
+        var $aBox = $(aBox)
+
+
+    二.筛选器
+      这个筛选器跟js没有关系,就是在引号里面: 就被当做筛选功能
+
+      1. 获取所有的.box元素
+        $('.box')
+
+      2. 获取第一个div标签
+        $('.box:first')
+      
+      3. 获取最后一个div标签
+        $('.box:last')
+
+      4. 获取任意一个div标签
+        :eq(num)   num是要筛选的索引,从0开始
+        $('.box:eq(3)')
+
+      5. 获取某一个范围的div标签
+        :lt(num)  获取索引小于num的所有div元素  num是要筛选的索引,从0开始
+        :gt(num)  获取索引大于num的所有div元素  num是要筛选的索引,从0开始
+         $('.box:lt(2)')
+         $('.box:gt(2)')
+
+
+      6. 获取奇偶数
+        :odd  获取索引是奇数的所有div
+        :even 获取索引是偶数的所有div
+        $('.box:odd')
+        $('.box:even')
+        要注意的是获取的是索引的奇偶数,和你看到的可能不一样
+
+
+      7. 特殊的过滤器的方法
+
+        7.1 eq单独作为过滤方法
+          $('.box').eq(2)
+
+          可以组合使用
+          $('.box:even').eq(num)
+
+        7.2 first() last 筛选第一个或最后一个div元素
+          $('.box').first()
+          $('.box').last()
+
+        7.3 not()  排除那些元素
+          not(选择器), 将所有选择的元素剔除not选中的选择器
+          $('.box').not('.ta')
+
+        7.4 hasClass()  判断是否具有某个类名
+          返回布尔值,true就是有,false就是没有
+          $('.box').click(function(){
+            console.log($(this).hasClass('ta'))
+          })
+
+        7.5 is()  判断是不是  是返回true  否则 false
+           $('.box').click(function(){
+            console.log($(this).is('.ta'))
+          })
+           $('.box').click(function(){
+            console.log($(this).is(':even'))
+          })  
+  */
+
+
+  </script>
+</body>
+
+</html>

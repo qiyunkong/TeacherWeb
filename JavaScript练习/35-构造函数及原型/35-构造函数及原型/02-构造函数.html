@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+
+    function Person() {
+      // var this = {}
+      // this.name = "wuwei";
+      var sum = 0;
+      for (var i = 0; i < 10; i++) {
+        sum += i
+      };
+      // this.age = sum;
+      // return this
+    }
+    var obj = new Person()
+
+    /*
+      1.理解构造函数
+        // 构造函数:创建对象,除了用了创建对象这一个功能外,和普通函数没有任何区别
+
+
+      2.常见的内置构造函数
+        Date()
+        Number()
+        String()
+        Boolean()
+        Object()
+        Function()
+        Array()
+        RegExp()
+
+      3. 构造原理
+        1.隐式的创建一个对象
+        2.将函数内部的this绑定到新创建的对象上
+        3.执行函数中的代码
+        4.隐式的返回这个对象
+
+        注意 :
+          1.构造函数里不要随意的return
+          2.如果构造函数内部没有this语句,返回空对象
+          3. 并没有规定构造函数内部代码怎么写,你想怎么写怎么写,只要不写错的代码
+
+
+        基于面向对象
+
+      4.构造函数类和实例的关系
+        我们就可以把构造函数看成是一个类,但是在js里没有类的概念.类是入java等语言中用来创建对象的,和构造函数的作用像是,所有我们也称构造函数为类
+
+        实例就是构造函数通过new操作符  构造出来的对象
+
+        面向对象,面向过程  就是一种代码的组织方式
+    */
+
+  </script>
+</body>
+
+</html>

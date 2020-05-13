@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 词法作用域  只关心一点 函数实在哪里定义的,不关心函数在哪里执行
+    // js里面有一个和动态作用域和很像,this
+    // 动态作用域就和词法作用域不同,动态作用域只关心函数在那里调用
+
+
+    // function foo() {
+    //   console.log(a)
+    // }
+
+    // function bar() {
+
+    //   var a = 3;
+    //   foo();
+    // }
+    // bar()
+    // var a = 2;
+
+    // 动态作用域,调用栈,为了能到达到当前函数执行位置所要调用的所有的 函数
+
+    // function baz() {
+    //   // 调用栈: baz
+    //   // 调用位置:全局
+    //   console.log('baz')
+    //   bar()   // bar的调用位置
+    // }
+    // function bar() {
+    //   // 调用栈: baz - bar
+    //   // 调用位置:baz
+    //   console.log('bar')
+    //   foo()   // foo调用位置
+    // }
+    // function foo() {
+    //   // 调用栈: baz - bar  - foo
+    //   // 调用位置:bar
+    //   console.log('foo')
+    // }
+    // baz()  // baz的调用位置
+
+    // 调用位置就是当前调用栈中当前执行函数的前一个
+
+    // this 
+    // this 指向的是一个对象,
+    // 当函数被调用的时候,this指向会发生改变,执行函数调用的对象
+    // 在预编译的阶段,会生成AO,程序会默认的吧this作为AO对象的一个属性,默认值为window
+
+    // GO{ }
+    // function foo() {
+    //   // AO{
+    //   //   this: window
+    //   // }
+
+    //   console.log(window.a)
+    // }
+    // var a = 10
+    // foo()
+
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+    console.log(1)
+  </script>
+</body>
+
+</html>
